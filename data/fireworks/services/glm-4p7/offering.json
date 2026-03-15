@@ -1,4 +1,7 @@
 {
+  "capabilities": [
+    "llm"
+  ],
   "currency": "USD",
   "description": "GLM-4.7 is a next-generation general-purpose model optimized for coding, reasoning, and agentic workflows, delivering strong gains in multilingual software engineering, tool use, and complex problem solving. It introduces advanced thinking controls: interleaved, preserved, and turn-level thinking; to improve stability on long-horizon, multi-turn tasks.\n\nYou can explore these thinking modes on our API using the `reasoning_history` field.\n\nLearn more here - https://docs.fireworks.ai/guides/reasoning",
   "details": {
@@ -22,15 +25,6 @@
     "parameterCount": "352797829024",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [
-      "BF16",
-      "FP8_MM_V2",
-      "FP16"
-    ],
-    "supportedPrecisionsWithCalibration": [
-      "FP8_V2",
-      "FP4_BLOCKSCALED_MM"
-    ],
     "supportsFireattention": true,
     "supportsImageInput": false,
     "supportsLora": false,
@@ -80,7 +74,10 @@
           "unit": "output_tokens",
           "window": "minute"
         }
-      ]
+      ],
+      "routing_key": {
+        "model": "glm-4p7"
+      }
     }
   }
 }

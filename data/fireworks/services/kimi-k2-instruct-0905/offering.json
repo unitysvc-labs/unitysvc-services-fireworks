@@ -1,4 +1,7 @@
 {
+  "capabilities": [
+    "llm"
+  ],
   "currency": "USD",
   "description": "Kimi K2 0905 is an updated version of Kimi K2, a state-of-the-art mixture-of-experts (MoE) language model with 32 billion activated parameters and 1 trillion total parameters. Kimi K2 0905 has improved coding abilities, a longer context window, and agentic tool use, and a longer (262K) context window.",
   "details": {
@@ -22,20 +25,6 @@
     "parameterCount": "1028071273984",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [
-      "FP8_MM",
-      "FP8_MM_V2",
-      "PRECISION_UNSPECIFIED",
-      "FP8_V2",
-      "PRECISION_UNSPECIFIED",
-      "FP4_MX_MOE",
-      "FP8"
-    ],
-    "supportedPrecisionsWithCalibration": [
-      "FP4",
-      "FP4_BLOCKSCALED_MM",
-      "PRECISION_UNSPECIFIED"
-    ],
     "supportsFireattention": true,
     "supportsImageInput": false,
     "supportsLora": false,
@@ -85,7 +74,10 @@
           "unit": "output_tokens",
           "window": "minute"
         }
-      ]
+      ],
+      "routing_key": {
+        "model": "kimi-k2-instruct-0905"
+      }
     }
   }
 }

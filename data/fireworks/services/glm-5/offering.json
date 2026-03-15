@@ -1,4 +1,7 @@
 {
+  "capabilities": [
+    "llm"
+  ],
   "currency": "USD",
   "description": "GLM-5 is Z.ai's SOTA model targeting complex systems engineering and long-horizon agentic tasks. It uses a mixture of experts architecture, so it only activates 40 billion of its 744 billion parameters. This model uses Deepseek Sparse Attention to select only the most relevant tokens for attention, reducing the cost of long-context processing. GLM-5 continues improving on top of GLM-4.7 for coding and agentic use cases, and it's also great for document generation for enterprise workloads.",
   "details": {
@@ -8,7 +11,7 @@
     "contextLength": 202752,
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
-    "defaultPrecision": "PRECISION_UNSPECIFIED",
+    "defaultPrecision": "FP8",
     "defaultSamplingParams": {},
     "deprecationDate": null,
     "fineTuningJob": "",
@@ -18,12 +21,10 @@
     "kind": "HF_BASE_MODEL",
     "modelType": "glm-5",
     "model_name": "accounts/fireworks/models/glm-5",
-    "moe": false,
+    "moe": true,
     "parameterCount": "700000000000",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [],
-    "supportedPrecisionsWithCalibration": [],
     "supportsFireattention": true,
     "supportsImageInput": false,
     "supportsLora": false,
@@ -73,7 +74,10 @@
           "unit": "output_tokens",
           "window": "minute"
         }
-      ]
+      ],
+      "routing_key": {
+        "model": "glm-5"
+      }
     }
   }
 }
