@@ -2,6 +2,14 @@
   "currency": "USD",
   "display_name": "glm-4p7",
   "documents": {
+    "Default request body": {
+      "category": "request_template",
+      "description": "Default request body for the playground",
+      "file_path": "../../docs/request-template.json",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "json"
+    },
     "JavaScript code example": {
       "category": "code_example",
       "description": "Example code to use the model",
