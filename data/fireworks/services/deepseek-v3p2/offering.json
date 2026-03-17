@@ -1,4 +1,7 @@
 {
+  "capabilities": [
+    "llm"
+  ],
   "currency": "USD",
   "description": "Model from Deepseek that harmonizes high computational efficiency with superior reasoning and agent performance",
   "details": {
@@ -8,7 +11,7 @@
     "contextLength": 163840,
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
-    "defaultPrecision": "FP8_MM",
+    "defaultPrecision": "FP8",
     "defaultSamplingParams": {},
     "deprecationDate": null,
     "fineTuningJob": "",
@@ -19,21 +22,9 @@
     "modelType": "deepseek_v32",
     "model_name": "accounts/fireworks/models/deepseek-v3p2",
     "moe": true,
-    "parameterCount": "675204027136",
+    "parameterCount": "671877944064",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [
-      "FP8_MM",
-      "FP8_MM_V2",
-      "PRECISION_UNSPECIFIED",
-      "PRECISION_UNSPECIFIED",
-      "FP4_MX_MOE"
-    ],
-    "supportedPrecisionsWithCalibration": [
-      "FP4",
-      "FP4_BLOCKSCALED_MM",
-      "PRECISION_UNSPECIFIED"
-    ],
     "supportsFireattention": true,
     "supportsImageInput": false,
     "supportsLora": false,
@@ -83,7 +74,10 @@
           "unit": "output_tokens",
           "window": "minute"
         }
-      ]
+      ],
+      "routing_key": {
+        "model": "deepseek-v3p2"
+      }
     }
   }
 }

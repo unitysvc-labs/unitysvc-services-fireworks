@@ -1,4 +1,7 @@
 {
+  "capabilities": [
+    "llm"
+  ],
   "currency": "USD",
   "description": "DeepSeek-V3.1 is post-trained on the top of DeepSeek-V3.1-Base, which is built upon the original V3 base checkpoint through a two-phase long context extension approach, following the methodology outlined in the original DeepSeek-V3 report. We have expanded our dataset by collecting additional long documents and substantially extending both training phases. The 32K extension phase has been increased 10-fold to 630B tokens, while the 128K extension phase has been extended by 3.3x to 209B tokens. Additionally, DeepSeek-V3.1 is trained using the UE8M0 FP8 scale data format to ensure compatibility with microscaling data formats.",
   "details": {
@@ -8,7 +11,7 @@
     "contextLength": 163840,
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
-    "defaultPrecision": "FP8_MM",
+    "defaultPrecision": "FP8",
     "defaultSamplingParams": {},
     "deprecationDate": null,
     "fineTuningJob": "",
@@ -22,18 +25,6 @@
     "parameterCount": "674352502272",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [
-      "FP8_MM",
-      "FP8_MM_V2",
-      "PRECISION_UNSPECIFIED",
-      "PRECISION_UNSPECIFIED",
-      "FP4_MX_MOE"
-    ],
-    "supportedPrecisionsWithCalibration": [
-      "FP4",
-      "FP4_BLOCKSCALED_MM",
-      "PRECISION_UNSPECIFIED"
-    ],
     "supportsFireattention": true,
     "supportsImageInput": false,
     "supportsLora": false,
@@ -83,7 +74,10 @@
           "unit": "output_tokens",
           "window": "minute"
         }
-      ]
+      ],
+      "routing_key": {
+        "model": "deepseek-v3p1"
+      }
     }
   }
 }
