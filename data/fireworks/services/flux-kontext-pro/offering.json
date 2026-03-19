@@ -1,4 +1,7 @@
 {
+  "capabilities": [
+    "image_generation"
+  ],
   "currency": "USD",
   "description": "FLUX Kontext Pro is a specialized model for generating contextually-aware images from text descriptions. Designed for professional use cases requiring high-quality, consistent image generation.",
   "details": {
@@ -22,8 +25,6 @@
     "parameterCount": "0",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [],
-    "supportedPrecisionsWithCalibration": [],
     "supportsFireattention": true,
     "supportsImageInput": true,
     "supportsLora": false,
@@ -73,7 +74,10 @@
           "unit": "output_tokens",
           "window": "minute"
         }
-      ]
+      ],
+      "routing_key": {
+        "model": "flux-kontext-pro"
+      }
     }
   }
 }
