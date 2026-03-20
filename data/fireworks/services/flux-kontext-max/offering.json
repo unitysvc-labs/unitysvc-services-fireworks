@@ -1,4 +1,7 @@
 {
+  "capabilities": [
+    "image_generation"
+  ],
   "currency": "USD",
   "description": "FLUX Kontext Max is Black Forest Labs' new premium model that brings maximum performance across all aspects \u2013 greatly improved prompt adherence and typography generation meet premium consistency for editing without compromise on speed",
   "details": {
@@ -22,8 +25,6 @@
     "parameterCount": "0",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [],
-    "supportedPrecisionsWithCalibration": [],
     "supportsFireattention": true,
     "supportsImageInput": true,
     "supportsLora": false,
@@ -73,7 +74,10 @@
           "unit": "output_tokens",
           "window": "minute"
         }
-      ]
+      ],
+      "routing_key": {
+        "model": "flux-kontext-max"
+      }
     }
   }
 }
