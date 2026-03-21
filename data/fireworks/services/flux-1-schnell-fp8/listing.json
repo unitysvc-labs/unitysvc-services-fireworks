@@ -2,14 +2,6 @@
   "currency": "USD",
   "display_name": "flux-1-schnell-fp8",
   "documents": {
-    "Default request body": {
-      "category": "request_template",
-      "description": "Default request body for the playground",
-      "file_path": "../../docs/request-template.json",
-      "is_active": true,
-      "is_public": true,
-      "mime_type": "json"
-    },
     "JavaScript code example": {
       "category": "code_example",
       "description": "Example code to use the model",
@@ -52,10 +44,10 @@
     }
   },
   "list_price": {
-    "description": "Pricing Per 1M Tokens: $0.00",
+    "description": "Pricing Per Step: $0.00",
     "price": "0.00",
     "reference": "https://fireworks.ai/models/fireworks/flux-1-schnell-fp8",
-    "type": "one_million_tokens"
+    "type": "step"
   },
   "schema": "listing_v1",
   "status": "ready",
