@@ -65,7 +65,7 @@
   "user_access_interfaces": {
     "Provider API": {
       "access_method": "http",
-      "base_url": "${GATEWAY_BASE_URL}/p/fireworks.ai",
+      "base_url": "${API_GATEWAY_BASE_URL}/p/fireworks.ai",
       "routing_key": {
         "model": "accounts/fireworks/models/glm-4p7"
       }
