@@ -49,7 +49,7 @@
     "gateway"
   ],
   "time_created": "2025-12-23T21:21:21.223875Z",
-  "upstream_access_interfaces": {
+  "upstream_access_config": {
     "Fireworks API": {
       "access_method": "http",
       "api_key": "${ secrets.FIREWORKS_API_KEY }",
