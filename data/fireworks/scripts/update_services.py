@@ -109,6 +109,9 @@ class FireworksModelSource:
             # Build details dict from API response
             details = self._extract_details(model_data)
 
+            # Derive capabilities from service type and model details
+            capabilities = self._derive_capabilities(service_type, model_data)
+
             # Yield the template variables
             yield {
                 # Required - used for directory name
@@ -118,6 +121,7 @@ class FireworksModelSource:
                 "display_name": model_data.get("displayName"),
                 "description": model_data.get("description", ""),
                 "service_type": service_type,
+                "capabilities": capabilities,
                 "status": model_data.get("state", "READY").lower(),
                 "model_name": model_name,
                 "details": details,
@@ -273,6 +277,32 @@ class FireworksModelSource:
             return "prerecorded_transcription"
 
         return "llm"
+
+    def _derive_capabilities(self, service_type: str, model_data: dict) -> list[str]:
+        """Derive capabilities from service type and model details.
+
+        Uses HuggingFace-style capability names for consistency across providers.
+        """
+        caps: list[str] = []
+
+        if service_type == "llm":
+            caps.append("llm")
+            caps.append("text-generation")
+        elif service_type == "image_generation":
+            caps.append("text-to-image")
+        elif service_type == "embedding":
+            caps.append("embedding")
+        elif service_type == "prerecorded_transcription":
+            caps.append("automatic-speech-recognition")
+
+        # Add capabilities from model details
+        if model_data.get("supportsTools"):
+            caps.append("tools")
+        if model_data.get("supportsImageInput"):
+            caps.append("vision")
+            caps.append("image-text-to-text")
+
+        return caps
 
     def _extract_details(self, model_data: dict) -> dict:
         """Extract details dict from API response."""

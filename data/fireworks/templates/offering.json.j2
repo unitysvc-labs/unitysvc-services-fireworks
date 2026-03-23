@@ -6,7 +6,7 @@
 {%- endif %}
   "description": {{ (description | default('', true)) | tojson }},
   "service_type": "{{ service_type }}",
-  "capabilities": ["{{ service_type }}"],
+  "capabilities": {{ capabilities | default([service_type]) | tojson }},
   "status": "{{ status | default('ready') }}",
   "currency": "USD",
   "tags": ["ai", "gateway"],
