@@ -1,4 +1,7 @@
 {
+  "capabilities": [
+    "llm"
+  ],
   "currency": "USD",
   "description": "Welcome to the gpt-oss series, OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases. gpt-oss-120b is used for production, general purpose, high reasoning use-cases that fits into a single H100 GPU.",
   "details": {
@@ -8,7 +11,7 @@
     "contextLength": 131072,
     "defaultDraftModel": "accounts/fireworks/models/gpt-oss-120b-eagle3-oss",
     "defaultDraftTokenCount": 3,
-    "defaultPrecision": "FP4_MX_MOE",
+    "defaultPrecision": "FP4",
     "defaultSamplingParams": {},
     "deprecationDate": null,
     "fineTuningJob": "",
@@ -22,10 +25,6 @@
     "parameterCount": "116829156672",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [
-      "FP4_MX_MOE"
-    ],
-    "supportedPrecisionsWithCalibration": [],
     "supportsFireattention": true,
     "supportsImageInput": false,
     "supportsLora": false,
@@ -75,7 +74,10 @@
           "unit": "output_tokens",
           "window": "minute"
         }
-      ]
+      ],
+      "routing_key": {
+        "model": "gpt-oss-120b"
+      }
     }
   }
 }
