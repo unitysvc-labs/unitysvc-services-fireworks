@@ -36,7 +36,7 @@
     "teftDetails": null,
     "trainingContextLength": 65536,
     "tunable": true,
-    "useHfApplyChatTemplate": false,
+    "useHfApplyChatTemplate": true,
     "worldSize": 1
   },
   "display_name": "Kimi K2.5",

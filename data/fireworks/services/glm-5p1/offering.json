@@ -5,26 +5,26 @@
     "tools"
   ],
   "currency": "USD",
-  "description": "Welcome to the gpt-oss series, OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases. gpt-oss-120b is used for production, general purpose, high reasoning use-cases that fits into a single H100 GPU.",
+  "description": "GLM-5.1 is Z.ai's next-generation flagship model built for agentic engineering, with stronger coding capabilities and sustained performance over long-horizon tasks with hundreds of iteration rounds. It's a 754B-parameter MoE model",
   "details": {
     "calibrated": false,
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
-    "contextLength": 131072,
-    "defaultDraftModel": "accounts/fireworks/models/gpt-oss-120b-eagle3-oss",
-    "defaultDraftTokenCount": 3,
-    "defaultPrecision": "FP4",
+    "contextLength": 202752,
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "FP8",
     "defaultSamplingParams": {},
     "deprecationDate": null,
     "fineTuningJob": "",
     "githubUrl": "",
-    "huggingFaceUrl": "https://huggingface.co/openai/gpt-oss-120b",
+    "huggingFaceUrl": "https://huggingface.co/zai-org/GLM-5.1-Provider-FP8",
     "importedFrom": "",
     "kind": "HF_BASE_MODEL",
-    "modelType": "gpt_oss",
-    "model_name": "accounts/fireworks/models/gpt-oss-120b",
+    "modelType": "glm_moe_dsa",
+    "model_name": "accounts/fireworks/models/glm-5p1",
     "moe": true,
-    "parameterCount": "116829156672",
+    "parameterCount": "743911218432",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
     "supportsFireattention": true,
@@ -33,12 +33,12 @@
     "supportsTools": true,
     "teftDetails": null,
     "trainingContextLength": 65536,
-    "tunable": true,
-    "useHfApplyChatTemplate": true,
+    "tunable": false,
+    "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
-  "display_name": "OpenAI gpt-oss-120b",
-  "name": "gpt-oss-120b",
+  "display_name": "GLM 5.1",
+  "name": "glm-5p1",
   "payout_price": {
     "description": "No platform commission",
     "percentage": "100.00",
@@ -51,7 +51,7 @@
     "ai",
     "gateway"
   ],
-  "time_created": "2025-08-04T22:13:20.599550Z",
+  "time_created": "2026-04-11T02:57:26.212222Z",
   "upstream_access_config": {
     "Fireworks API": {
       "access_method": "http",
@@ -78,7 +78,7 @@
         }
       ],
       "routing_key": {
-        "model": "gpt-oss-120b"
+        "model": "glm-5p1"
       }
     }
   }
