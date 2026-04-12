@@ -18,8 +18,8 @@ from typing import Iterator
 import requests
 from bs4 import BeautifulSoup
 
-# Will be provided by unitysvc_services
-from unitysvc_services import populate_from_iterator
+# Will be provided by unitysvc_sellers
+from unitysvc_sellers.template_populate import populate_from_iterator
 
 
 class FireworksModelSource:
