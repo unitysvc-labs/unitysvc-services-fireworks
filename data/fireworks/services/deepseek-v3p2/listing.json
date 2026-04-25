@@ -55,7 +55,7 @@
   "status": "ready",
   "time_created": "2026-01-27T04:53:28.786Z",
   "user_access_interfaces": {
-    "Provider API": {
+    "provider_api": {
       "access_method": "http",
       "base_url": "${API_GATEWAY_BASE_URL}/p/fireworks.ai",
       "routing_key": {

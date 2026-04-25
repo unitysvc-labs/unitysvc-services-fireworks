@@ -55,7 +55,7 @@
   ],
   "time_created": "2026-01-29T03:15:06.287693Z",
   "upstream_access_config": {
-    "Fireworks API": {
+    "fireworks_api": {
       "access_method": "http",
       "api_key": "${ secrets.FIREWORKS_API_KEY }",
       "base_url": "https://api.fireworks.ai/inference/v1",
