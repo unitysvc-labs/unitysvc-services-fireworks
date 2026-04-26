@@ -27,7 +27,7 @@
     "model_name": "accounts/fireworks/models/kimi-k2p5",
     "moe": true,
     "parameterCount": "1028542417904",
-    "rlTunable": false,
+    "rlTunable": true,
     "snapshotType": "FULL_SNAPSHOT",
     "supportsFireattention": true,
     "supportsImageInput": true,
@@ -36,7 +36,7 @@
     "teftDetails": null,
     "trainingContextLength": 65536,
     "tunable": true,
-    "useHfApplyChatTemplate": false,
+    "useHfApplyChatTemplate": true,
     "worldSize": 1
   },
   "display_name": "Kimi K2.5",

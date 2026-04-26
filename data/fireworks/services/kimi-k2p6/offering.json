@@ -1,41 +1,46 @@
 {
+  "capabilities": [
+    "llm",
+    "text-generation",
+    "tools",
+    "vision",
+    "image-text-to-text"
+  ],
   "currency": "USD",
-  "description": "MiniMax M2.1 is built for strong real-world performance across complex, multi-language, and agent-driven workflows, with robust support spanning systems, backend, web, mobile, and office-style tasks. It delivers faster, more concise responses, lower token usage, and reliable tool and agent scaffolding, making it well-suited for production and workflow-heavy environments.",
+  "description": "Kimi K2.6 is an open-source, native multimodal agentic model that advances practical capabilities in long-horizon coding, coding-driven design, proactive autonomous execution, and swarm-based task orchestration.",
   "details": {
     "calibrated": false,
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
-    "contextLength": 204800,
+    "contextLength": 262144,
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
-    "defaultPrecision": "PRECISION_UNSPECIFIED",
+    "defaultPrecision": "FP8",
     "defaultSamplingParams": {},
     "deprecationDate": null,
     "fineTuningJob": "",
     "githubUrl": "",
-    "huggingFaceUrl": "https://huggingface.co/MiniMaxAI/MiniMax-M2.1",
+    "huggingFaceUrl": "https://huggingface.co/moonshotai/Kimi-K2.6",
     "importedFrom": "",
     "kind": "HF_BASE_MODEL",
-    "modelType": "mixtral",
-    "model_name": "accounts/fireworks/models/minimax-m2p1",
-    "moe": false,
-    "parameterCount": "228689764864",
-    "rlTunable": false,
+    "modelType": "kimi_k25",
+    "model_name": "accounts/fireworks/models/kimi-k2p6",
+    "moe": true,
+    "parameterCount": "1028542417904",
+    "rlTunable": true,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [],
-    "supportedPrecisionsWithCalibration": [],
     "supportsFireattention": true,
-    "supportsImageInput": false,
+    "supportsImageInput": true,
     "supportsLora": false,
     "supportsTools": true,
     "teftDetails": null,
-    "trainingContextLength": 131072,
-    "tunable": false,
-    "useHfApplyChatTemplate": false,
+    "trainingContextLength": 65536,
+    "tunable": true,
+    "useHfApplyChatTemplate": true,
     "worldSize": 1
   },
-  "display_name": "MiniMax-M2.1",
-  "name": "minimax-m2p1",
+  "display_name": "Kimi K2.6",
+  "name": "kimi-k2p6",
   "payout_price": {
     "description": "No platform commission",
     "percentage": "100.00",
@@ -43,12 +48,12 @@
   },
   "schema": "offering_v1",
   "service_type": "llm",
-  "status": "deprecated",
+  "status": "ready",
   "tags": [
     "ai",
     "gateway"
   ],
-  "time_created": "2025-12-23T21:21:21.223875Z",
+  "time_created": "2026-04-26T03:50:54.845383Z",
   "upstream_access_config": {
     "fireworks_api": {
       "access_method": "http",
@@ -73,7 +78,10 @@
           "unit": "output_tokens",
           "window": "minute"
         }
-      ]
+      ],
+      "routing_key": {
+        "model": "kimi-k2p6"
+      }
     }
   }
 }
