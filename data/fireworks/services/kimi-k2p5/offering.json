@@ -13,6 +13,7 @@
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
     "contextLength": 262144,
+    "context_length": 262144,
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
     "defaultPrecision": "FP8",
@@ -27,6 +28,7 @@
     "model_name": "accounts/fireworks/models/kimi-k2p5",
     "moe": true,
     "parameterCount": "1028542417904",
+    "parameter_count": 1028542417904,
     "rlTunable": true,
     "snapshotType": "FULL_SNAPSHOT",
     "supportsFireattention": true,
@@ -37,9 +39,7 @@
     "trainingContextLength": 65536,
     "tunable": true,
     "useHfApplyChatTemplate": true,
-    "worldSize": 1,
-    "context_length": 262144,
-    "parameter_count": 1028542417904
+    "worldSize": 1
   },
   "display_name": "Kimi K2.5",
   "name": "kimi-k2p5",

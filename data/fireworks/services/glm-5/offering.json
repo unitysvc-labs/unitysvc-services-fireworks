@@ -11,6 +11,7 @@
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
     "contextLength": 202752,
+    "context_length": 202752,
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
     "defaultPrecision": "FP8",
@@ -25,6 +26,7 @@
     "model_name": "accounts/fireworks/models/glm-5",
     "moe": true,
     "parameterCount": "743911218432",
+    "parameter_count": 743911218432,
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
     "supportsFireattention": true,
@@ -35,9 +37,7 @@
     "trainingContextLength": 65536,
     "tunable": false,
     "useHfApplyChatTemplate": false,
-    "worldSize": 1,
-    "context_length": 202752,
-    "parameter_count": 743911218432
+    "worldSize": 1
   },
   "display_name": "GLM-5",
   "name": "glm-5",
