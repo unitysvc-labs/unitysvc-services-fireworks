@@ -35,7 +35,9 @@
     "trainingContextLength": 65536,
     "tunable": false,
     "useHfApplyChatTemplate": false,
-    "worldSize": 1
+    "worldSize": 1,
+    "context_length": 196608,
+    "parameter_count": 228689764864
   },
   "display_name": "MiniMax M2.7",
   "name": "minimax-m2p7",

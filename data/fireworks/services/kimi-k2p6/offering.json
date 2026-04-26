@@ -37,7 +37,9 @@
     "trainingContextLength": 65536,
     "tunable": true,
     "useHfApplyChatTemplate": true,
-    "worldSize": 1
+    "worldSize": 1,
+    "context_length": 262144,
+    "parameter_count": 1028542417904
   },
   "display_name": "Kimi K2.6",
   "name": "kimi-k2p6",
