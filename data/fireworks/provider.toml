@@ -11,7 +11,7 @@ logo = "https://cdn.sanity.io/images/pv37i0yn/production/df64b2d19687cef1b12f8c0
 
 [services_populator]
 command = 'scripts/update_services.py'
-requirements = ['requests', 'beautifulsoup4', 'unitysvc-services']
+requirements = ['requests', 'beautifulsoup4', 'unitysvc-sellers']
 
 [services_populator.envs]
 # API key should be provided via FIREWORKS_API_KEY environment variable
