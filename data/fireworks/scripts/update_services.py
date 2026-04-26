@@ -19,17 +19,22 @@ import requests
 from bs4 import BeautifulSoup
 
 # Will be provided by unitysvc_sellers
+from unitysvc_sellers.model_data import ModelDataFetcher, ModelDataLookup
 from unitysvc_sellers.template_populate import populate_from_iterator
 
 
 class FireworksModelSource:
     """Fetches model data from Fireworks.ai API and yields template dictionaries."""
 
-    # Fields to extract from API response into details
+    # Fields to extract from API response into details.
+    # Note: ``context_length`` is the canonical (snake_case) name required by
+    # the platform validator (unitysvc#863).  Fireworks emits ``contextLength``
+    # in camelCase; ``_extract_details`` translates the legacy key, and we keep
+    # the canonical name in the constant so the destination key is obvious.
     TOP_LEVEL_DETAIL_FIELDS = [
         "calibrated",
         "cluster",
-        "contextLength",
+        "context_length",
         "defaultDraftModel",
         "defaultDraftTokenCount",
         "defaultSamplingParams",
@@ -53,15 +58,25 @@ class FireworksModelSource:
         "useHfApplyChatTemplate",
     ]
 
+    # Same canonical-rename note as TOP_LEVEL_DETAIL_FIELDS:
+    # ``parameter_count`` replaces upstream ``parameterCount``.
     BASE_MODEL_DETAIL_FIELDS = [
         "checkpointFormat",
         "defaultPrecision",
         "modelType",
         "moe",
-        "parameterCount",
+        "parameter_count",
         "supportsFireattention",
         "worldSize",
     ]
+
+    # Upstream camelCase → canonical snake_case rename map applied in
+    # ``_extract_details``.  Falls back gracefully if Fireworks ever sends the
+    # canonical name itself.
+    FIELD_RENAMES = {
+        "contextLength": "context_length",
+        "parameterCount": "parameter_count",
+    }
 
     def __init__(self, api_key: str, api_base_url: str, model_base_url: str):
         self.api_key = api_key
@@ -72,6 +87,11 @@ class FireworksModelSource:
             "Authorization": f"Bearer {api_key}",
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
         })
+        self.fetcher = ModelDataFetcher()
+
+    def close(self) -> None:
+        self.fetcher.close()
+        self.session.close()
 
     def iter_models(self) -> Iterator[dict]:
         """
@@ -106,8 +126,12 @@ class FireworksModelSource:
             service_type = self._determine_service_type(model_name, pricing)
             is_flux = "flux" in model_name.lower()
 
-            # Build details dict from API response
+            # Build details dict from API response, then backfill missing
+            # canonical metadata (context_length / parameter_count) from the
+            # OpenRouter → LiteLLM → HuggingFace fallback chain.
             details = self._extract_details(model_data)
+            if service_type == "llm":
+                self._apply_canonical_fallback(details, model_name)
 
             # Derive capabilities from service type and model details
             capabilities = self._derive_capabilities(service_type, model_data)
@@ -305,21 +329,74 @@ class FireworksModelSource:
         return caps
 
     def _extract_details(self, model_data: dict) -> dict:
-        """Extract details dict from API response."""
-        details = {}
+        """Extract details dict from API response.
 
-        # Top-level fields
+        Translates Fireworks' camelCase ``contextLength`` / ``parameterCount``
+        to the canonical snake_case names required by the platform validator
+        (unitysvc#863).  Both keys are guaranteed to be present in the result
+        (defaulting to ``None``) so callers can rely on key presence.
+        """
+        details: dict = {}
+
+        # Top-level fields. Honour the camelCase → snake_case rename map.
         for field in self.TOP_LEVEL_DETAIL_FIELDS:
+            legacy = next(
+                (k for k, v in self.FIELD_RENAMES.items() if v == field),
+                None,
+            )
             if field in model_data:
                 details[field] = model_data[field]
+            elif legacy and legacy in model_data:
+                details[field] = model_data[legacy]
 
-        # Base model details
-        if "baseModelDetails" in model_data:
-            for field in self.BASE_MODEL_DETAIL_FIELDS:
-                if field in model_data["baseModelDetails"]:
-                    details[field] = model_data["baseModelDetails"][field]
+        # Base model details — same rename treatment.
+        base = model_data.get("baseModelDetails") or {}
+        for field in self.BASE_MODEL_DETAIL_FIELDS:
+            legacy = next(
+                (k for k, v in self.FIELD_RENAMES.items() if v == field),
+                None,
+            )
+            if field in base:
+                details[field] = base[field]
+            elif legacy and legacy in base:
+                details[field] = base[legacy]
+
+        # Guarantee both canonical keys are present (None = "unknown") so the
+        # platform validator (unitysvc#863) accepts the offering even when
+        # Fireworks omits the field.
+        details.setdefault("context_length", None)
+        details.setdefault("parameter_count", None)
 
         return details
+
+    def _apply_canonical_fallback(self, details: dict, model_id: str) -> None:
+        """Fill missing context_length / parameter_count from canonical sources.
+
+        Fireworks' upstream API is the source of truth when present; this
+        only fires when a field is ``None`` after extraction.  Provenance for
+        any backfilled field is recorded under ``details.metadata_sources``.
+        """
+        needs_lookup = (
+            details.get("context_length") is None
+            or details.get("parameter_count") is None
+        )
+        if not needs_lookup:
+            return
+
+        canonical = ModelDataLookup.get_canonical_metadata(
+            model_id, fetcher=self.fetcher
+        )
+        sources = details.setdefault("metadata_sources", {})
+
+        for field in ("context_length", "parameter_count"):
+            if details.get(field) is not None:
+                continue
+            details[field] = canonical[field]
+            if canonical["sources"].get(field):
+                sources[field] = canonical["sources"][field]
+
+        if not sources:
+            details.pop("metadata_sources", None)
 
 
 def main():
@@ -336,11 +413,14 @@ def main():
     # Get script directory for relative paths
     script_dir = Path(__file__).parent
 
-    populate_from_iterator(
-        iterator=source.iter_models(),
-        templates_dir=script_dir.parent / "templates",
-        output_dir=script_dir.parent / "services",
-    )
+    try:
+        populate_from_iterator(
+            iterator=source.iter_models(),
+            templates_dir=script_dir.parent / "templates",
+            output_dir=script_dir.parent / "services",
+        )
+    finally:
+        source.close()
 
 
 if __name__ == "__main__":
