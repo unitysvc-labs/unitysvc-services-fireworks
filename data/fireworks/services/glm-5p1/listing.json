@@ -1,6 +1,6 @@
 {
   "currency": "USD",
-  "display_name": "deepseek-v3p2",
+  "display_name": "glm-5p1",
   "documents": {
     "JavaScript code example": {
       "category": "code_example",
@@ -44,22 +44,22 @@
     }
   },
   "list_price": {
-    "cached_input": "0.28",
-    "description": "Pricing Per 1M Tokens (input/cached input/output): $0.56 / $0.28 / $1.68",
-    "input": "0.56",
-    "output": "1.68",
-    "reference": "https://fireworks.ai/models/fireworks/deepseek-v3p2",
+    "cached_input": "0.26",
+    "description": "Pricing Per 1M Tokens (input/cached input/output): $1.40 / $0.26 / $4.40",
+    "input": "1.40",
+    "output": "4.40",
+    "reference": "https://fireworks.ai/models/fireworks/glm-5p1",
     "type": "one_million_tokens"
   },
   "schema": "listing_v1",
   "status": "ready",
-  "time_created": "2026-01-27T04:53:28.786Z",
+  "time_created": "2026-04-26T03:50:51.766916Z",
   "user_access_interfaces": {
     "provider_api": {
       "access_method": "http",
       "base_url": "${API_GATEWAY_BASE_URL}/p/fireworks.ai",
       "routing_key": {
-        "model": "accounts/fireworks/models/deepseek-v3p2"
+        "model": "accounts/fireworks/models/glm-5p1"
       }
     }
   }

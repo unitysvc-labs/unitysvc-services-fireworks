@@ -1,43 +1,44 @@
 {
+  "capabilities": [
+    "llm",
+    "text-generation",
+    "tools"
+  ],
   "currency": "USD",
-  "description": "Welcome to the gpt-oss series, OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases. gpt-oss-20b is used for lower latency, and local or specialized use-cases.",
+  "description": "GLM-5.1 is Z.ai's next-generation flagship model built for agentic engineering, with stronger coding capabilities and sustained performance over long-horizon tasks with hundreds of iteration rounds. It's a 754B-parameter MoE model",
   "details": {
     "calibrated": false,
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
-    "contextLength": 131072,
+    "contextLength": 202752,
     "defaultDraftModel": "",
     "defaultDraftTokenCount": 0,
-    "defaultPrecision": "FP4_MX_MOE",
+    "defaultPrecision": "FP8",
     "defaultSamplingParams": {},
     "deprecationDate": null,
     "fineTuningJob": "",
     "githubUrl": "",
-    "huggingFaceUrl": "https://huggingface.co/openai/gpt-oss-20b",
+    "huggingFaceUrl": "https://huggingface.co/zai-org/GLM-5.1-FP8",
     "importedFrom": "",
     "kind": "HF_BASE_MODEL",
-    "modelType": "gpt_oss",
-    "model_name": "accounts/fireworks/models/gpt-oss-20b",
+    "modelType": "glm_moe_dsa",
+    "model_name": "accounts/fireworks/models/glm-5p1",
     "moe": true,
-    "parameterCount": "20914757184",
+    "parameterCount": "743911218432",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
-    "supportedPrecisions": [
-      "FP4_MX_MOE"
-    ],
-    "supportedPrecisionsWithCalibration": [],
     "supportsFireattention": true,
     "supportsImageInput": false,
-    "supportsLora": false,
-    "supportsTools": false,
+    "supportsLora": true,
+    "supportsTools": true,
     "teftDetails": null,
-    "trainingContextLength": 131072,
-    "tunable": true,
+    "trainingContextLength": 65536,
+    "tunable": false,
     "useHfApplyChatTemplate": false,
     "worldSize": 1
   },
-  "display_name": "OpenAI gpt-oss-20b",
-  "name": "gpt-oss-20b",
+  "display_name": "GLM 5.1",
+  "name": "glm-5p1",
   "payout_price": {
     "description": "No platform commission",
     "percentage": "100.00",
@@ -45,12 +46,12 @@
   },
   "schema": "offering_v1",
   "service_type": "llm",
-  "status": "deprecated",
+  "status": "ready",
   "tags": [
     "ai",
     "gateway"
   ],
-  "time_created": "2025-08-04T22:11:06.445132Z",
+  "time_created": "2026-04-26T03:50:51.765679Z",
   "upstream_access_config": {
     "fireworks_api": {
       "access_method": "http",
@@ -75,7 +76,10 @@
           "unit": "output_tokens",
           "window": "minute"
         }
-      ]
+      ],
+      "routing_key": {
+        "model": "glm-5p1"
+      }
     }
   }
 }
