@@ -73,13 +73,14 @@
       "mime_type": "bash"
     }
 {%- else %}
+    "How to use this model": {
+      "$doc_preset": "llm_description"
+    },
     "Python code example": {
-      "category": "code_example",
-      "description": "Example code to use the model",
-      "file_path": "../../docs/code_example.py.j2",
-      "is_active": true,
-      "is_public": true,
-      "mime_type": "python"
+      "$doc_preset": {
+        "name": "llm_code_example_openai",
+        "description": "Example code to use the model"
+      }
     },
     "Python function calling code example": {
       "category": "code_example",
@@ -90,20 +91,16 @@
       "mime_type": "python"
     },
     "JavaScript code example": {
-      "category": "code_example",
-      "description": "Example code to use the model",
-      "file_path": "../../docs/code_example.js.j2",
-      "is_active": true,
-      "is_public": true,
-      "mime_type": "javascript"
+      "$doc_preset": {
+        "name": "llm_code_example_javascript",
+        "description": "Example code to use the model"
+      }
     },
     "cURL code example": {
-      "category": "code_example",
-      "description": "Example code to use the model",
-      "file_path": "../../docs/code_example.sh.j2",
-      "is_active": true,
-      "is_public": true,
-      "mime_type": "bash"
+      "$doc_preset": {
+        "name": "llm_code_example_shell",
+        "description": "Example code to use the model"
+      }
     },
     "connectivity test": {
       "category": "connectivity_test",
@@ -112,6 +109,12 @@
       "is_active": true,
       "is_public": false,
       "mime_type": "bash"
+    },
+    "Default request body": {
+      "$doc_preset": {
+        "name": "llm_request_template",
+        "description": "Default request body for the playground"
+      }
     }
 {%- endif %}
   }
