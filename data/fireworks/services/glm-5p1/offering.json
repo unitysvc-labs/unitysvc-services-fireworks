@@ -24,7 +24,7 @@
     "modelType": "glm_moe_dsa",
     "model_name": "accounts/fireworks/models/glm-5p1",
     "moe": true,
-    "parameter_count": 743911218432,
+    "parameter_count": "743911218432",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
     "supportsFireattention": true,

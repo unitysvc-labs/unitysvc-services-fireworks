@@ -24,7 +24,7 @@
     "modelType": "minimax_m2",
     "model_name": "accounts/fireworks/models/minimax-m2p7",
     "moe": true,
-    "parameter_count": 228689764864,
+    "parameter_count": "228689764864",
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
     "supportsFireattention": true,
