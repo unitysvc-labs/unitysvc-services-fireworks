@@ -1,9 +1,9 @@
-curl -X POST "$SERVICE_BASE_URL/chat/completions" \
+curl -X POST "{{ service_base_url }}/chat/completions" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $UNITYSVC_API_KEY" \
   -d @- <<EOF
 {
-  "model": "${MODEL:-{{offering.details.model_name}}}",
+  "model": "{{ routing_key.model }}}}",
   "messages": [
     {"role": "system", "content": "You are a helpful assistant."},
     {"role": "user", "content": "Say this is a test"}

@@ -1,8 +1,8 @@
 import os
 import requests
 
-def text_to_image(prompt="A beautiful sunset over the ocean", model_name=os.environ.get("MODEL", "{{offering.details.model_name}}"), output_file="a.jpg"):
-    base_url = os.environ.get("SERVICE_BASE_URL")
+def text_to_image(prompt="A beautiful sunset over the ocean", model_name="{{ routing_key.model }}", output_file="a.jpg"):
+    base_url = "{{ service_base_url }}"
     api_key = os.environ.get("UNITYSVC_API_KEY")
 
     if not base_url or not api_key:
