@@ -4,7 +4,7 @@ import os
 
 # Initialize client
 client = openai.OpenAI(
-    base_url=os.environ.get("SERVICE_BASE_URL"),
+    base_url="{{ service_base_url }}",
     api_key=os.environ.get("UNITYSVC_API_KEY")
 )
 
@@ -14,7 +14,7 @@ def echo_message(message):
 
 # Send chat completion request with tool calling (new syntax)
 response = client.chat.completions.create(
-    model=os.environ.get("MODEL", "{{offering.details.model_name}}"),  # or whatever model you’re actually using
+    model="{{ routing_key.model }}",  # or whatever model you’re actually using
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Repeat: Hello world"}

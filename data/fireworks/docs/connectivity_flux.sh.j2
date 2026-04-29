@@ -1,4 +1,4 @@
-curl -s -X POST "$SERVICE_BASE_URL/workflows/{{offering.details.model_name}}/text_to_image" \
+curl -s -X POST "{{ service_base_url }}/workflows/{{offering.details.model_name}}/text_to_image" \
   -H "Authorization: Bearer $UNITYSVC_API_KEY" \
   -H "Content-Type: application/json" \
   -H "Accept: image/jpeg" \
