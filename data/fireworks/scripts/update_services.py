@@ -23,6 +23,24 @@ from unitysvc_sellers.model_data import ModelDataFetcher, ModelDataLookup
 from unitysvc_sellers.template_populate import populate_from_iterator
 
 
+def _as_positive_int(value) -> int | None:
+    """Coerce ``value`` to a positive ``int`` or ``None``.
+
+    Fireworks occasionally ships numeric metadata as strings (``"0"``,
+    ``"743911218432"``) or as zero-valued placeholders for non-LLM
+    services (image-gen models report ``contextLength: 0``).  The platform
+    validator wants a strict positive int or null, so anything that isn't
+    a parseable, strictly-positive integer becomes ``None``.
+    """
+    if value is None:
+        return None
+    try:
+        n = int(value)
+    except (TypeError, ValueError):
+        return None
+    return n if n > 0 else None
+
+
 class FireworksModelSource:
     """Fetches model data from Fireworks.ai API and yields template dictionaries."""
 
@@ -335,6 +353,9 @@ class FireworksModelSource:
         to the canonical snake_case names required by the platform validator
         (unitysvc#863).  Both keys are guaranteed to be present in the result
         (defaulting to ``None``) so callers can rely on key presence.
+        ``context_length`` / ``parameter_count`` are coerced to a positive
+        ``int`` or ``None`` — Fireworks sometimes ships them as strings, and
+        zero / negative is meaningless for these fields.
         """
         details: dict = {}
 
@@ -361,11 +382,10 @@ class FireworksModelSource:
             elif legacy and legacy in base:
                 details[field] = base[legacy]
 
-        # Guarantee both canonical keys are present (None = "unknown") so the
-        # platform validator (unitysvc#863) accepts the offering even when
-        # Fireworks omits the field.
-        details.setdefault("context_length", None)
-        details.setdefault("parameter_count", None)
+        # Coerce canonical fields to positive int or None.  Validator
+        # (unitysvc#863) rejects strings or non-positive values.
+        for field in ("context_length", "parameter_count"):
+            details[field] = _as_positive_int(details.get(field))
 
         return details
 
