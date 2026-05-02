@@ -1,6 +1,11 @@
 import fs from "fs";
+import os from "os";
+import path from "path";
 
-async function textToImage(prompt = "A beautiful sunset over the ocean", modelName = "{{ routing_key.model }}", outputFile = "a.jpg") {
+// Write to the system temp dir — the sandbox cwd is not writable.
+const defaultOutputFile = path.join(os.tmpdir(), "flux-image.jpg");
+
+async function textToImage(prompt = "A beautiful sunset over the ocean", modelName = "{{ routing_key.model }}", outputFile = defaultOutputFile) {
   const baseUrl = "{{ service_base_url }}";
   const apiKey = process.env.UNITYSVC_API_KEY;
 

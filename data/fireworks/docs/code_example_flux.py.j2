@@ -1,4 +1,5 @@
 import os
+import tempfile
 import requests
 
 base_url = "{{ service_base_url }}"
@@ -17,8 +18,10 @@ data = {
 response = requests.post(url, headers=headers, json=data)
 
 if response.status_code == 200:
-    with open("a.jpg", "wb") as f:
+    # Write to the system temp dir — the sandbox cwd is not writable.
+    with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as f:
         f.write(response.content)
-    print("Image saved as a.jpg")
+        output_path = f.name
+    print(f"Image saved as {output_path}")
 else:
     print("Error:", response.status_code, response.text)

@@ -1,7 +1,11 @@
 import os
+import tempfile
 import requests
 
-def text_to_image(prompt="A beautiful sunset over the ocean", model_name="{{ routing_key.model }}", output_file="a.jpg"):
+# Write to the system temp dir — the sandbox cwd is not writable.
+DEFAULT_OUTPUT_FILE = os.path.join(tempfile.gettempdir(), "flux-image.jpg")
+
+def text_to_image(prompt="A beautiful sunset over the ocean", model_name="{{ routing_key.model }}", output_file=DEFAULT_OUTPUT_FILE):
     base_url = "{{ service_base_url }}"
     api_key = os.environ.get("UNITYSVC_API_KEY")
 
