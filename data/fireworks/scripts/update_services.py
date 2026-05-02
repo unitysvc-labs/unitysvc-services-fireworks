@@ -159,6 +159,15 @@ class FireworksModelSource:
                 # Required - used for directory name
                 "name": short_name,
 
+                # Routing-key model — Fireworks expects the fully-qualified
+                # path ("accounts/fireworks/models/<short>") in the API's
+                # ``model`` field, not the short name.  Kept as a separate
+                # key (matching the ``offering_name`` convention used by
+                # deepseek / cerebras / groq / anthropic templates) so the
+                # template doesn't have to know how each provider names
+                # things.
+                "offering_name": model_name,
+
                 # Offering fields
                 "display_name": model_data.get("displayName"),
                 "description": model_data.get("description", ""),

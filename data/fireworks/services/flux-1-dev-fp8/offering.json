@@ -80,7 +80,7 @@
         }
       ],
       "routing_key": {
-        "model": "flux-1-dev-fp8"
+        "model": "accounts/fireworks/models/flux-1-dev-fp8"
       }
     }
   }

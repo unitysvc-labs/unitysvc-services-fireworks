@@ -78,7 +78,7 @@
         }
       ],
       "routing_key": {
-        "model": "glm-5"
+        "model": "accounts/fireworks/models/glm-5"
       }
     }
   }

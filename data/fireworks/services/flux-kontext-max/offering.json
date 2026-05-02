@@ -78,7 +78,7 @@
         }
       ],
       "routing_key": {
-        "model": "flux-kontext-max"
+        "model": "accounts/fireworks/models/flux-kontext-max"
       }
     }
   }

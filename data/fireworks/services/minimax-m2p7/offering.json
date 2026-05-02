@@ -78,7 +78,7 @@
         }
       ],
       "routing_key": {
-        "model": "minimax-m2p7"
+        "model": "accounts/fireworks/models/minimax-m2p7"
       }
     }
   }

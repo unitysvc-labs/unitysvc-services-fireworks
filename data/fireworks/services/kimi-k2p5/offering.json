@@ -80,7 +80,7 @@
         }
       ],
       "routing_key": {
-        "model": "kimi-k2p5"
+        "model": "accounts/fireworks/models/kimi-k2p5"
       }
     }
   }

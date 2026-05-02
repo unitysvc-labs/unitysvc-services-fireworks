@@ -78,7 +78,7 @@
         }
       ],
       "routing_key": {
-        "model": "flux-kontext-pro"
+        "model": "accounts/fireworks/models/flux-kontext-pro"
       }
     }
   }
