@@ -5,27 +5,27 @@
     "tools"
   ],
   "currency": "USD",
-  "description": "GLM-5 is Z.ai's SOTA model targeting complex systems engineering and long-horizon agentic tasks. It uses a mixture of experts architecture, so it only activates 40 billion of its 744 billion parameters. This model uses Deepseek Sparse Attention to select only the most relevant tokens for attention, reducing the cost of long-context processing. GLM-5 continues improving on top of GLM-4.7 for coding and agentic use cases, and it's also great for document generation for enterprise workloads.",
+  "description": "Welcome to the gpt-oss series, OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases. gpt-oss-120b is used for production, general purpose, high reasoning use-cases that fits into a single H100 GPU.",
   "details": {
     "calibrated": false,
     "checkpointFormat": "HUGGINGFACE",
     "cluster": "",
-    "context_length": 202752,
-    "defaultDraftModel": "",
-    "defaultDraftTokenCount": 0,
-    "defaultPrecision": "FP8",
+    "context_length": 131072,
+    "defaultDraftModel": "accounts/fireworks/models/gpt-oss-120b-eagle3-oss",
+    "defaultDraftTokenCount": 3,
+    "defaultPrecision": "FP4",
     "defaultSamplingParams": {},
     "deprecationDate": null,
     "fineTuningJob": "",
     "githubUrl": "",
-    "huggingFaceUrl": "https://huggingface.co/zai-org/GLM-5",
+    "huggingFaceUrl": "https://huggingface.co/openai/gpt-oss-120b",
     "importedFrom": "",
     "kind": "HF_BASE_MODEL",
-    "modelType": "glm_moe_dsa",
-    "model_name": "accounts/fireworks/models/glm-5",
+    "modelType": "gpt_oss",
+    "model_name": "accounts/fireworks/models/gpt-oss-120b",
     "moe": true,
-    "parameter_count": 743911218432,
-    "rlTunable": false,
+    "parameter_count": 116829156672,
+    "rlTunable": true,
     "snapshotType": "FULL_SNAPSHOT",
     "supportsFireattention": true,
     "supportsImageInput": false,
@@ -33,12 +33,12 @@
     "supportsTools": true,
     "teftDetails": null,
     "trainingContextLength": 65536,
-    "tunable": false,
-    "useHfApplyChatTemplate": false,
+    "tunable": true,
+    "useHfApplyChatTemplate": true,
     "worldSize": 1
   },
-  "display_name": "GLM-5",
-  "name": "glm-5",
+  "display_name": "OpenAI gpt-oss-120b",
+  "name": "gpt-oss-120b",
   "payout_price": {
     "description": "No platform commission",
     "percentage": "100.00",
@@ -46,12 +46,12 @@
   },
   "schema": "offering_v1",
   "service_type": "llm",
-  "status": "deprecated",
+  "status": "ready",
   "tags": [
     "ai",
     "gateway"
   ],
-  "time_created": "2026-02-14T06:26:05.938084Z",
+  "time_created": "2026-05-25T06:12:54.869163Z",
   "upstream_access_config": {
     "fireworks_api": {
       "access_method": "http",
@@ -78,7 +78,7 @@
         }
       ],
       "routing_key": {
-        "model": "accounts/fireworks/models/glm-5"
+        "model": "accounts/fireworks/models/gpt-oss-120b"
       }
     }
   }
