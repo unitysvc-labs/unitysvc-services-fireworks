@@ -3,6 +3,10 @@
   "display_name": "{{ name }}",
   "status": "{{ listing_status | default('ready') }}",
   "currency": "USD",
+  {#- name = <provider>/<bare> per the platform service-naming convention
+      (unitysvc PR #1196 / issue #1138).  The gateway resolves the runtime
+      ``service_name`` Jinja in base_url below to this exact string. #}
+  "name": "{{ provider_name }}/{{ offering_name }}",
 {%- if pricing %}
   "list_price": {
     "type": "{{ pricing.type }}"
@@ -26,7 +30,9 @@
   "user_access_interfaces": {
     "provider_api": {
       "access_method": "http",
-      "base_url": "${API_GATEWAY_BASE_URL}/fireworks.ai",
+      {#- {% raw %}/{% endraw %} keeps the runtime ``{{ service_name }}`` Jinja
+          intact across this generator's render pass. #}
+      "base_url": "${API_GATEWAY_BASE_URL}/{% raw %}{{ service_name }}{% endraw %}",
       "routing_key": {"model": "{{ model_name }}"}
     }
   },
