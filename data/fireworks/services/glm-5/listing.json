@@ -32,13 +32,14 @@
     "reference": "https://fireworks.ai/models/fireworks/glm-5",
     "type": "one_million_tokens"
   },
+  "name": "fireworks/glm-5",
   "schema": "listing_v1",
   "status": "ready",
   "time_created": "2026-02-14T06:26:05.938917Z",
   "user_access_interfaces": {
     "provider_api": {
       "access_method": "http",
-      "base_url": "${API_GATEWAY_BASE_URL}/fireworks.ai",
+      "base_url": "${API_GATEWAY_BASE_URL}/{{ service_name }}",
       "routing_key": {
         "model": "accounts/fireworks/models/glm-5"
       }
