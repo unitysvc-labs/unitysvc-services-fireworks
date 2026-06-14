@@ -156,7 +156,12 @@ class FireworksModelSource:
 
             # Yield the template variables
             yield {
-                # Required - used for directory name
+                # Folder path under specs/ == listing.name == "fireworks/<short>"
+                # (flat layout, #1263); set as name_field in main().
+                "folder": f"fireworks/{short_name}",
+                "provider_name": "fireworks",
+
+                # Bare model name — offering.name + listing.display_name
                 "name": short_name,
 
                 # Routing-key model — Fireworks expects the fully-qualified
@@ -446,7 +451,8 @@ def main():
         populate_from_iterator(
             iterator=source.iter_models(),
             templates_dir=script_dir.parent / "templates",
-            output_dir=script_dir.parent / "services",
+            output_dir=script_dir.parent / "specs",
+            name_field="folder",
         )
     finally:
         source.close()

@@ -1,11 +1,10 @@
 {
-  "schema": "listing_v1",
   "display_name": "{{ name }}",
   "status": "{{ listing_status | default('ready') }}",
   "currency": "USD",
   {#- name = <provider>/<bare> per the platform service-naming convention
       (unitysvc PR #1196 / issue #1138). #}
-  "name": "{{ provider_name }}/{{ offering_name }}",
+  "name": "{{ provider_name }}/{{ name }}",
 {%- if pricing %}
   "list_price": {
     "type": "{{ pricing.type }}"

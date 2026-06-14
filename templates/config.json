@@ -1,0 +1,12 @@
+{
+  "services_populator": {
+    "command": [
+      "scripts/update_specs.py"
+    ],
+    "requirements": [
+      "requests",
+      "beautifulsoup4",
+      "unitysvc-sellers"
+    ]
+  }
+}
