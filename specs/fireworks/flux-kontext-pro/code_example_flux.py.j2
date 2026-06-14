@@ -1,0 +1,27 @@
+import os
+import tempfile
+import requests
+
+base_url = "{{ service_base_url }}"
+api_key = os.environ.get("UNITYSVC_API_KEY")
+
+url = base_url + "/workflows/" + "{{offering.details.model_name}}" + "/text_to_image"
+headers = {
+    "Content-Type": "application/json",
+    "Accept": "image/jpeg",
+    "Authorization": f"Bearer {api_key}",
+}
+data = {
+    "prompt": "A beautiful sunset over the ocean"
+}
+
+response = requests.post(url, headers=headers, json=data)
+
+if response.status_code == 200:
+    # Write to the system temp dir — the sandbox cwd is not writable.
+    with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as f:
+        f.write(response.content)
+        output_path = f.name
+    print(f"Image saved as {output_path}")
+else:
+    print("Error:", response.status_code, response.text)

@@ -1,0 +1,84 @@
+{
+  "capabilities": [
+    "llm",
+    "text-generation",
+    "tools"
+  ],
+  "currency": "USD",
+  "description": "GLM-5 is Z.ai's SOTA model targeting complex systems engineering and long-horizon agentic tasks. It uses a mixture of experts architecture, so it only activates 40 billion of its 744 billion parameters. This model uses Deepseek Sparse Attention to select only the most relevant tokens for attention, reducing the cost of long-context processing. GLM-5 continues improving on top of GLM-4.7 for coding and agentic use cases, and it's also great for document generation for enterprise workloads.",
+  "details": {
+    "calibrated": false,
+    "checkpointFormat": "HUGGINGFACE",
+    "cluster": "",
+    "context_length": 202752,
+    "defaultDraftModel": "",
+    "defaultDraftTokenCount": 0,
+    "defaultPrecision": "FP8",
+    "defaultSamplingParams": {},
+    "deprecationDate": null,
+    "fineTuningJob": "",
+    "githubUrl": "",
+    "huggingFaceUrl": "https://huggingface.co/zai-org/GLM-5",
+    "importedFrom": "",
+    "kind": "HF_BASE_MODEL",
+    "modelType": "glm_moe_dsa",
+    "model_name": "accounts/fireworks/models/glm-5",
+    "moe": true,
+    "parameter_count": 743911218432,
+    "rlTunable": false,
+    "snapshotType": "FULL_SNAPSHOT",
+    "supportsFireattention": true,
+    "supportsImageInput": false,
+    "supportsLora": false,
+    "supportsTools": true,
+    "teftDetails": null,
+    "trainingContextLength": 65536,
+    "tunable": false,
+    "useHfApplyChatTemplate": false,
+    "worldSize": 1
+  },
+  "display_name": "GLM-5",
+  "name": "glm-5",
+  "payout_price": {
+    "description": "No platform commission",
+    "percentage": "100.00",
+    "type": "revenue_share"
+  },
+  "service_type": "llm",
+  "status": "deprecated",
+  "tags": [
+    "ai",
+    "gateway"
+  ],
+  "time_created": "2026-02-14T06:26:05.938084Z",
+  "upstream_access_config": {
+    "fireworks_api": {
+      "access_method": "http",
+      "api_key": "${ secrets.FIREWORKS_API_KEY }",
+      "base_url": "https://api.fireworks.ai/inference",
+      "rate_limits": [
+        {
+          "description": "Requests per minute",
+          "limit": 60,
+          "unit": "requests",
+          "window": "minute"
+        },
+        {
+          "description": "Input tokens per minute",
+          "limit": 60000,
+          "unit": "input_tokens",
+          "window": "minute"
+        },
+        {
+          "description": "Output tokens per minute",
+          "limit": 6000,
+          "unit": "output_tokens",
+          "window": "minute"
+        }
+      ],
+      "routing_key": {
+        "model": "accounts/fireworks/models/glm-5"
+      }
+    }
+  }
+}
