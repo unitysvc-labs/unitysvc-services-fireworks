@@ -1,0 +1,13 @@
+curl -s -X POST "{{ service_base_url }}/workflows/{{offering.details.model_name}}/text_to_image" \
+  -H "Authorization: Bearer $UNITYSVC_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "Accept: image/jpeg" \
+  -d '{"prompt":"A beautiful sunset over the ocean"}' \
+  --output "a.jpg"
+
+# Check if the file exists and is not empty
+if [ -s "a.jpg" ]; then
+  echo "✅ Image saved as a.jpg"
+else
+  echo "❌ Failed to save image"
+fi

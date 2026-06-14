@@ -1,0 +1,16 @@
+# Write to the system temp dir — the sandbox cwd is not writable.
+output_file="${TMPDIR:-/tmp}/flux-image.jpg"
+
+curl -s -X POST "{{ service_base_url }}/workflows/{{offering.details.model_name}}/text_to_image" \
+  -H "Authorization: Bearer $UNITYSVC_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "Accept: image/jpeg" \
+  -d '{"prompt":"A beautiful sunset over the ocean"}' \
+  --output "$output_file"
+
+# Check if the file exists and is not empty
+if [ -s "$output_file" ]; then
+  echo "✅ Image saved as $output_file"
+else
+  echo "❌ Failed to save image"
+fi

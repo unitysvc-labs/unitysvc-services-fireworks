@@ -1,0 +1,64 @@
+{
+  "currency": "USD",
+  "display_name": "flux-1-schnell-fp8",
+  "documents": {
+    "JavaScript code example": {
+      "category": "code_example",
+      "description": "Example code to use the model",
+      "file_path": "code_example_flux.js.j2",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "javascript"
+    },
+    "Python code example": {
+      "category": "code_example",
+      "description": "Example code to use the model",
+      "file_path": "code_example_flux.py.j2",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "python"
+    },
+    "Python function calling code example": {
+      "category": "code_example",
+      "description": "Example code to use the model",
+      "file_path": "code_example_flux_fc.py.j2",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "python"
+    },
+    "cURL code example": {
+      "category": "code_example",
+      "description": "Example code to use the model",
+      "file_path": "code_example_flux.sh.j2",
+      "is_active": true,
+      "is_public": true,
+      "mime_type": "bash"
+    },
+    "connectivity test": {
+      "category": "connectivity_test",
+      "description": "Connectivity test",
+      "file_path": "connectivity_flux.sh.j2",
+      "is_active": true,
+      "is_public": false,
+      "mime_type": "bash"
+    }
+  },
+  "list_price": {
+    "description": "Pricing Per Step: $0.00",
+    "price": "0.00",
+    "reference": "https://fireworks.ai/models/fireworks/flux-1-schnell-fp8",
+    "type": "step"
+  },
+  "name": "fireworks/flux-1-schnell-fp8",
+  "status": "ready",
+  "time_created": "2026-01-27T04:53:41.713Z",
+  "user_access_interfaces": {
+    "provider_api": {
+      "access_method": "http",
+      "base_url": "${API_GATEWAY_BASE_URL}/fireworks.ai",
+      "routing_key": {
+        "model": "accounts/fireworks/models/flux-1-schnell-fp8"
+      }
+    }
+  }
+}
