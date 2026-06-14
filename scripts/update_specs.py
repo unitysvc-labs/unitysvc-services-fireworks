@@ -435,8 +435,10 @@ class FireworksModelSource:
 
 def main():
     api_key = os.environ.get("FIREWORKS_API_KEY")
-    api_base_url = os.environ.get("FIREWORKS_API_BASE_URL")
-    model_base_url = os.environ.get("FIREWORKS_MODEL_BASE_URL")
+    # Default to the public endpoints (per README) so populate works with only
+    # FIREWORKS_API_KEY set; override via the env vars if needed.
+    api_base_url = os.environ.get("FIREWORKS_API_BASE_URL", "https://api.fireworks.ai/v1")
+    model_base_url = os.environ.get("FIREWORKS_MODEL_BASE_URL", "https://fireworks.ai/models/fireworks")
 
     if not api_key:
         print("Error: FIREWORKS_API_KEY not set")
