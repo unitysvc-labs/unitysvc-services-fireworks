@@ -1,0 +1,58 @@
+{
+  "parameters": {
+    "capabilities": [
+      "llm",
+      "text-generation",
+      "tools",
+      "vision",
+      "image-text-to-text"
+    ],
+    "description": "Kimi K2.5 is Moonshot AI's flagship agentic model and a new SOTA open model. It unifies vision and text, thinking and non-thinking modes, and single-agent and multi-agent execution into one model. Fireworks enables users to control the reasoning behavior of the Kimi K2.5 model and inspect its reasoning history for greater transparency.",
+    "details": {
+      "calibrated": true,
+      "checkpointFormat": "HUGGINGFACE",
+      "cluster": "",
+      "context_length": 262144,
+      "defaultDraftModel": "",
+      "defaultDraftTokenCount": 0,
+      "defaultPrecision": "FP8",
+      "defaultSamplingParams": {},
+      "deprecationDate": null,
+      "fineTuningJob": "",
+      "githubUrl": "",
+      "huggingFaceUrl": "https://huggingface.co/moonshotai/Kimi-K2.5",
+      "importedFrom": "",
+      "kind": "HF_BASE_MODEL",
+      "modelType": "kimi_k25",
+      "moe": true,
+      "parameter_count": 1028542417904,
+      "rlTunable": true,
+      "snapshotType": "FULL_SNAPSHOT",
+      "supportsFireattention": true,
+      "supportsImageInput": true,
+      "supportsLora": false,
+      "supportsTools": true,
+      "teftDetails": null,
+      "trainingContextLength": 65536,
+      "tunable": true,
+      "useHfApplyChatTemplate": true,
+      "worldSize": 1
+    },
+    "display_name": "Kimi K2.5",
+    "is_flux": false,
+    "listing_status": "ready",
+    "model": "kimi-k2p5",
+    "model_name": "accounts/fireworks/models/kimi-k2p5",
+    "offering_name": "accounts/fireworks/models/kimi-k2p5",
+    "pricing": {
+      "cached_input": "0.10",
+      "description": "Pricing Per 1M Tokens (input/cached input/output): $0.60 / $0.10 / $3.00",
+      "input": "0.60",
+      "output": "3.00",
+      "reference": "https://fireworks.ai/models/fireworks/kimi-k2p5",
+      "type": "one_million_tokens"
+    },
+    "service_type": "llm",
+    "status": "ready"
+  }
+}

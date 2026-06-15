@@ -20,7 +20,7 @@ from bs4 import BeautifulSoup
 
 # Will be provided by unitysvc_sellers
 from unitysvc_sellers.model_data import ModelDataFetcher, ModelDataLookup
-from unitysvc_sellers.template_populate import populate_from_iterator
+from unitysvc_sellers.params_render import write_params_from_iterator
 
 
 def _as_positive_int(value) -> int | None:
@@ -156,13 +156,15 @@ class FireworksModelSource:
 
             # Yield the template variables
             yield {
-                # Folder path under specs/ == listing.name == "fireworks/<short>"
-                # (flat layout, #1263); set as name_field in main().
-                "folder": f"fireworks/{short_name}",
+                # Param-file path under specs/ == listing.name == "fireworks/<short>"
+                # (flat layout, #1263). Default name_field="name".
+                "name": f"fireworks/{short_name}",
                 "provider_name": "fireworks",
 
-                # Bare model name — offering.name + listing.display_name
-                "name": short_name,
+                # Bare model name — offering.name + listing.display_name.
+                # Named "model" (not "name") so it survives param extraction:
+                # write_params_from_iterator reserves "name" for the path.
+                "model": short_name,
 
                 # Routing-key model — Fireworks expects the fully-qualified
                 # path ("accounts/fireworks/models/<short>") in the API's
@@ -450,11 +452,9 @@ def main():
     script_dir = Path(__file__).parent
 
     try:
-        populate_from_iterator(
+        write_params_from_iterator(
             iterator=source.iter_models(),
-            templates_dir=script_dir.parent / "templates",
             output_dir=script_dir.parent / "specs",
-            name_field="folder",
         )
     finally:
         source.close()
