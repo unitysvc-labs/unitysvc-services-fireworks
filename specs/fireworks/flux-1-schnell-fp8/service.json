@@ -1,3 +1,7 @@
 {
-  "service_id": "eba3efcd-66b9-4beb-ad72-3d3a87611c06"
+  "display_name": "flux-1-schnell-fp8",
+  "name": "fireworks/flux-1-schnell-fp8",
+  "service_id": "eba3efcd-66b9-4beb-ad72-3d3a87611c06",
+  "status": "updated",
+  "time_created": "2026-06-06T15:40:41.419676Z"
 }
