@@ -1,0 +1,56 @@
+{
+  "parameters": {
+    "capabilities": [
+      "llm",
+      "text-generation",
+      "tools"
+    ],
+    "description": "GLM-5.1 is Z.ai's next-generation flagship model built for agentic engineering, with stronger coding capabilities and sustained performance over long-horizon tasks with hundreds of iteration rounds. It's a 754B-parameter MoE model",
+    "details": {
+      "calibrated": false,
+      "checkpointFormat": "HUGGINGFACE",
+      "cluster": "",
+      "context_length": 202752,
+      "defaultDraftModel": "",
+      "defaultDraftTokenCount": 0,
+      "defaultPrecision": "FP8",
+      "defaultSamplingParams": {},
+      "deprecationDate": null,
+      "fineTuningJob": "",
+      "githubUrl": "",
+      "huggingFaceUrl": "https://huggingface.co/zai-org/GLM-5.1-FP8",
+      "importedFrom": "",
+      "kind": "HF_BASE_MODEL",
+      "modelType": "glm_moe_dsa",
+      "moe": true,
+      "parameter_count": 743911218432,
+      "rlTunable": false,
+      "snapshotType": "FULL_SNAPSHOT",
+      "supportsFireattention": true,
+      "supportsImageInput": false,
+      "supportsLora": true,
+      "supportsTools": true,
+      "teftDetails": null,
+      "trainingContextLength": 65536,
+      "tunable": false,
+      "useHfApplyChatTemplate": false,
+      "worldSize": 1
+    },
+    "display_name": "GLM 5.1",
+    "is_flux": false,
+    "listing_status": "ready",
+    "model": "glm-5p1",
+    "model_name": "accounts/fireworks/models/glm-5p1",
+    "offering_name": "accounts/fireworks/models/glm-5p1",
+    "pricing": {
+      "cached_input": "0.26",
+      "description": "Pricing Per 1M Tokens (input/cached input/output): $1.40 / $0.26 / $4.40",
+      "input": "1.40",
+      "output": "4.40",
+      "reference": "https://fireworks.ai/models/fireworks/glm-5p1",
+      "type": "one_million_tokens"
+    },
+    "service_type": "llm",
+    "status": "ready"
+  }
+}

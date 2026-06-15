@@ -1,10 +1,10 @@
 {
-  "display_name": "{{ name }}",
+  "display_name": "{{ model }}",
   "status": "{{ listing_status | default('ready') }}",
   "currency": "USD",
   {#- name = <provider>/<bare> per the platform service-naming convention
       (unitysvc PR #1196 / issue #1138). #}
-  "name": "{{ provider_name }}/{{ name }}",
+  "name": "{{ provider_name }}/{{ model }}",
 {%- if pricing %}
   "list_price": {
     "type": "{{ pricing.type }}"
