@@ -1,0 +1,56 @@
+{
+  "parameters": {
+    "capabilities": [
+      "llm",
+      "text-generation",
+      "tools"
+    ],
+    "description": "DeepSeek-V4-Pro is a flagship open-source Mixture-of-Experts model designed for frontier reasoning, advanced coding, and long-context intelligence at scale (up to 1M tokens). It introduces a hybrid attention architecture that dramatically improves long-context efficiency while reducing KV and compute overhead, along with stability and training enhancements for deep multi-step reasoning. It represents a top-tier open-source system for complex agentic workflows, high-precision reasoning, and demanding production workloads.",
+    "details": {
+      "calibrated": false,
+      "checkpointFormat": "HUGGINGFACE",
+      "cluster": "",
+      "context_length": 1048576,
+      "defaultDraftModel": "",
+      "defaultDraftTokenCount": 0,
+      "defaultPrecision": "PRECISION_UNSPECIFIED",
+      "defaultSamplingParams": {},
+      "deprecationDate": null,
+      "fineTuningJob": "",
+      "githubUrl": "",
+      "huggingFaceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
+      "importedFrom": "",
+      "kind": "HF_BASE_MODEL",
+      "modelType": "deepseek_v4",
+      "moe": true,
+      "parameter_count": 1600000000000,
+      "rlTunable": false,
+      "snapshotType": "FULL_SNAPSHOT",
+      "supportsFireattention": true,
+      "supportsImageInput": false,
+      "supportsLora": false,
+      "supportsTools": true,
+      "teftDetails": null,
+      "trainingContextLength": 65536,
+      "tunable": false,
+      "useHfApplyChatTemplate": false,
+      "worldSize": 1
+    },
+    "display_name": "DeepSeek-V4-Pro",
+    "is_flux": false,
+    "listing_status": "ready",
+    "model": "deepseek-v4-pro",
+    "model_name": "accounts/fireworks/models/deepseek-v4-pro",
+    "offering_name": "accounts/fireworks/models/deepseek-v4-pro",
+    "pricing": {
+      "cached_input": "0.14",
+      "description": "Pricing Per 1M Tokens (input/cached input/output): $1.74 / $0.14 / $3.48",
+      "input": "1.74",
+      "output": "3.48",
+      "reference": "https://fireworks.ai/models/fireworks/deepseek-v4-pro",
+      "type": "one_million_tokens"
+    },
+    "service_type": "llm",
+    "status": "ready"
+  }
+}
