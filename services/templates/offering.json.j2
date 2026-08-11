@@ -3,27 +3,47 @@
 {%- if display_name %}
   "display_name": "{{ display_name }}",
 {%- endif %}
-  "description": {{ (description | default('', true)) | tojson }},
+{#- 3-paragraph marketplace description (validator: P1 is the collapsed teaser
+    and must be < 200 chars; >=2 paragraphs total). Teaser + what-it-is + how-to.
+    The dual-dialect / OpenAI-compatible wording is chat-only (service_type
+    'llm'); image models keep a plain how-to. #}
+{%- set _label = 'language model' if service_type == 'llm' else ('image model' if service_type == 'image_generation' else service_type ~ ' model') %}
+{%- set _teaser = (display_name | default(model, true)) ~ ' — ' ~ _label ~ ' served by Fireworks AI via the UnitySVC gateway.' %}
+{%- set _detail = description | default((display_name | default(model, true)) ~ ' is served by Fireworks AI.', true) %}
+{%- if service_type == 'llm' %}
+{%- set _ctx = ' with a ' ~ details.context_length ~ '-token context window' if (details and details.context_length) else '' %}
+{%- set _serve = ' It is served over an OpenAI-compatible API' ~ _ctx ~ '; requests are proxied through the UnitySVC gateway and metered per token.' %}
+{%- set _howto = 'Reach it through the UnitySVC gateway either on the managed channel (the platform supplies the Fireworks AI key and resells tokens at the listed rate — nothing to configure) or the byok channel (bring your own Fireworks AI key and route free). The endpoint accepts both OpenAI Chat Completions and Anthropic Messages requests — the gateway auto-detects the dialect, translates to the upstream, and returns the response in the format you sent. See the code examples for both styles.' %}
+{%- else %}
+{%- set _serve = ' It is reached through the UnitySVC gateway, which relays your requests to the Fireworks AI API and meters usage at the listed rate.' %}
+{%- set _howto = 'Reach it through the UnitySVC gateway either on the managed channel (the platform supplies the Fireworks AI key and resells usage at the listed rate — nothing to configure) or the byok channel (bring your own Fireworks AI key and route free). See the code examples for setup.' %}
+{%- endif %}
+{%- set _description = _teaser ~ '\n\n' ~ _detail ~ _serve ~ '\n\n' ~ _howto %}
+  "description": {{ _description | tojson }},
   "service_type": "{{ service_type }}",
   "capabilities": {{ capabilities | default([service_type]) | tojson }},
   "status": "{{ status | default('ready') }}",
   "currency": "USD",
   "tags": ["ai", "gateway"],
-  "details": {
-    "model_name": "{{ model_name }}"
-{%- if details %}
-{%- for key, value in details.items() %},
-    "{{ key }}": {{ value | tojson }}
-{%- endfor %}
-{%- endif %}
-  },
+{#- Build details from the per-model params, always keyed with model_name.
+    For chat (service_type 'llm') the OpenAI upstream is exposed in both dialects
+    via the llm_translator on each channel, so advertise both formats (R8). #}
+{%- set _details = {"model_name": model_name} %}
+{%- if details %}{%- set _ = _details.update(details) %}{%- endif %}
+{%- if service_type == 'llm' %}{%- set _ = _details.update({"input_formats": ["openai", "anthropic"], "output_formats": ["openai_response", "anthropic_response"]}) %}{%- endif %}
+  "details": {{ _details | tojson }},
   "payout_price": {
     "type": "revenue_share",
     "percentage": "100.00",
     "description": "No platform commission"
   },
+{#- Fireworks resells its own tokens: both channels front the same upstream and
+    differ only in whose key pays — managed = seller key (${ secrets.* }),
+    byok = customer key (${ customer_secrets.* }). rate_limits / base_url /
+    routing_key are identical. The llm_translator (chat only) lets the OpenAI
+    upstream also serve Anthropic-style callers. #}
   "upstream_access_config": {
-    "fireworks_api": {
+    "managed": {
       "access_method": "http",
       "api_key": "${ secrets.FIREWORKS_API_KEY }",
       "base_url": "https://api.fireworks.ai/inference",
@@ -47,7 +67,41 @@
           "window": "minute"
         }
       ],
-      "routing_key": {"model": "{{ offering_name }}"}
+      "routing_key": {"model": "{{ offering_name }}"},
+{%- if service_type == 'llm' %}
+      "request_transformer": {"llm_translator": "anthropic_to_openai"},
+{%- endif %}
+      "sort_order": 1
+    },
+    "byok": {
+      "access_method": "http",
+      "api_key": "${ customer_secrets.FIREWORKS_API_KEY }",
+      "base_url": "https://api.fireworks.ai/inference",
+      "rate_limits": [
+        {
+          "description": "Requests per minute",
+          "limit": 60,
+          "unit": "requests",
+          "window": "minute"
+        },
+        {
+          "description": "Input tokens per minute",
+          "limit": 60000,
+          "unit": "input_tokens",
+          "window": "minute"
+        },
+        {
+          "description": "Output tokens per minute",
+          "limit": 6000,
+          "unit": "output_tokens",
+          "window": "minute"
+        }
+      ],
+      "routing_key": {"model": "{{ offering_name }}"},
+{%- if service_type == 'llm' %}
+      "request_transformer": {"llm_translator": "anthropic_to_openai"},
+{%- endif %}
+      "sort_order": 2
     }
   }
 }

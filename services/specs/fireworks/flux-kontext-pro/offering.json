@@ -5,7 +5,7 @@
     "image-text-to-text"
   ],
   "currency": "USD",
-  "description": "FLUX Kontext Pro is a specialized model for generating contextually-aware images from text descriptions. Designed for professional use cases requiring high-quality, consistent image generation.",
+  "description": "Flux Kontext Pro \u2014 image model served by Fireworks AI via the UnitySVC gateway.\n\nFLUX Kontext Pro is a specialized model for generating contextually-aware images from text descriptions. Designed for professional use cases requiring high-quality, consistent image generation. It is reached through the UnitySVC gateway, which relays your requests to the Fireworks AI API and meters usage at the listed rate.\n\nReach it through the UnitySVC gateway either on the managed channel (the platform supplies the Fireworks AI key and resells usage at the listed rate \u2014 nothing to configure) or the byok channel (bring your own Fireworks AI key and route free). See the code examples for setup.",
   "details": {
     "calibrated": false,
     "checkpointFormat": "CHECKPOINT_FORMAT_UNSPECIFIED",
@@ -52,7 +52,36 @@
   ],
   "time_created": "2025-06-21T06:44:24.317572Z",
   "upstream_access_config": {
-    "fireworks_api": {
+    "byok": {
+      "access_method": "http",
+      "api_key": "${ customer_secrets.FIREWORKS_API_KEY }",
+      "base_url": "https://api.fireworks.ai/inference",
+      "rate_limits": [
+        {
+          "description": "Requests per minute",
+          "limit": 60,
+          "unit": "requests",
+          "window": "minute"
+        },
+        {
+          "description": "Input tokens per minute",
+          "limit": 60000,
+          "unit": "input_tokens",
+          "window": "minute"
+        },
+        {
+          "description": "Output tokens per minute",
+          "limit": 6000,
+          "unit": "output_tokens",
+          "window": "minute"
+        }
+      ],
+      "routing_key": {
+        "model": "accounts/fireworks/models/flux-kontext-pro"
+      },
+      "sort_order": 2
+    },
+    "managed": {
       "access_method": "http",
       "api_key": "${ secrets.FIREWORKS_API_KEY }",
       "base_url": "https://api.fireworks.ai/inference",
@@ -78,7 +107,8 @@
       ],
       "routing_key": {
         "model": "accounts/fireworks/models/flux-kontext-pro"
-      }
+      },
+      "sort_order": 1
     }
   }
 }

@@ -6,23 +6,20 @@
       (unitysvc PR #1196 / issue #1138). #}
   "name": "{{ provider_name }}/{{ model }}",
 {%- if pricing %}
+  {#- Channel-keyed price: byok is free (the customer's own key pays Fireworks AI
+      directly); managed resells Fireworks AI usage at the per-model rate carried
+      in the param `pricing`. Channel keys MUST match the offering channels. #}
   "list_price": {
-    "type": "{{ pricing.type }}"
-{%- if pricing.input is defined %},
-    "input": "{{ pricing.input }}",
-    "output": "{{ pricing.output }}"
-{%- if pricing.cached_input is defined %},
-    "cached_input": "{{ pricing.cached_input }}"
-{%- endif %}
-{%- elif pricing.price is defined %},
-    "price": "{{ pricing.price }}"
-{%- endif %}
-{%- if pricing.description is defined %},
-    "description": "{{ pricing.description }}"
-{%- endif %}
-{%- if pricing.reference is defined %},
-    "reference": "{{ pricing.reference }}"
-{%- endif %}
+    "type": "channel",
+    "default": "managed",
+    "channels": {
+      "byok": {
+        "description": "Free — bring your own Fireworks AI API key; you pay Fireworks AI directly for tokens",
+        "price": "0",
+        "type": "constant"
+      },
+      "managed": {{ pricing | tojson }}
+    }
   },
 {%- endif %}
   "user_access_interfaces": {
@@ -40,6 +37,7 @@
       "file_path": "../../docs/code_example_flux.py.j2",
       "is_active": true,
       "is_public": true,
+      "meta": {"sleep_after_test": 5},
       "mime_type": "python"
     },
     "Python function calling code example": {
@@ -48,6 +46,7 @@
       "file_path": "../../docs/code_example_flux_fc.py.j2",
       "is_active": true,
       "is_public": true,
+      "meta": {"sleep_after_test": 5},
       "mime_type": "python"
     },
     "JavaScript code example": {
@@ -56,6 +55,7 @@
       "file_path": "../../docs/code_example_flux.js.j2",
       "is_active": true,
       "is_public": true,
+      "meta": {"sleep_after_test": 5},
       "mime_type": "javascript"
     },
     "cURL code example": {
@@ -64,6 +64,7 @@
       "file_path": "../../docs/code_example_flux.sh.j2",
       "is_active": true,
       "is_public": true,
+      "meta": {"sleep_after_test": 5},
       "mime_type": "bash"
     },
     "connectivity test": {
@@ -72,6 +73,7 @@
       "file_path": "../../docs/connectivity_flux.sh.j2",
       "is_active": true,
       "is_public": false,
+      "meta": {"sleep_after_test": 5},
       "mime_type": "bash"
     }
 {%- else %}
@@ -79,19 +81,40 @@
       "$doc_preset": "llm_description"
     },
     "Python code example": {
-      "$doc_preset": "llm_code_example_openai"
+      "$doc_preset": {"name": "llm_code_example_openai", "meta": {"sleep_after_test": 5}}
     },
     "Python function calling code example": {
-      "$doc_preset": "llm_code_example_fc_requests"
+      "$doc_preset": {"name": "llm_code_example_fc_requests", "meta": {"sleep_after_test": 5}}
     },
     "JavaScript code example": {
-      "$doc_preset": "llm_code_example_javascript"
+      "$doc_preset": {"name": "llm_code_example_javascript", "meta": {"sleep_after_test": 5}}
     },
     "cURL code example": {
-      "$doc_preset": "llm_code_example_shell"
+      "$doc_preset": {"name": "llm_code_example_shell", "meta": {"sleep_after_test": 5}}
+    },
+    {#- Anthropic-dialect examples (R9): the upstream speaks OpenAI, so
+        specs run-tests (local_testing) calls it in OpenAI form, while the
+        gateway path speaks Anthropic and exercises the llm_translator. #}
+    "Python code example (Anthropic SDK)": {
+      "category": "code_example",
+      "description": "Anthropic Messages API via the anthropic SDK; the gateway translates to the OpenAI upstream",
+      "file_path": "anthropic-to-openai-code-example.py.j2",
+      "is_active": true,
+      "is_public": true,
+      "meta": {"requirements": ["openai", "anthropic"], "sleep_after_test": 5},
+      "mime_type": "python"
+    },
+    "cURL code example (Anthropic style)": {
+      "category": "code_example",
+      "description": "Anthropic Messages API via cURL; the gateway translates to the OpenAI upstream",
+      "file_path": "anthropic-to-openai-code-example.sh.j2",
+      "is_active": true,
+      "is_public": true,
+      "meta": {"sleep_after_test": 5},
+      "mime_type": "bash"
     },
     "connectivity test": {
-      "$doc_preset": "llm_connectivity"
+      "$doc_preset": {"name": "llm_connectivity", "meta": {"sleep_after_test": 5}}
     },
     "Default request body": {
       "$doc_preset": "llm_request_template"

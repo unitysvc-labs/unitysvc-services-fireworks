@@ -9,28 +9,64 @@
       "$doc_preset": "llm_description"
     },
     "JavaScript code example": {
-      "$doc_preset": "llm_code_example_javascript"
+      "$doc_preset": {
+        "meta": {
+          "sleep_after_test": 5
+        },
+        "name": "llm_code_example_javascript"
+      }
     },
     "Python code example": {
-      "$doc_preset": "llm_code_example_openai"
+      "$doc_preset": {
+        "meta": {
+          "sleep_after_test": 5
+        },
+        "name": "llm_code_example_openai"
+      }
     },
     "Python function calling code example": {
-      "$doc_preset": "llm_code_example_fc_requests"
+      "$doc_preset": {
+        "meta": {
+          "sleep_after_test": 5
+        },
+        "name": "llm_code_example_fc_requests"
+      }
     },
     "cURL code example": {
-      "$doc_preset": "llm_code_example_shell"
+      "$doc_preset": {
+        "meta": {
+          "sleep_after_test": 5
+        },
+        "name": "llm_code_example_shell"
+      }
     },
     "connectivity test": {
-      "$doc_preset": "llm_connectivity"
+      "$doc_preset": {
+        "meta": {
+          "sleep_after_test": 5
+        },
+        "name": "llm_connectivity"
+      }
     }
   },
   "list_price": {
-    "cached_input": "0.20",
-    "description": "Pricing Per 1M Tokens (input/cached input/output): $1.00 / $0.20 / $3.20",
-    "input": "1.00",
-    "output": "3.20",
-    "reference": "https://fireworks.ai/models/fireworks/glm-5",
-    "type": "one_million_tokens"
+    "channels": {
+      "byok": {
+        "description": "Free \u2014 bring your own Fireworks AI API key; you pay Fireworks AI directly for tokens",
+        "price": "0",
+        "type": "constant"
+      },
+      "managed": {
+        "cached_input": "0.20",
+        "description": "Pricing Per 1M Tokens (input/cached input/output): $1.00 / $0.20 / $3.20",
+        "input": "1.00",
+        "output": "3.20",
+        "reference": "https://fireworks.ai/models/fireworks/glm-5",
+        "type": "one_million_tokens"
+      }
+    },
+    "default": "managed",
+    "type": "channel"
   },
   "name": "fireworks/glm-5",
   "status": "ready",

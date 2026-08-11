@@ -8,6 +8,9 @@
       "file_path": "code_example_flux.js.j2",
       "is_active": true,
       "is_public": true,
+      "meta": {
+        "sleep_after_test": 5
+      },
       "mime_type": "javascript"
     },
     "Python code example": {
@@ -16,6 +19,9 @@
       "file_path": "code_example_flux.py.j2",
       "is_active": true,
       "is_public": true,
+      "meta": {
+        "sleep_after_test": 5
+      },
       "mime_type": "python"
     },
     "Python function calling code example": {
@@ -24,6 +30,9 @@
       "file_path": "code_example_flux_fc.py.j2",
       "is_active": true,
       "is_public": true,
+      "meta": {
+        "sleep_after_test": 5
+      },
       "mime_type": "python"
     },
     "cURL code example": {
@@ -32,6 +41,9 @@
       "file_path": "code_example_flux.sh.j2",
       "is_active": true,
       "is_public": true,
+      "meta": {
+        "sleep_after_test": 5
+      },
       "mime_type": "bash"
     },
     "connectivity test": {
@@ -40,14 +52,28 @@
       "file_path": "connectivity_flux.sh.j2",
       "is_active": true,
       "is_public": false,
+      "meta": {
+        "sleep_after_test": 5
+      },
       "mime_type": "bash"
     }
   },
   "list_price": {
-    "description": "Pricing Per Step: $0.00",
-    "price": "0.00",
-    "reference": "https://fireworks.ai/models/fireworks/flux-1-dev-fp8",
-    "type": "step"
+    "channels": {
+      "byok": {
+        "description": "Free \u2014 bring your own Fireworks AI API key; you pay Fireworks AI directly for tokens",
+        "price": "0",
+        "type": "constant"
+      },
+      "managed": {
+        "description": "Pricing Per Step: $0.00",
+        "price": "0.00",
+        "reference": "https://fireworks.ai/models/fireworks/flux-1-dev-fp8",
+        "type": "step"
+      }
+    },
+    "default": "managed",
+    "type": "channel"
   },
   "name": "fireworks/flux-1-dev-fp8",
   "status": "ready",
