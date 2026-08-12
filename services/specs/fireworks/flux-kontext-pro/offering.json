@@ -5,7 +5,7 @@
     "image-text-to-text"
   ],
   "currency": "USD",
-  "description": "FLUX Kontext Pro is a specialized model for generating contextually-aware images from text descriptions. Designed for professional use cases requiring high-quality, consistent image generation.",
+  "description": "Flux Kontext Pro \u2014 a image_generation model served by Fireworks AI.\n\nFLUX Kontext Pro is a specialized model for generating contextually-aware images from text descriptions. Designed for professional use cases requiring high-quality, consistent image generation.\n\nAccess it through the UnitySVC gateway. See the code examples to get started.",
   "details": {
     "calibrated": false,
     "checkpointFormat": "CHECKPOINT_FORMAT_UNSPECIFIED",

@@ -3,7 +3,19 @@
 {%- if display_name %}
   "display_name": "{{ display_name }}",
 {%- endif %}
-  "description": {{ (description | default('', true)) | tojson }},
+{#- The validator requires a short (<200 char) teaser paragraph, then one or more
+    detail paragraphs (separated by '\n\n'). Upstream ships one long paragraph, so
+    synthesize a short teaser, keep the upstream text as detail, then append a
+    standard UnitySVC gateway paragraph (dual-dialect note for LLMs). #}
+{%- set _teaser = (display_name | default(model, true)) ~ ' — a ' ~ service_type ~ ' model served by Fireworks AI.' %}
+{%- set _detail = description | default('', true) %}
+{%- if service_type == 'llm' %}
+{%- set _howto = 'Access it through the UnitySVC gateway. The endpoint accepts both OpenAI Chat Completions and Anthropic Messages requests — the gateway auto-detects the dialect, translates it to the upstream, and returns the response in the format you sent. See the code examples for both styles.' %}
+{%- else %}
+{%- set _howto = 'Access it through the UnitySVC gateway. See the code examples to get started.' %}
+{%- endif %}
+{%- set _description = _teaser ~ (('\n\n' ~ _detail) if _detail else '') ~ '\n\n' ~ _howto %}
+  "description": {{ _description | tojson }},
   "service_type": "{{ service_type }}",
   "capabilities": {{ capabilities | default([service_type]) | tojson }},
   "status": "{{ status | default('ready') }}",
@@ -15,6 +27,12 @@
 {%- for key, value in details.items() %},
     "{{ key }}": {{ value | tojson }}
 {%- endfor %}
+{%- endif %}
+{#- R8 (#1768): advertise dual-dialect I/O for LLMs. The gateway auto-detects
+    the request dialect and returns the response in the same format. #}
+{%- if service_type == 'llm' %},
+    "input_formats": ["openai", "anthropic"],
+    "output_formats": ["openai_response", "anthropic_response"]
 {%- endif %}
   },
   "payout_price": {
@@ -48,6 +66,13 @@
         }
       ],
       "routing_key": {"model": "{{ offering_name }}"}
+{#- R7 (#1768): translate inbound Anthropic Messages requests to the upstream's
+    OpenAI-compatible dialect. LLM channels only. #}
+{%- if service_type == 'llm' %},
+      "request_transformer": {
+        "llm_translator": "anthropic_to_openai"
+      }
+{%- endif %}
     }
   }
 }

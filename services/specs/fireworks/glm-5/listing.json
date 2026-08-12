@@ -14,11 +14,17 @@
     "Python code example": {
       "$doc_preset": "llm_code_example_openai"
     },
+    "Python code example (Anthropic-style input)": {
+      "$doc_preset": "llm_code_example_anthropic_to_openai_sdk"
+    },
     "Python function calling code example": {
       "$doc_preset": "llm_code_example_fc_requests"
     },
     "cURL code example": {
       "$doc_preset": "llm_code_example_shell"
+    },
+    "cURL code example (Anthropic-style input)": {
+      "$doc_preset": "llm_code_example_anthropic_to_openai_shell"
     },
     "connectivity test": {
       "$doc_preset": "llm_connectivity"

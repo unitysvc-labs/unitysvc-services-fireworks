@@ -5,7 +5,7 @@
     "image-text-to-text"
   ],
   "currency": "USD",
-  "description": "FLUX Kontext Max is Black Forest Labs' new premium model that brings maximum performance across all aspects \u2013 greatly improved prompt adherence and typography generation meet premium consistency for editing without compromise on speed",
+  "description": "Flux Kontext Max \u2014 a image_generation model served by Fireworks AI.\n\nFLUX Kontext Max is Black Forest Labs' new premium model that brings maximum performance across all aspects \u2013 greatly improved prompt adherence and typography generation meet premium consistency for editing without compromise on speed\n\nAccess it through the UnitySVC gateway. See the code examples to get started.",
   "details": {
     "calibrated": false,
     "checkpointFormat": "CHECKPOINT_FORMAT_UNSPECIFIED",

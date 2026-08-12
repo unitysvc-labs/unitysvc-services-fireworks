@@ -5,7 +5,7 @@
     "tools"
   ],
   "currency": "USD",
-  "description": "Mixture-of-Experts language model. M2.7 is capable of building complex agent harnesses and completing highly elaborate productivity tasks, leveraging Agent Teams, complex Skills, and dynamic tool search.",
+  "description": "MiniMax M2.7 \u2014 a llm model served by Fireworks AI.\n\nMixture-of-Experts language model. M2.7 is capable of building complex agent harnesses and completing highly elaborate productivity tasks, leveraging Agent Teams, complex Skills, and dynamic tool search.\n\nAccess it through the UnitySVC gateway. The endpoint accepts both OpenAI Chat Completions and Anthropic Messages requests \u2014 the gateway auto-detects the dialect, translates it to the upstream, and returns the response in the format you sent. See the code examples for both styles.",
   "details": {
     "calibrated": false,
     "checkpointFormat": "HUGGINGFACE",
@@ -20,10 +20,18 @@
     "githubUrl": "",
     "huggingFaceUrl": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7",
     "importedFrom": "",
+    "input_formats": [
+      "openai",
+      "anthropic"
+    ],
     "kind": "HF_BASE_MODEL",
     "modelType": "minimax_m2",
     "model_name": "accounts/fireworks/models/minimax-m2p7",
     "moe": true,
+    "output_formats": [
+      "openai_response",
+      "anthropic_response"
+    ],
     "parameter_count": 228689764864,
     "rlTunable": false,
     "snapshotType": "FULL_SNAPSHOT",
@@ -76,6 +84,9 @@
           "window": "minute"
         }
       ],
+      "request_transformer": {
+        "llm_translator": "anthropic_to_openai"
+      },
       "routing_key": {
         "model": "accounts/fireworks/models/minimax-m2p7"
       }
