@@ -8,17 +8,23 @@
     The dual-dialect / OpenAI-compatible wording is chat-only (service_type
     'llm'); image models keep a plain how-to. #}
 {%- set _label = 'language model' if service_type == 'llm' else ('image model' if service_type == 'image_generation' else service_type ~ ' model') %}
-{%- set _teaser = (display_name | default(model, true)) ~ ' — ' ~ _label ~ ' served by Fireworks AI via the UnitySVC gateway.' %}
+{%- set _teaser_base = (display_name | default(model, true)) ~ ' — ' ~ _label ~ ' served by Fireworks AI via the UnitySVC gateway.' %}
+{#- The teaser is the only paragraph shown in the collapsed list view, so for
+    chat models it carries the dual-dialect differentiator (length-guarded). #}
+{%- set _teaser_dual = _teaser_base ~ ' Callable in both OpenAI and Anthropic API styles.' %}
+{%- set _teaser = _teaser_dual if (service_type == 'llm' and _teaser_dual | length < 195) else _teaser_base %}
 {%- set _detail = description | default((display_name | default(model, true)) ~ ' is served by Fireworks AI.', true) %}
 {%- if service_type == 'llm' %}
 {%- set _ctx = ' with a ' ~ details.context_length ~ '-token context window' if (details and details.context_length) else '' %}
 {%- set _serve = ' It is served over an OpenAI-compatible API' ~ _ctx ~ '; requests are proxied through the UnitySVC gateway and metered per token.' %}
-{%- set _howto = 'Reach it through the UnitySVC gateway either on the managed channel (the platform supplies the Fireworks AI key and resells tokens at the listed rate — nothing to configure) or the byok channel (bring your own Fireworks AI key and route free). The endpoint accepts both OpenAI Chat Completions and Anthropic Messages requests — the gateway auto-detects the dialect, translates to the upstream, and returns the response in the format you sent. See the code examples for both styles.' %}
+{%- set _howto = 'Reach it through the UnitySVC gateway either on the managed channel (the platform supplies the Fireworks AI key and resells tokens at the listed rate — nothing to configure) or the byok channel (bring your own Fireworks AI key and route free). See the code examples for both API styles.' %}
+{%- set _interop = 'One endpoint, either dialect — send an OpenAI Chat Completions or an Anthropic Messages request and the gateway auto-detects the format, translates it for the upstream, and replies in the style you sent. Because every model on UnitySVC speaks both dialects, they are interchangeable behind a single client: swap providers without touching your code, and combine them with the gateway composition primitives — group (/g/), broadcast (/b/), chain (/c/) and failover (/f/).' %}
 {%- else %}
+{%- set _interop = '' %}
 {%- set _serve = ' It is reached through the UnitySVC gateway, which relays your requests to the Fireworks AI API and meters usage at the listed rate.' %}
 {%- set _howto = 'Reach it through the UnitySVC gateway either on the managed channel (the platform supplies the Fireworks AI key and resells usage at the listed rate — nothing to configure) or the byok channel (bring your own Fireworks AI key and route free). See the code examples for setup.' %}
 {%- endif %}
-{%- set _description = _teaser ~ '\n\n' ~ _detail ~ _serve ~ '\n\n' ~ _howto %}
+{%- set _description = _teaser ~ '\n\n' ~ _detail ~ _serve ~ '\n\n' ~ _howto ~ (('\n\n' ~ _interop) if _interop else '') %}
   "description": {{ _description | tojson }},
   "service_type": "{{ service_type }}",
   "capabilities": {{ capabilities | default([service_type]) | tojson }},
