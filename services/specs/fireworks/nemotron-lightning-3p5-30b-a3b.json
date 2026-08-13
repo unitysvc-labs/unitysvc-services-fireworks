@@ -1,0 +1,55 @@
+{
+  "parameters": {
+    "capabilities": [
+      "llm",
+      "text-generation",
+      "tools"
+    ],
+    "description": "Nemotron-Lightning-3.5-30B-A3B is a 30B-parameter Mixture-of-Experts language model (3B active) from NVIDIA's Nemotron-H family, built on a hybrid Mamba-Transformer architecture for efficient long-context inference. Like other models in the family, it responds to queries by first generating a reasoning trace and then concluding with a final response, with reasoning behavior configurable through a flag in the chat template. It includes a multi-token prediction (MTP) speculative decoding head for low-latency serving.",
+    "details": {
+      "calibrated": false,
+      "checkpointFormat": "HUGGINGFACE",
+      "cluster": "",
+      "context_length": 262144,
+      "defaultDraftModel": "",
+      "defaultDraftTokenCount": 0,
+      "defaultPrecision": "PRECISION_UNSPECIFIED",
+      "defaultSamplingParams": {},
+      "deprecationDate": null,
+      "fineTuningJob": "",
+      "githubUrl": "",
+      "huggingFaceUrl": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+      "importedFrom": "",
+      "kind": "HF_BASE_MODEL",
+      "modelType": "nemotron_h",
+      "moe": true,
+      "parameter_count": 32913266240,
+      "rlTunable": false,
+      "snapshotType": "FULL_SNAPSHOT",
+      "supportsFireattention": false,
+      "supportsImageInput": false,
+      "supportsLora": false,
+      "supportsTools": true,
+      "teftDetails": null,
+      "trainingContextLength": 0,
+      "useHfApplyChatTemplate": false,
+      "worldSize": 1
+    },
+    "display_name": "Nemotron Lightning 3.5 30B A3B",
+    "is_flux": false,
+    "listing_status": "ready",
+    "model": "nemotron-lightning-3p5-30b-a3b",
+    "model_name": "accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b",
+    "offering_name": "accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b",
+    "pricing": {
+      "cached_input": "0.01",
+      "description": "Pricing Per 1M Tokens (input/cached input/output): $0.05 / $0.01 / $0.20",
+      "input": "0.05",
+      "output": "0.20",
+      "reference": "https://fireworks.ai/models/fireworks/nemotron-lightning-3p5-30b-a3b",
+      "type": "one_million_tokens"
+    },
+    "service_type": "llm",
+    "status": "ready"
+  }
+}

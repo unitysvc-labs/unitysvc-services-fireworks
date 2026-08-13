@@ -1,0 +1,55 @@
+{
+  "parameters": {
+    "capabilities": [
+      "llm",
+      "text-generation",
+      "tools"
+    ],
+    "description": "Nemotron-3-Ultra-550B-A55B-NVFP4 is a frontier-scale large language model (LLM) trained by NVIDIA, designed to deliver strong agentic, reasoning, and conversational capabilities. It is optimized for the most demanding workloads, including complex multi-step agents, long-context analysis, and high-accuracy reasoning over code, math, and science. The model employs a hybrid Latent Mixture-of-Experts (LatentMoE) architecture, utilizing interleaved Mamba-2 and MoE layers, along with select Attention layers. Like the Super model, the Ultra model incorporates Multi-Token Prediction (MTP) layers for faster text generation and improved quality, and it is trained using an NVFP4 pre-training recipe to maximize compute efficiency. The model has 55B active parameters and 550B parameters in total.",
+    "details": {
+      "calibrated": false,
+      "checkpointFormat": "HUGGINGFACE",
+      "cluster": "",
+      "context_length": 262144,
+      "defaultDraftModel": "",
+      "defaultDraftTokenCount": 0,
+      "defaultPrecision": "PRECISION_UNSPECIFIED",
+      "defaultSamplingParams": {},
+      "deprecationDate": null,
+      "fineTuningJob": "",
+      "githubUrl": "",
+      "huggingFaceUrl": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4",
+      "importedFrom": "",
+      "kind": "HF_BASE_MODEL",
+      "modelType": "nemotron_h",
+      "moe": true,
+      "parameter_count": 549000000000,
+      "rlTunable": false,
+      "snapshotType": "FULL_SNAPSHOT",
+      "supportsFireattention": true,
+      "supportsImageInput": false,
+      "supportsLora": false,
+      "supportsTools": true,
+      "teftDetails": null,
+      "trainingContextLength": 65536,
+      "useHfApplyChatTemplate": false,
+      "worldSize": 1
+    },
+    "display_name": "NVIDIA Nemotron 3 Ultra NVFP4",
+    "is_flux": false,
+    "listing_status": "ready",
+    "model": "nemotron-3-ultra-nvfp4",
+    "model_name": "accounts/fireworks/models/nemotron-3-ultra-nvfp4",
+    "offering_name": "accounts/fireworks/models/nemotron-3-ultra-nvfp4",
+    "pricing": {
+      "cached_input": "0.119",
+      "description": "Pricing Per 1M Tokens (input/cached input/output): $0.60 / $0.119 / $2.40",
+      "input": "0.60",
+      "output": "2.40",
+      "reference": "https://fireworks.ai/models/fireworks/nemotron-3-ultra-nvfp4",
+      "type": "one_million_tokens"
+    },
+    "service_type": "llm",
+    "status": "ready"
+  }
+}

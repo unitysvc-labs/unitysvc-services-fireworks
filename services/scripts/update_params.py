@@ -128,11 +128,18 @@ class FireworksModelSource:
             short_name = model_name.split("/")[-1]
             print(f"[{i}/{total}] {short_name}")
 
+            # Keep only models on the serverless menu. ``supportsServerless`` is
+            # the stable "callable via serverless inference" signal;
+            # ``deployedModelRefs`` tracks live deployment instances, which is too
+            # narrow/volatile (a serverless model reads 0 whenever no instance is
+            # warm) and dropped valid models. Filter from the list record before
+            # the per-model detail fetch so we don't detail-fetch all ~300.
+            if not model.get("supportsServerless"):
+                print("  Skipped: not serverless")
+                continue
+
             # Get detailed model info
             model_data = self._get_model_details(model_name) or {}
-            if not model_data.get("deployedModelRefs"):
-                print("  Skipped: No serverless deployment")
-                continue
 
             # Extract pricing from web page
             pricing = self._extract_pricing(short_name)

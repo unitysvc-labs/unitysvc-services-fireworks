@@ -1,0 +1,55 @@
+{
+  "parameters": {
+    "capabilities": [
+      "llm",
+      "text-generation",
+      "tools"
+    ],
+    "description": "DeepSeek-V4-Flash is a streamlined open-source Mixture-of-Experts model optimized for fast, cost-efficient inference while preserving strong reasoning and coding performance at 1M token context scale. It leverages the same hybrid attention innovations as Pro but is tuned for lower latency and higher throughput in real-time applications. It delivers near-Pro reasoning quality under sufficient compute budget, making it ideal for interactive agents and high-volume production workloads.",
+    "details": {
+      "calibrated": false,
+      "checkpointFormat": "HUGGINGFACE",
+      "cluster": "",
+      "context_length": 1048576,
+      "defaultDraftModel": "",
+      "defaultDraftTokenCount": 0,
+      "defaultPrecision": "PRECISION_UNSPECIFIED",
+      "defaultSamplingParams": {},
+      "deprecationDate": null,
+      "fineTuningJob": "",
+      "githubUrl": "",
+      "huggingFaceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
+      "importedFrom": "",
+      "kind": "HF_BASE_MODEL",
+      "modelType": "deepseek_v4",
+      "moe": true,
+      "parameter_count": 284000000000,
+      "rlTunable": false,
+      "snapshotType": "FULL_SNAPSHOT",
+      "supportsFireattention": true,
+      "supportsImageInput": false,
+      "supportsLora": false,
+      "supportsTools": true,
+      "teftDetails": null,
+      "trainingContextLength": 131072,
+      "useHfApplyChatTemplate": false,
+      "worldSize": 1
+    },
+    "display_name": "DeepSeek-V4-Flash",
+    "is_flux": false,
+    "listing_status": "ready",
+    "model": "deepseek-v4-flash",
+    "model_name": "accounts/fireworks/models/deepseek-v4-flash",
+    "offering_name": "accounts/fireworks/models/deepseek-v4-flash",
+    "pricing": {
+      "cached_input": "0.028",
+      "description": "Pricing Per 1M Tokens (input/cached input/output): $0.14 / $0.028 / $0.28",
+      "input": "0.14",
+      "output": "0.28",
+      "reference": "https://fireworks.ai/models/fireworks/deepseek-v4-flash",
+      "type": "one_million_tokens"
+    },
+    "service_type": "llm",
+    "status": "ready"
+  }
+}

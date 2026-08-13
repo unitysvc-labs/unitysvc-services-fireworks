@@ -1,0 +1,60 @@
+{
+  "parameters": {
+    "capabilities": [
+      "llm",
+      "text-generation",
+      "tools",
+      "vision",
+      "image-text-to-text"
+    ],
+    "description": "Qwen 3.7 Plus is Alibaba's latest flagship closed model, available exclusively through Fireworks AI outside of Alibaba's own infrastructure. For dedicated instances or fine-tuning, please contact the Fireworks AI team.",
+    "details": {
+      "calibrated": false,
+      "checkpointFormat": "CHECKPOINT_FORMAT_UNSPECIFIED",
+      "cluster": "",
+      "context_length": 262144,
+      "defaultDraftModel": "",
+      "defaultDraftTokenCount": 0,
+      "defaultPrecision": "PRECISION_UNSPECIFIED",
+      "defaultSamplingParams": {},
+      "deprecationDate": null,
+      "fineTuningJob": "",
+      "githubUrl": "",
+      "huggingFaceUrl": "https://huggingface.co/Qwen/",
+      "importedFrom": "",
+      "kind": "CUSTOM_MODEL",
+      "metadata_sources": {
+        "context_length": "litellm"
+      },
+      "modelType": "",
+      "moe": false,
+      "parameter_count": null,
+      "rlTunable": false,
+      "snapshotType": "FULL_SNAPSHOT",
+      "supportsFireattention": false,
+      "supportsImageInput": true,
+      "supportsLora": false,
+      "supportsTools": true,
+      "teftDetails": null,
+      "trainingContextLength": 0,
+      "useHfApplyChatTemplate": false,
+      "worldSize": 0
+    },
+    "display_name": "Qwen3.7 Plus",
+    "is_flux": false,
+    "listing_status": "ready",
+    "model": "qwen3p7-plus",
+    "model_name": "accounts/fireworks/models/qwen3p7-plus",
+    "offering_name": "accounts/fireworks/models/qwen3p7-plus",
+    "pricing": {
+      "cached_input": "0.08",
+      "description": "Pricing Per 1M Tokens (input/cached input/output): $0.40 / $0.08 / $1.60",
+      "input": "0.40",
+      "output": "1.60",
+      "reference": "https://fireworks.ai/models/fireworks/qwen3p7-plus",
+      "type": "one_million_tokens"
+    },
+    "service_type": "llm",
+    "status": "ready"
+  }
+}
