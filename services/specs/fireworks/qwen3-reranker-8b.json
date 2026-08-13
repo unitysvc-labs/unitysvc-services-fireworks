@@ -1,0 +1,52 @@
+{
+  "parameters": {
+    "capabilities": [
+      "llm",
+      "text-generation"
+    ],
+    "description": "significant advancements in multiple text embedding and ranking tasks, including text retrieval, code retrieval, text classification, text clustering, and bitext mining",
+    "details": {
+      "calibrated": false,
+      "checkpointFormat": "HUGGINGFACE",
+      "cluster": "",
+      "context_length": 40960,
+      "defaultDraftModel": "",
+      "defaultDraftTokenCount": 0,
+      "defaultPrecision": "BF16",
+      "defaultSamplingParams": {},
+      "deprecationDate": null,
+      "fineTuningJob": "",
+      "githubUrl": "",
+      "huggingFaceUrl": "",
+      "importedFrom": "",
+      "kind": "EMBEDDING_MODEL",
+      "modelType": "qwen3",
+      "moe": false,
+      "parameter_count": 8188548096,
+      "rlTunable": false,
+      "snapshotType": "FULL_SNAPSHOT",
+      "supportsFireattention": true,
+      "supportsImageInput": false,
+      "supportsLora": false,
+      "supportsTools": false,
+      "teftDetails": null,
+      "trainingContextLength": 131072,
+      "useHfApplyChatTemplate": false,
+      "worldSize": 1
+    },
+    "display_name": "Qwen3 Reranker 8B",
+    "is_flux": false,
+    "listing_status": "ready",
+    "model": "qwen3-reranker-8b",
+    "model_name": "accounts/fireworks/models/qwen3-reranker-8b",
+    "offering_name": "accounts/fireworks/models/qwen3-reranker-8b",
+    "pricing": {
+      "description": "Pricing Per 1M Tokens: $0.20",
+      "price": "0.20",
+      "reference": "https://fireworks.ai/models/fireworks/qwen3-reranker-8b",
+      "type": "one_million_tokens"
+    },
+    "service_type": "llm",
+    "status": "ready"
+  }
+}

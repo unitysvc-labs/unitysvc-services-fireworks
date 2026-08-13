@@ -1,0 +1,57 @@
+{
+  "parameters": {
+    "capabilities": [
+      "llm",
+      "text-generation",
+      "tools",
+      "vision",
+      "image-text-to-text"
+    ],
+    "description": "Kimi K3 is Kimi\u2019s most capable flagship model to date, with 2.8 trillion parameters. It is built on Kimi Delta Attention (KDA), a hybrid linear attention mechanism, and Attention Residuals, with native visual understanding and a 1M-token context window. It is the world\u2019s first open-source model in the 3-trillion-parameter class, designed for frontier intelligence scenarios including long-horizon coding, knowledge work, and reasoning.",
+    "details": {
+      "calibrated": false,
+      "checkpointFormat": "HUGGINGFACE",
+      "cluster": "",
+      "context_length": 1048576,
+      "defaultDraftModel": "",
+      "defaultDraftTokenCount": 0,
+      "defaultPrecision": "PRECISION_UNSPECIFIED",
+      "defaultSamplingParams": {},
+      "deprecationDate": null,
+      "fineTuningJob": "",
+      "githubUrl": "",
+      "huggingFaceUrl": "https://huggingface.co/moonshotai/Kimi-K3",
+      "importedFrom": "",
+      "kind": "HF_BASE_MODEL",
+      "modelType": "kimi_k3",
+      "moe": true,
+      "parameter_count": 2812400605312,
+      "rlTunable": false,
+      "snapshotType": "FULL_SNAPSHOT",
+      "supportsFireattention": true,
+      "supportsImageInput": true,
+      "supportsLora": true,
+      "supportsTools": true,
+      "teftDetails": null,
+      "trainingContextLength": 0,
+      "useHfApplyChatTemplate": true,
+      "worldSize": 1
+    },
+    "display_name": "Kimi K3",
+    "is_flux": false,
+    "listing_status": "ready",
+    "model": "kimi-k3",
+    "model_name": "accounts/fireworks/models/kimi-k3",
+    "offering_name": "accounts/fireworks/models/kimi-k3",
+    "pricing": {
+      "cached_input": "0.30",
+      "description": "Pricing Per 1M Tokens (input/cached input/output): $3.00 / $0.30 / $15.00",
+      "input": "3.00",
+      "output": "15.00",
+      "reference": "https://fireworks.ai/models/fireworks/kimi-k3",
+      "type": "one_million_tokens"
+    },
+    "service_type": "llm",
+    "status": "ready"
+  }
+}

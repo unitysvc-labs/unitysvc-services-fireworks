@@ -34,7 +34,6 @@
       "supportsTools": true,
       "teftDetails": null,
       "trainingContextLength": 65536,
-      "tunable": true,
       "useHfApplyChatTemplate": true,
       "worldSize": 1
     },

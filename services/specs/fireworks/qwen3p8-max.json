@@ -1,0 +1,54 @@
+{
+  "parameters": {
+    "capabilities": [
+      "llm",
+      "text-generation"
+    ],
+    "description": "Qwen3.8-2.4T-A95B is Alibaba\u2019s most capable Qwen model to date, a 2.4T-parameter sparse MoE with ~95B active parameters. It is built for autonomous, long-horizon work:\u00a0 multi-day coding runs, research-paper reproduction and self-improvement.",
+    "details": {
+      "calibrated": false,
+      "checkpointFormat": "HUGGINGFACE",
+      "cluster": "",
+      "context_length": 262144,
+      "defaultDraftModel": "",
+      "defaultDraftTokenCount": 0,
+      "defaultPrecision": "FP8",
+      "defaultSamplingParams": {},
+      "deprecationDate": null,
+      "fineTuningJob": "",
+      "githubUrl": "",
+      "huggingFaceUrl": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
+      "importedFrom": "",
+      "kind": "HF_BASE_MODEL",
+      "modelType": "qwen3_5_moe_text",
+      "moe": true,
+      "parameter_count": 2419804697984,
+      "rlTunable": false,
+      "snapshotType": "FULL_SNAPSHOT",
+      "supportsFireattention": true,
+      "supportsImageInput": false,
+      "supportsLora": false,
+      "supportsTools": false,
+      "teftDetails": null,
+      "trainingContextLength": 65536,
+      "useHfApplyChatTemplate": false,
+      "worldSize": 1
+    },
+    "display_name": "Qwen3.8-2.4T-A95B",
+    "is_flux": false,
+    "listing_status": "ready",
+    "model": "qwen3p8-max",
+    "model_name": "accounts/fireworks/models/qwen3p8-max",
+    "offering_name": "accounts/fireworks/models/qwen3p8-max",
+    "pricing": {
+      "cached_input": "0.25",
+      "description": "Pricing Per 1M Tokens (input/cached input/output): $2.00 / $0.25 / $6.00",
+      "input": "2.00",
+      "output": "6.00",
+      "reference": "https://fireworks.ai/models/fireworks/qwen3p8-max",
+      "type": "one_million_tokens"
+    },
+    "service_type": "llm",
+    "status": "ready"
+  }
+}

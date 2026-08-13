@@ -1,0 +1,55 @@
+{
+  "parameters": {
+    "capabilities": [
+      "llm",
+      "text-generation",
+      "tools"
+    ],
+    "description": "MiniMax-M3 is a native multimodal model with 1M context running ~428B parameters and ~23B activated parameters. It brings native multimodality. enabling deeper semantic fusion across text, image, and video. M3 also introduces MiniMax Sparse Attention (MSA) to improve long context efficiency, achieving frontier-level performance across long-horizon agentic benchmarks, excelling in both coding and cowork.",
+    "details": {
+      "calibrated": false,
+      "checkpointFormat": "HUGGINGFACE",
+      "cluster": "",
+      "context_length": 512000,
+      "defaultDraftModel": "",
+      "defaultDraftTokenCount": 0,
+      "defaultPrecision": "PRECISION_UNSPECIFIED",
+      "defaultSamplingParams": {},
+      "deprecationDate": null,
+      "fineTuningJob": "",
+      "githubUrl": "",
+      "huggingFaceUrl": "https://huggingface.co/MiniMaxAI/MiniMax-M3",
+      "importedFrom": "",
+      "kind": "HF_BASE_MODEL",
+      "modelType": "minimax_m3_vl",
+      "moe": true,
+      "parameter_count": 428000000000,
+      "rlTunable": false,
+      "snapshotType": "FULL_SNAPSHOT",
+      "supportsFireattention": true,
+      "supportsImageInput": false,
+      "supportsLora": false,
+      "supportsTools": true,
+      "teftDetails": null,
+      "trainingContextLength": 65536,
+      "useHfApplyChatTemplate": false,
+      "worldSize": 1
+    },
+    "display_name": "Minimax M3",
+    "is_flux": false,
+    "listing_status": "ready",
+    "model": "minimax-m3",
+    "model_name": "accounts/fireworks/models/minimax-m3",
+    "offering_name": "accounts/fireworks/models/minimax-m3",
+    "pricing": {
+      "cached_input": "0.059",
+      "description": "Pricing Per 1M Tokens (input/cached input/output): $0.30 / $0.059 / $1.20",
+      "input": "0.30",
+      "output": "1.20",
+      "reference": "https://fireworks.ai/models/fireworks/minimax-m3",
+      "type": "one_million_tokens"
+    },
+    "service_type": "llm",
+    "status": "ready"
+  }
+}

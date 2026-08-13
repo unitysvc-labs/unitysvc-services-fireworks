@@ -1,0 +1,51 @@
+{
+  "parameters": {
+    "capabilities": [
+      "embedding"
+    ],
+    "description": "The Qwen3 Embedding 8B model is the latest proprietary model of the Qwen family, specifically designed for text embedding tasks. This model inherits the exceptional multilingual capabilities, long-text understanding, and reasoning skills building upon the dense foundational models of the Qwen3 series. The model represents significant advancements in multiple text embedding tasks including text retrieval, code retrieval, text classification, text clustering.",
+    "details": {
+      "calibrated": false,
+      "checkpointFormat": "HUGGINGFACE",
+      "cluster": "",
+      "context_length": 40960,
+      "defaultDraftModel": "",
+      "defaultDraftTokenCount": 0,
+      "defaultPrecision": "BF16",
+      "defaultSamplingParams": {},
+      "deprecationDate": null,
+      "fineTuningJob": "",
+      "githubUrl": "",
+      "huggingFaceUrl": "https://huggingface.co/Qwen/Qwen3-Embedding-8B",
+      "importedFrom": "",
+      "kind": "EMBEDDING_MODEL",
+      "modelType": "qwen3",
+      "moe": false,
+      "parameter_count": 8188515328,
+      "rlTunable": false,
+      "snapshotType": "FULL_SNAPSHOT",
+      "supportsFireattention": true,
+      "supportsImageInput": false,
+      "supportsLora": false,
+      "supportsTools": false,
+      "teftDetails": null,
+      "trainingContextLength": 131072,
+      "useHfApplyChatTemplate": false,
+      "worldSize": 1
+    },
+    "display_name": "Qwen3 Embedding 8B",
+    "is_flux": false,
+    "listing_status": "ready",
+    "model": "qwen3-embedding-8b",
+    "model_name": "accounts/fireworks/models/qwen3-embedding-8b",
+    "offering_name": "accounts/fireworks/models/qwen3-embedding-8b",
+    "pricing": {
+      "description": "Pricing Per 1M Tokens: $0.10",
+      "price": "0.10",
+      "reference": "https://fireworks.ai/models/fireworks/qwen3-embedding-8b",
+      "type": "one_million_tokens"
+    },
+    "service_type": "embedding",
+    "status": "ready"
+  }
+}

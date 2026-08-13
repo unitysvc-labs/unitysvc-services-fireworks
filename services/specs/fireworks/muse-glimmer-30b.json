@@ -1,0 +1,57 @@
+{
+  "parameters": {
+    "capabilities": [
+      "llm",
+      "text-generation",
+      "tools",
+      "vision",
+      "image-text-to-text"
+    ],
+    "description": "Muse Glimmer 30B is a dense causal language model distilled from Muse Spark and purpose-built for autonomous agentic work. It combines multi-step reasoning, reliable schema-based tool calling, and failure recovery with multimodal understanding via a ~1.8B ViT-G/14 perception encoder, supporting interleaved text and image input, a 131K+ context window, and selectable reasoning strength (low through xhigh). Trained on data from over 100 languages, Muse Glimmer performs strongly for its size class on agentic benchmarks including MCP Atlas, DeepSearch QA, Gaia2 and SWE-Bench Pro, and is released under Apache 2.0.",
+    "details": {
+      "calibrated": false,
+      "checkpointFormat": "HUGGINGFACE",
+      "cluster": "",
+      "context_length": 131072,
+      "defaultDraftModel": "",
+      "defaultDraftTokenCount": 0,
+      "defaultPrecision": "PRECISION_UNSPECIFIED",
+      "defaultSamplingParams": {},
+      "deprecationDate": null,
+      "fineTuningJob": "",
+      "githubUrl": "",
+      "huggingFaceUrl": "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+      "importedFrom": "",
+      "kind": "HF_BASE_MODEL",
+      "modelType": "muse_glimmer",
+      "moe": false,
+      "parameter_count": 29776626688,
+      "rlTunable": false,
+      "snapshotType": "FULL_SNAPSHOT",
+      "supportsFireattention": true,
+      "supportsImageInput": true,
+      "supportsLora": false,
+      "supportsTools": true,
+      "teftDetails": null,
+      "trainingContextLength": 131072,
+      "useHfApplyChatTemplate": false,
+      "worldSize": 1
+    },
+    "display_name": "Muse Glimmer 30B",
+    "is_flux": false,
+    "listing_status": "ready",
+    "model": "muse-glimmer-30b",
+    "model_name": "accounts/fireworks/models/muse-glimmer-30b",
+    "offering_name": "accounts/fireworks/models/muse-glimmer-30b",
+    "pricing": {
+      "cached_input": "0.04",
+      "description": "Pricing Per 1M Tokens (input/cached input/output): $0.35 / $0.04 / $1.50",
+      "input": "0.35",
+      "output": "1.50",
+      "reference": "https://fireworks.ai/models/fireworks/muse-glimmer-30b",
+      "type": "one_million_tokens"
+    },
+    "service_type": "llm",
+    "status": "ready"
+  }
+}

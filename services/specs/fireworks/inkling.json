@@ -1,0 +1,57 @@
+{
+  "parameters": {
+    "capabilities": [
+      "llm",
+      "text-generation",
+      "tools",
+      "vision",
+      "image-text-to-text"
+    ],
+    "description": "Inkling - Thinking Machines multimodal (audio+vision) MoE. Inkling is the first open-weights model released by Thinking Machines Lab. It is a 975B Mixture-of-Experts with 41B active parameters, trained natively across text, image, and audio. Built as a broad generalist foundation for fine-tuning, with controllable thinking effort.",
+    "details": {
+      "calibrated": false,
+      "checkpointFormat": "HUGGINGFACE",
+      "cluster": "",
+      "context_length": 1048576,
+      "defaultDraftModel": "",
+      "defaultDraftTokenCount": 0,
+      "defaultPrecision": "PRECISION_UNSPECIFIED",
+      "defaultSamplingParams": {},
+      "deprecationDate": null,
+      "fineTuningJob": "",
+      "githubUrl": "",
+      "huggingFaceUrl": "https://huggingface.co/thinkingmachines/Inkling",
+      "importedFrom": "",
+      "kind": "HF_BASE_MODEL",
+      "modelType": "inkling_mm_model",
+      "moe": true,
+      "parameter_count": 975000000000,
+      "rlTunable": false,
+      "snapshotType": "FULL_SNAPSHOT",
+      "supportsFireattention": true,
+      "supportsImageInput": true,
+      "supportsLora": false,
+      "supportsTools": true,
+      "teftDetails": null,
+      "trainingContextLength": 65536,
+      "useHfApplyChatTemplate": false,
+      "worldSize": 1
+    },
+    "display_name": "Inkling",
+    "is_flux": false,
+    "listing_status": "ready",
+    "model": "inkling",
+    "model_name": "accounts/fireworks/models/inkling",
+    "offering_name": "accounts/fireworks/models/inkling",
+    "pricing": {
+      "cached_input": "0.17",
+      "description": "Pricing Per 1M Tokens (input/cached input/output): $1.00 / $0.17 / $4.05",
+      "input": "1.00",
+      "output": "4.05",
+      "reference": "https://fireworks.ai/models/fireworks/inkling",
+      "type": "one_million_tokens"
+    },
+    "service_type": "llm",
+    "status": "ready"
+  }
+}
