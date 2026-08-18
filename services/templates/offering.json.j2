@@ -3,8 +3,8 @@
 {%- if display_name %}
   "display_name": "{{ display_name }}",
 {%- endif %}
-{#- 3-paragraph marketplace description (validator: P1 is the collapsed teaser
-    and must be < 200 chars; >=2 paragraphs total). Teaser + what-it-is + how-to.
+{#- Marketplace copy: `summary` is the collapsed teaser (<= 200 chars, required
+    since unitysvc#1838); `description` is the long-form what-it-is + how-to.
     The dual-dialect / OpenAI-compatible wording is chat-only (service_type
     'llm'); image models keep a plain how-to. #}
 {%- set _label = 'language model' if service_type == 'llm' else ('image model' if service_type == 'image_generation' else service_type ~ ' model') %}
@@ -24,7 +24,8 @@
 {%- set _serve = ' It is reached through the UnitySVC gateway, which relays your requests to the Fireworks AI API and meters usage at the listed rate.' %}
 {%- set _howto = 'Reach it through the UnitySVC gateway either on the managed channel (the platform supplies the Fireworks AI key and resells usage at the listed rate — nothing to configure) or the byok channel (bring your own Fireworks AI key and route free). See the code examples for setup.' %}
 {%- endif %}
-{%- set _description = _teaser ~ '\n\n' ~ _detail ~ _serve ~ '\n\n' ~ _howto ~ (('\n\n' ~ _interop) if _interop else '') %}
+{%- set _description = _detail ~ _serve ~ '\n\n' ~ _howto ~ (('\n\n' ~ _interop) if _interop else '') %}
+  "summary": {{ _teaser[:200] | tojson }},
   "description": {{ _description | tojson }},
   "service_type": "{{ service_type }}",
   "capabilities": {{ capabilities | default([service_type]) | tojson }},
