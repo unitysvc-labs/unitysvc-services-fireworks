@@ -38,6 +38,13 @@
     "display_name": "NVIDIA Nemotron 3 Ultra NVFP4",
     "is_flux": false,
     "listing_status": "ready",
+    "managed_pricing": {
+      "cached_input": "0.137",
+      "description": "$0.69/$0.137/$2.76 / 1M in/cached/out tokens",
+      "input": "0.69",
+      "output": "2.76",
+      "type": "one_million_tokens"
+    },
     "model": "nemotron-3-ultra-nvfp4",
     "model_name": "accounts/fireworks/models/nemotron-3-ultra-nvfp4",
     "offering_name": "accounts/fireworks/models/nemotron-3-ultra-nvfp4",

@@ -40,6 +40,13 @@
     "display_name": "Muse Glimmer 30B",
     "is_flux": false,
     "listing_status": "ready",
+    "managed_pricing": {
+      "cached_input": "0.046",
+      "description": "$0.403/$0.046/$1.725 / 1M in/cached/out tokens",
+      "input": "0.403",
+      "output": "1.725",
+      "type": "one_million_tokens"
+    },
     "model": "muse-glimmer-30b",
     "model_name": "accounts/fireworks/models/muse-glimmer-30b",
     "offering_name": "accounts/fireworks/models/muse-glimmer-30b",

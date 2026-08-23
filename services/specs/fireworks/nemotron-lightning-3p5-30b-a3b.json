@@ -38,6 +38,13 @@
     "display_name": "Nemotron Lightning 3.5 30B A3B",
     "is_flux": false,
     "listing_status": "ready",
+    "managed_pricing": {
+      "cached_input": "0.012",
+      "description": "$0.058/$0.012/$0.23 / 1M in/cached/out tokens",
+      "input": "0.058",
+      "output": "0.23",
+      "type": "one_million_tokens"
+    },
     "model": "nemotron-lightning-3p5-30b-a3b",
     "model_name": "accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b",
     "offering_name": "accounts/fireworks/models/nemotron-lightning-3p5-30b-a3b",

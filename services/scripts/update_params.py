@@ -9,6 +9,7 @@ Usage: python scripts/update_services_template.py
 """
 
 import os
+from decimal import Decimal, ROUND_HALF_UP
 import re
 import sys
 import time
@@ -39,6 +40,63 @@ def _as_positive_int(value) -> int | None:
     except (TypeError, ValueError):
         return None
     return n if n > 0 else None
+
+
+
+# What the platform adds on top of the upstream rate for the MANAGED channel,
+# where UnitySVC's key pays Fireworks and the customer pays UnitySVC. The byok
+# channel is unaffected: the customer's own key pays Fireworks directly, so
+# there is nothing to mark up and nothing to pay out.
+#
+# The seller's own list price, applied here at populate time rather than by the
+# platform, so the stored rate is exactly the rate billed.
+PLATFORM_MARKUP = Decimal("1.15")
+
+# 3dp keeps the effective markup within ~15.0-15.7% across the rate range here;
+# 2dp would swing a cheap model as wide as 25%.
+PRICE_PLACES = Decimal("0.001")
+
+# Every money key a scraped pricing dict may carry. `price` covers the unified
+# and per-image shapes; the rest are the token shapes.
+_RATE_KEYS = ("input", "cached_input", "output", "price")
+
+
+def _mk(value: str) -> str:
+    """One upstream rate, marked up and rounded, trailing zeros dropped."""
+    marked = (Decimal(str(value)) * PLATFORM_MARKUP).quantize(
+        PRICE_PLACES, rounding=ROUND_HALF_UP
+    )
+    return format(marked.normalize(), "f")
+
+
+def _marked_up(pricing: dict | None) -> dict | None:
+    """The customer-facing twin of a scraped upstream pricing dict.
+
+    Marks up every rate key present and rewrites the description to the
+    marketplace grammar. `reference` is dropped: it points at Fireworks' own
+    pricing page, which quotes the upstream rate, and citing it beside a marked-
+    up number would be wrong.
+    """
+    if not pricing:
+        return None
+    out = {k: v for k, v in pricing.items() if k not in _RATE_KEYS + ("description", "reference")}
+    for k in _RATE_KEYS:
+        if pricing.get(k):
+            out[k] = _mk(pricing[k])
+    if out.get("input") and out.get("output"):
+        rates = "$" + out["input"] + "/$" + out["output"]
+        unit = "1M input/output tokens"
+        if out.get("cached_input"):
+            rates = "$" + out["input"] + "/$" + out["cached_input"] + "/$" + out["output"]
+            # "1M in/cached/out tokens" is 23 chars — under the parser's 24-char
+            # unit cap, where "1M input/cached input/output tokens" is not.
+            unit = "1M in/cached/out tokens"
+        out["description"] = rates + " / " + unit
+    elif out.get("price"):
+        out["description"] = "$" + out["price"] + (
+            " / image" if pricing.get("type") == "image" else " / 1M tokens"
+        )
+    return out
 
 
 class FireworksModelSource:
@@ -193,7 +251,14 @@ class FireworksModelSource:
 
                 # Listing fields
                 "listing_status": "ready" if model_data.get("state") == "READY" else "draft",
+                # UPSTREAM rates, exactly as scraped — this is what Fireworks
+                # charges and therefore what the platform owes the seller on the
+                # managed channel.
                 "pricing": pricing,
+                # The same rates plus the platform markup: what the CUSTOMER pays
+                # on the managed channel. Kept as a separate key so the scraped
+                # truth is never overwritten and the two can be compared.
+                "managed_pricing": _marked_up(pricing),
                 "is_flux": is_flux,
             }
 

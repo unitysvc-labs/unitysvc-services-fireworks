@@ -40,6 +40,13 @@
     "display_name": "Kimi K2.6",
     "is_flux": false,
     "listing_status": "ready",
+    "managed_pricing": {
+      "cached_input": "0.184",
+      "description": "$1.093/$0.184/$4.6 / 1M in/cached/out tokens",
+      "input": "1.093",
+      "output": "4.6",
+      "type": "one_million_tokens"
+    },
     "model": "kimi-k2p6",
     "model_name": "accounts/fireworks/models/kimi-k2p6",
     "offering_name": "accounts/fireworks/models/kimi-k2p6",

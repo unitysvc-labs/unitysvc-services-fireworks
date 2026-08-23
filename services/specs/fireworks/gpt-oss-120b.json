@@ -38,6 +38,13 @@
     "display_name": "OpenAI gpt-oss-120b",
     "is_flux": false,
     "listing_status": "ready",
+    "managed_pricing": {
+      "cached_input": "0.016",
+      "description": "$0.173/$0.016/$0.69 / 1M in/cached/out tokens",
+      "input": "0.173",
+      "output": "0.69",
+      "type": "one_million_tokens"
+    },
     "model": "gpt-oss-120b",
     "model_name": "accounts/fireworks/models/gpt-oss-120b",
     "offering_name": "accounts/fireworks/models/gpt-oss-120b",

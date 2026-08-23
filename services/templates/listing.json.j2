@@ -42,15 +42,25 @@
       Composed here rather than written into the param file because
       scripts/update_params.py rebuilds `pricing` on the scheduled populate run
       (.github/workflows/populate-services.yml) and would drop a hand-edited
-      description. This catalog sets no `payout_price`. #}
-{%- set _byok_note = ' Free on the byok channel - bring your own Fireworks AI key and pay Fireworks AI directly.' %}
-{%- if pricing.input and pricing.output %}
-{%- set _rest = '$' ~ pricing.output ~ ' / 1M output tokens' ~ (', $' ~ pricing.cached_input ~ ' / 1M cached input tokens' if pricing.cached_input else '') ~ '.' %}
-{%- set _cell = '$' ~ pricing.input ~ ' / 1M input tokens | ' ~ _rest ~ _byok_note %}
-{%- set _managed = '$' ~ pricing.input ~ ' per 1M input tokens, $' ~ pricing.output ~ ' per 1M output tokens' ~ (', $' ~ pricing.cached_input ~ ' per 1M cached input tokens' if pricing.cached_input else '') %}
-{%- elif pricing.price %}
-{%- set _cell = '$' ~ pricing.price ~ ' / 1M tokens |' ~ _byok_note %}
-{%- set _managed = '$' ~ pricing.price ~ ' per 1M tokens' %}
+      description.
+
+      `managed_pricing` is `pricing` plus the platform markup — the customer-
+      facing rate. `pricing` itself stays upstream, and offering.json.j2 pays
+      that out on the managed channel. The cell spans BOTH channels, leading
+      with the range rather than picking one; rates join with "/" and NO
+      surrounding spaces so the group stays in the amount slot, since the
+      parser's separator needs whitespace on both sides and " / " before the
+      unit is then the only split point. #}
+{%- set _p = managed_pricing or pricing %}
+{%- set _byok_note = ' | Free on the byok channel - your own key pays Fireworks AI directly. The managed channel bills UnitySVC at the listed rate.' %}
+{%- if _p.input and _p.output %}
+{%- set _rates = ('$' ~ _p.input ~ '/$' ~ _p.cached_input ~ '/$' ~ _p.output) if _p.cached_input else ('$' ~ _p.input ~ '/$' ~ _p.output) %}
+{%- set _unit = '1M in/cached/out tokens' if _p.cached_input else '1M input/output tokens' %}
+{%- set _cell = 'Free - ' ~ _rates ~ ' / ' ~ _unit ~ _byok_note %}
+{%- set _managed = _rates ~ ' / ' ~ _unit %}
+{%- elif _p.price %}
+{%- set _cell = 'Free - $' ~ _p.price ~ ' / 1M tokens' ~ _byok_note %}
+{%- set _managed = '$' ~ _p.price ~ ' / 1M tokens' %}
 {%- endif %}
   "list_price": {
     "type": "channel",
@@ -64,7 +74,7 @@
         "price": "0",
         "type": "constant"
       },
-      "managed": {{ dict(pricing, description=_managed) | tojson if _managed else pricing | tojson }}
+      "managed": {{ dict(_p, description=_managed) | tojson if _managed else pricing | tojson }}
     }
   },
 {%- endif %}

@@ -40,6 +40,13 @@
     "display_name": "Kimi K3",
     "is_flux": false,
     "listing_status": "ready",
+    "managed_pricing": {
+      "cached_input": "0.345",
+      "description": "$3.45/$0.345/$17.25 / 1M in/cached/out tokens",
+      "input": "3.45",
+      "output": "17.25",
+      "type": "one_million_tokens"
+    },
     "model": "kimi-k3",
     "model_name": "accounts/fireworks/models/kimi-k3",
     "offering_name": "accounts/fireworks/models/kimi-k3",

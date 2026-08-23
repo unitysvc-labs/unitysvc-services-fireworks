@@ -38,6 +38,13 @@
     "display_name": "DeepSeek-V4-Pro",
     "is_flux": false,
     "listing_status": "ready",
+    "managed_pricing": {
+      "cached_input": "0.167",
+      "description": "$2.001/$0.167/$4.002 / 1M in/cached/out tokens",
+      "input": "2.001",
+      "output": "4.002",
+      "type": "one_million_tokens"
+    },
     "model": "deepseek-v4-pro",
     "model_name": "accounts/fireworks/models/deepseek-v4-pro",
     "offering_name": "accounts/fireworks/models/deepseek-v4-pro",
