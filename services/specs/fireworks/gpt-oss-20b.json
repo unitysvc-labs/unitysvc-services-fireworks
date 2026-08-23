@@ -1,8 +1,7 @@
 {
   "parameters": {
     "capabilities": [
-      "llm",
-      "text-generation"
+      "chat"
     ],
     "description": "Welcome to the gpt-oss series, OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases. gpt-oss-20b is used for lower latency, and local or specialized use-cases.",
     "details": {

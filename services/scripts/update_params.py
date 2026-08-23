@@ -217,7 +217,7 @@ class FireworksModelSource:
                 self._apply_canonical_fallback(details, model_name)
 
             # Derive capabilities from service type and model details
-            capabilities = self._derive_capabilities(service_type, model_data)
+            capabilities = self._derive_capabilities(service_type, model_data, model_name)
 
             # Yield the template variables
             yield {
@@ -408,31 +408,37 @@ class FireworksModelSource:
 
         return "llm"
 
-    def _derive_capabilities(self, service_type: str, model_data: dict) -> list[str]:
-        """Derive capabilities from service type and model details.
+    #: ``service_type`` -> platform capability vocabulary
+    #: (unitysvc ``docs/capabilities.yml``).
+    _SERVICE_TYPE_CAPABILITY = {
+        "llm": "chat",
+        "image_generation": "image-generate",
+        "embedding": "embed",
+        "prerecorded_transcription": "speech-transcribe",
+    }
 
-        Uses HuggingFace-style capability names for consistency across providers.
+    def _derive_capabilities(self, service_type: str, model_data: dict,
+                             model_name: str = "") -> list[str]:
+        """The platform capability this offering provides.
+
+        One entry, from the platform vocabulary (unitysvc
+        ``docs/capabilities.yml``): a capability names what the caller GETS.
+
+        ``supportsTools`` / ``supportsImageInput`` are deliberately NOT
+        folded in.  They are attributes: they change what may appear in a
+        chat request, not what comes back.  Both a tool-using model and a
+        plain one answer with generated text, so both are ``chat``.  The
+        flags stay in ``details`` where Fireworks put them.
+
+        Rerankers are special-cased on the model name because neither
+        upstream signal identifies them: ``_determine_service_type`` keys on
+        "embed"/"embedding" and so files them as ``llm``, and Fireworks' own
+        ``kind`` reports ``EMBEDDING_MODEL``.  A reranker returns reordered
+        documents, not a vector and not generated text.
         """
-        caps: list[str] = []
-
-        if service_type == "llm":
-            caps.append("llm")
-            caps.append("text-generation")
-        elif service_type == "image_generation":
-            caps.append("text-to-image")
-        elif service_type == "embedding":
-            caps.append("embedding")
-        elif service_type == "prerecorded_transcription":
-            caps.append("automatic-speech-recognition")
-
-        # Add capabilities from model details
-        if model_data.get("supportsTools"):
-            caps.append("tools")
-        if model_data.get("supportsImageInput"):
-            caps.append("vision")
-            caps.append("image-text-to-text")
-
-        return caps
+        if "rerank" in model_name.lower():
+            return ["rerank"]
+        return [self._SERVICE_TYPE_CAPABILITY.get(service_type, "chat")]
 
     def _extract_details(self, model_data: dict) -> dict:
         """Extract details dict from API response.
