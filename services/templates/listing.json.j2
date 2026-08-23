@@ -8,17 +8,63 @@
 {%- if pricing %}
   {#- Channel-keyed price: byok is free (the customer's own key pays Fireworks AI
       directly); managed resells Fireworks AI usage at the per-model rate carried
-      in the param `pricing`. Channel keys MUST match the offering channels. #}
+      in the param `pricing`. Channel keys MUST match the offering channels.
+
+      Price-cell copy follows the marketplace description grammar
+      (unitysvc/unitysvc#1886, PR #1887):
+
+          <amount> [ ("/"|"per") <unit> ] [ "~"[intent] <badge> ]* [ "|" <note> ]
+
+      The description that matters is the one on the CHANNEL price, not the
+      sub-channel ones. CatalogServiceRow hands the whole `list_price` to
+      PriceTag, and PriceTag is the only component that parses a description;
+      the sub-channel prices reach ChannelDisplay's PriceBadge, which prints
+      whatever it is given verbatim. A channel-keyed price carrying neither a
+      top-level `description` nor a top-level `price` falls through PriceTag's
+      structured branch to `isFree`, so every metered model in this catalog
+      renders a green "Free" today.
+
+      Most models here price three ways (input / cached input / output), which
+      the grammar refuses to split on purpose: "Pricing Per 1M Tokens (input/
+      cached input/output): $0.14 / $0.028 / $0.28" fails the unit test and
+      falls through as ONE long unstyled amount. So the cell leads with the
+      input rate, names "1M input tokens" as its unit so the figure can't be
+      misread as covering all three, and puts the rest in the `|` note, which
+      is terminal and taken verbatim — safe for "/" and "per". Two models carry
+      a single flat `price` instead and take the simpler branch.
+
+      No badge, deliberately. The row already carries a byok access-method chip
+      (AccessMethodBadges renders one per channel type), so a "BYOK" pill here
+      would duplicate an affordance the row already has — and the amount beside
+      it is the *managed* rate, so a bare `~` badge, which is the green "this
+      is a saving" register, would misdescribe the number it sits next to.
+
+      Composed here rather than written into the param file because
+      scripts/update_params.py rebuilds `pricing` on the scheduled populate run
+      (.github/workflows/populate-services.yml) and would drop a hand-edited
+      description. This catalog sets no `payout_price`. #}
+{%- set _byok_note = ' Free on the byok channel - bring your own Fireworks AI key and pay Fireworks AI directly.' %}
+{%- if pricing.input and pricing.output %}
+{%- set _rest = '$' ~ pricing.output ~ ' / 1M output tokens' ~ (', $' ~ pricing.cached_input ~ ' / 1M cached input tokens' if pricing.cached_input else '') ~ '.' %}
+{%- set _cell = '$' ~ pricing.input ~ ' / 1M input tokens | ' ~ _rest ~ _byok_note %}
+{%- set _managed = '$' ~ pricing.input ~ ' per 1M input tokens, $' ~ pricing.output ~ ' per 1M output tokens' ~ (', $' ~ pricing.cached_input ~ ' per 1M cached input tokens' if pricing.cached_input else '') %}
+{%- elif pricing.price %}
+{%- set _cell = '$' ~ pricing.price ~ ' / 1M tokens |' ~ _byok_note %}
+{%- set _managed = '$' ~ pricing.price ~ ' per 1M tokens' %}
+{%- endif %}
   "list_price": {
     "type": "channel",
     "default": "managed",
+{%- if _cell %}
+    "description": {{ _cell | tojson }},
+{%- endif %}
     "channels": {
       "byok": {
         "description": "Free — bring your own Fireworks AI API key; you pay Fireworks AI directly for tokens",
         "price": "0",
         "type": "constant"
       },
-      "managed": {{ pricing | tojson }}
+      "managed": {{ dict(pricing, description=_managed) | tojson if _managed else pricing | tojson }}
     }
   },
 {%- endif %}
