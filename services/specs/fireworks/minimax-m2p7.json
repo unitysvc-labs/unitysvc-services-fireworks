@@ -1,9 +1,7 @@
 {
   "parameters": {
     "capabilities": [
-      "llm",
-      "text-generation",
-      "tools"
+      "chat"
     ],
     "description": "Mixture-of-Experts language model. M2.7 is capable of building complex agent harnesses and completing highly elaborate productivity tasks, leveraging Agent Teams, complex Skills, and dynamic tool search.",
     "details": {

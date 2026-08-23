@@ -1,8 +1,7 @@
 {
   "parameters": {
     "capabilities": [
-      "llm",
-      "text-generation"
+      "rerank"
     ],
     "description": "significant advancements in multiple text embedding and ranking tasks, including text retrieval, code retrieval, text classification, text clustering, and bitext mining",
     "details": {

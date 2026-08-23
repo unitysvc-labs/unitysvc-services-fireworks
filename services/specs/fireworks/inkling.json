@@ -1,11 +1,7 @@
 {
   "parameters": {
     "capabilities": [
-      "llm",
-      "text-generation",
-      "tools",
-      "vision",
-      "image-text-to-text"
+      "chat"
     ],
     "description": "Inkling - Thinking Machines multimodal (audio+vision) MoE. Inkling is the first open-weights model released by Thinking Machines Lab. It is a 975B Mixture-of-Experts with 41B active parameters, trained natively across text, image, and audio. Built as a broad generalist foundation for fine-tuning, with controllable thinking effort.",
     "details": {

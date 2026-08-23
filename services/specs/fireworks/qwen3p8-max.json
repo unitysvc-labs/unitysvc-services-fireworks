@@ -1,8 +1,7 @@
 {
   "parameters": {
     "capabilities": [
-      "llm",
-      "text-generation"
+      "chat"
     ],
     "description": "Qwen3.8-2.4T-A95B is Alibaba’s most capable Qwen model to date, a 2.4T-parameter sparse MoE with ~95B active parameters. It is built for autonomous, long-horizon work:  multi-day coding runs, research-paper reproduction and self-improvement.",
     "details": {

@@ -1,11 +1,7 @@
 {
   "parameters": {
     "capabilities": [
-      "llm",
-      "text-generation",
-      "tools",
-      "vision",
-      "image-text-to-text"
+      "chat"
     ],
     "description": "Muse Glimmer 30B is a dense causal language model distilled from Muse Spark and purpose-built for autonomous agentic work. It combines multi-step reasoning, reliable schema-based tool calling, and failure recovery with multimodal understanding via a ~1.8B ViT-G/14 perception encoder, supporting interleaved text and image input, a 131K+ context window, and selectable reasoning strength (low through xhigh). Trained on data from over 100 languages, Muse Glimmer performs strongly for its size class on agentic benchmarks including MCP Atlas, DeepSearch QA, Gaia2 and SWE-Bench Pro, and is released under Apache 2.0.",
     "details": {

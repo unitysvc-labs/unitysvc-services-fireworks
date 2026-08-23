@@ -132,6 +132,28 @@
       "meta": {"sleep_after_test": 5},
       "mime_type": "bash"
     }
+{%- elif service_type == "embedding" %}
+{#- Embedding models serve /v1/embeddings; the chat presets below POST a
+    chat-completion body that endpoint rejects. Without this branch an `embed`
+    service was shipping chat examples and a chat connectivity test — and the
+    connectivity test is the document the activation gate keys on
+    (`check_service_tests_passed`), so the declared capability was never
+    actually probed. -#}
+    "How to use this model": {
+      "$doc_preset": "llm_description"
+    },
+    "Python code example": {
+      "$doc_preset": {"name": "llm_code_example_embed_requests", "meta": {"sleep_after_test": 5}}
+    },
+    "JavaScript code example": {
+      "$doc_preset": {"name": "llm_code_example_embed_javascript", "meta": {"sleep_after_test": 5}}
+    },
+    "cURL code example": {
+      "$doc_preset": {"name": "llm_code_example_embed_shell", "meta": {"sleep_after_test": 5}}
+    },
+    "connectivity test": {
+      "$doc_preset": {"name": "llm_connectivity_embed", "meta": {"sleep_after_test": 5}}
+    }
 {%- else %}
     "How to use this model": {
       "$doc_preset": "llm_description"

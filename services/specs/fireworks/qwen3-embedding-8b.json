@@ -1,7 +1,7 @@
 {
   "parameters": {
     "capabilities": [
-      "embedding"
+      "embed"
     ],
     "description": "The Qwen3 Embedding 8B model is the latest proprietary model of the Qwen family, specifically designed for text embedding tasks. This model inherits the exceptional multilingual capabilities, long-text understanding, and reasoning skills building upon the dense foundational models of the Qwen3 series. The model represents significant advancements in multiple text embedding tasks including text retrieval, code retrieval, text classification, text clustering.",
     "details": {

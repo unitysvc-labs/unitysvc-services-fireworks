@@ -1,11 +1,7 @@
 {
   "parameters": {
     "capabilities": [
-      "llm",
-      "text-generation",
-      "tools",
-      "vision",
-      "image-text-to-text"
+      "chat"
     ],
     "description": "Qwen 3.7 Plus is Alibaba's latest flagship closed model, available exclusively through Fireworks AI outside of Alibaba's own infrastructure. For dedicated instances or fine-tuning, please contact the Fireworks AI team.",
     "details": {

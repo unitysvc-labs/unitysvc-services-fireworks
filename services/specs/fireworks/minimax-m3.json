@@ -1,9 +1,7 @@
 {
   "parameters": {
     "capabilities": [
-      "llm",
-      "text-generation",
-      "tools"
+      "chat"
     ],
     "description": "MiniMax-M3 is a native multimodal model with 1M context running ~428B parameters and ~23B activated parameters. It brings native multimodality. enabling deeper semantic fusion across text, image, and video. M3 also introduces MiniMax Sparse Attention (MSA) to improve long context efficiency, achieving frontier-level performance across long-horizon agentic benchmarks, excelling in both coding and cowork.",
     "details": {

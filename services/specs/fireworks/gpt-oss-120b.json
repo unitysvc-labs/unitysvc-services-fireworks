@@ -1,9 +1,7 @@
 {
   "parameters": {
     "capabilities": [
-      "llm",
-      "text-generation",
-      "tools"
+      "chat"
     ],
     "description": "Welcome to the gpt-oss series, OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases. gpt-oss-120b is used for production, general purpose, high reasoning use-cases that fits into a single H100 GPU.",
     "details": {

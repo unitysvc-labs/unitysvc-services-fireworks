@@ -1,9 +1,7 @@
 {
   "parameters": {
     "capabilities": [
-      "llm",
-      "text-generation",
-      "tools"
+      "chat"
     ],
     "description": "GLM-5.2 introduces a robust 1M-token context and advanced, multi-effort coding capabilities to significantly enhance performance on long-horizon tasks. Its new IndexShare architecture and improved MTP layer simultaneously boost efficiency by reducing per-token FLOPs and increasing speculative decoding lengths.",
     "details": {
