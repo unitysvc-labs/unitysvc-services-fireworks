@@ -36,6 +36,11 @@
     "display_name": "Qwen3 Embedding 8B",
     "is_flux": false,
     "listing_status": "ready",
+    "managed_pricing": {
+      "description": "$0.115 / 1M tokens",
+      "price": "0.115",
+      "type": "one_million_tokens"
+    },
     "model": "qwen3-embedding-8b",
     "model_name": "accounts/fireworks/models/qwen3-embedding-8b",
     "offering_name": "accounts/fireworks/models/qwen3-embedding-8b",

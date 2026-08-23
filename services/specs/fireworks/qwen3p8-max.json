@@ -37,6 +37,13 @@
     "display_name": "Qwen3.8-2.4T-A95B",
     "is_flux": false,
     "listing_status": "ready",
+    "managed_pricing": {
+      "cached_input": "0.288",
+      "description": "$2.3/$0.288/$6.9 / 1M in/cached/out tokens",
+      "input": "2.3",
+      "output": "6.9",
+      "type": "one_million_tokens"
+    },
     "model": "qwen3p8-max",
     "model_name": "accounts/fireworks/models/qwen3p8-max",
     "offering_name": "accounts/fireworks/models/qwen3p8-max",

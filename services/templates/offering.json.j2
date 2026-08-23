@@ -47,10 +47,27 @@
 {%- if details %}{%- set _ = _details.update(details) %}{%- endif %}
 {%- if service_type == 'llm' %}{%- set _ = _details.update({"input_formats": ["openai", "anthropic"], "output_formats": ["openai_response", "anthropic_response"]}) %}{%- endif %}
   "details": {{ _details | tojson }},
+{#- Channel-keyed, because the channels owe the seller different amounts.
+    A flat 100% revenue_share paid out everything the customer paid, which was
+    harmless while the list price WAS the upstream rate — but the managed
+    channel now carries a platform markup, so a share-of-list payout would hand
+    the seller the markup too. `pricing` is the scraped UPSTREAM rate and is
+    what the platform actually owes; it cannot drift with the markup, a listing
+    override, or a stacked promotion (unitysvc/unitysvc#1892).
+
+    NOTE: `calculate_seller_payout` does not thread the resolved channel into
+    `calculate_cost`, so this resolves to `default` for every request (#1892
+    Phase 1). Correct in THIS shape only because `default` is the paid channel
+    and byok rows are dropped earlier by the `seller_charge == 0` guard. #}
+{%- set _upstream = dict(pricing, description='Upstream Fireworks AI rate') if pricing else None %}
+{%- if _upstream %}{%- set _ = _upstream.pop('reference', None) %}{%- endif %}
   "payout_price": {
-    "type": "revenue_share",
-    "percentage": "100.00",
-    "description": "No platform commission"
+    "type": "channel",
+    "default": "managed",
+    "channels": {
+      "byok": {"type": "constant", "price": "0", "description": "No payout - the customer's own key pays Fireworks AI"},
+      "managed": {{ _upstream | tojson if _upstream else '{"type": "revenue_share", "percentage": "100.00"}' }}
+    }
   },
 {#- Fireworks resells its own tokens: both channels front the same upstream and
     differ only in whose key pays — managed = seller key (${ secrets.* }),

@@ -43,6 +43,13 @@
     "display_name": "Qwen3.7 Plus",
     "is_flux": false,
     "listing_status": "ready",
+    "managed_pricing": {
+      "cached_input": "0.092",
+      "description": "$0.46/$0.092/$1.84 / 1M in/cached/out tokens",
+      "input": "0.46",
+      "output": "1.84",
+      "type": "one_million_tokens"
+    },
     "model": "qwen3p7-plus",
     "model_name": "accounts/fireworks/models/qwen3p7-plus",
     "offering_name": "accounts/fireworks/models/qwen3p7-plus",

@@ -40,6 +40,13 @@
     "display_name": "Inkling",
     "is_flux": false,
     "listing_status": "ready",
+    "managed_pricing": {
+      "cached_input": "0.196",
+      "description": "$1.15/$0.196/$4.658 / 1M in/cached/out tokens",
+      "input": "1.15",
+      "output": "4.658",
+      "type": "one_million_tokens"
+    },
     "model": "inkling",
     "model_name": "accounts/fireworks/models/inkling",
     "offering_name": "accounts/fireworks/models/inkling",
