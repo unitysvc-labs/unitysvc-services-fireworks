@@ -3,7 +3,7 @@
     "capabilities": [
       "chat"
     ],
-    "description": "Qwen3.8-2.4T-A95B is Alibaba’s most capable Qwen model to date, a 2.4T-parameter sparse MoE with ~95B active parameters. It is built for autonomous, long-horizon work:  multi-day coding runs, research-paper reproduction and self-improvement.",
+    "description": "Built on the architectural foundation of Qwen3.5, Qwen3.8 delivers substantial gains across coding, professional work, research, and long-horizon agentic tasks. Beyond answering harder questions, Qwen3.8 is designed to carry complex, multi-step tasks through to completion with greater reliability.",
     "details": {
       "calibrated": false,
       "checkpointFormat": "HUGGINGFACE",
@@ -11,7 +11,7 @@
       "context_length": 262144,
       "defaultDraftModel": "",
       "defaultDraftTokenCount": 0,
-      "defaultPrecision": "FP8",
+      "defaultPrecision": "PRECISION_UNSPECIFIED",
       "defaultSamplingParams": {},
       "deprecationDate": null,
       "fineTuningJob": "",
@@ -19,21 +19,24 @@
       "huggingFaceUrl": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
       "importedFrom": "",
       "kind": "HF_BASE_MODEL",
-      "modelType": "qwen3_5_moe_text",
+      "metadata_sources": {
+        "context_length": "litellm"
+      },
+      "modelType": "",
       "moe": true,
-      "parameter_count": 2419804697984,
+      "parameter_count": null,
       "rlTunable": false,
       "snapshotType": "FULL_SNAPSHOT",
       "supportsFireattention": true,
-      "supportsImageInput": false,
+      "supportsImageInput": true,
       "supportsLora": false,
-      "supportsTools": false,
+      "supportsTools": true,
       "teftDetails": null,
       "trainingContextLength": 65536,
       "useHfApplyChatTemplate": false,
-      "worldSize": 1
+      "worldSize": 0
     },
-    "display_name": "Qwen3.8-2.4T-A95B",
+    "display_name": "Qwen 3.8 Max",
     "is_flux": false,
     "listing_status": "ready",
     "managed_pricing": {

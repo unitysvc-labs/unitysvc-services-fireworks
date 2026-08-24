@@ -21,7 +21,7 @@
       "kind": "HF_BASE_MODEL",
       "modelType": "glm_moe_dsa",
       "moe": true,
-      "parameter_count": 743911218432,
+      "parameter_count": 743377019904,
       "rlTunable": false,
       "snapshotType": "FULL_SNAPSHOT",
       "supportsFireattention": true,
