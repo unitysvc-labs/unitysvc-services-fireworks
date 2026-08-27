@@ -85,6 +85,16 @@
       "routing_key": {"model": "{{ model_name }}"}
     }
   },
+  {#- The embedding and chat shapes are DERIVED from what the service is: its
+      capability and the request dialects it accepts (unitysvc/unitysvc#1899).
+      The catalog-wide shape lives in unitysvc-data's `llm_example_collection`
+      preset, so a new example flavour or a fixed preset reaches this repo on
+      the next release rather than through a PR here.
+
+      A collection covers ONE capability, so each branch emits its own call.
+      The FLUX branch is left hand-written on purpose: image generation on
+      Fireworks is served by repo-local example files with no preset behind
+      them, so there is nothing for the collection to derive. -#}
   "documents": {
 {%- if is_flux %}
     "Python code example": {
@@ -133,57 +143,19 @@
       "mime_type": "bash"
     }
 {%- elif service_type == "embedding" %}
-{#- Embedding models serve /v1/embeddings; the chat presets below POST a
-    chat-completion body that endpoint rejects. Without this branch an `embed`
-    service was shipping chat examples and a chat connectivity test — and the
-    connectivity test is the document the activation gate keys on
-    (`check_service_tests_passed`), so the declared capability was never
-    actually probed. -#}
-    "How to use this model": {
-      "$doc_preset": "llm_description"
-    },
-    "Python code example": {
-      "$doc_preset": {"name": "llm_code_example_embed_requests", "meta": {"sleep_after_test": 5}}
-    },
-    "JavaScript code example": {
-      "$doc_preset": {"name": "llm_code_example_embed_javascript", "meta": {"sleep_after_test": 5}}
-    },
-    "cURL code example": {
-      "$doc_preset": {"name": "llm_code_example_embed_shell", "meta": {"sleep_after_test": 5}}
-    },
-    "connectivity test": {
-      "$doc_preset": {"name": "llm_connectivity_embed", "meta": {"sleep_after_test": 5}}
+    "$llm_example_collection": {
+      "capabilities": ["embed"],
+      "formats": ["openai"],
+      "upstream_dialect": "openai",
+      "sleep": 5
     }
 {%- else %}
-    "How to use this model": {
-      "$doc_preset": "llm_description"
-    },
-    "Python code example": {
-      "$doc_preset": {"name": "llm_code_example_openai", "meta": {"sleep_after_test": 5}}
-    },
-    "Python function calling code example": {
-      "$doc_preset": {"name": "llm_code_example_fc_requests", "meta": {"sleep_after_test": 5}}
-    },
-    "JavaScript code example": {
-      "$doc_preset": {"name": "llm_code_example_javascript", "meta": {"sleep_after_test": 5}}
-    },
-    "cURL code example": {
-      "$doc_preset": {"name": "llm_code_example_shell", "meta": {"sleep_after_test": 5}}
-    },
-    {#- Anthropic-dialect examples (R9): the upstream speaks OpenAI, so
-        specs run-tests (local_testing) calls it in OpenAI form, while the
-        gateway path speaks Anthropic and exercises the llm_translator. #}
-    "Python code example (Anthropic-style input)": {
-      "$doc_preset": {"name": "llm_code_example_anthropic_to_openai_sdk", "meta": {"sleep_after_test": 5}}
-    },
-    "cURL code example (Anthropic-style input)": {
-      "$doc_preset": {"name": "llm_code_example_anthropic_to_openai_shell", "meta": {"sleep_after_test": 5}}
-    },
-    "connectivity test": {
-      "$doc_preset": {"name": "llm_connectivity", "meta": {"sleep_after_test": 5}}
-    },
-    "Default request body": {
-      "$doc_preset": "llm_request_template"
+    "$llm_example_collection": {
+      "capabilities": ["chat"],
+      "formats": ["openai", "anthropic"],
+      "upstream_dialect": "openai",
+      "tools": true,
+      "sleep": 5
     }
 {%- endif %}
   }
