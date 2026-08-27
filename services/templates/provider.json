@@ -4,6 +4,21 @@
   "homepage": "https://fireworks.ai/",
   "logo": "https://cdn.sanity.io/images/pv37i0yn/production/df64b2d19687cef1b12f8c0bca7d979faf9fe7c0-215x24.svg",
   "name": "fireworks",
+  "rate_limits": [
+    {
+      "description": "Self-imposed ceiling so platform test sweeps cannot saturate the account; not a published provider limit.",
+      "limit": 10,
+      "name": "fireworks_concurrency",
+      "unit": "concurrent"
+    },
+    {
+      "description": "Self-imposed ceiling so platform test sweeps cannot saturate the account; not a published provider limit.",
+      "limit": 100,
+      "name": "fireworks_rpm",
+      "unit": "requests",
+      "window": "minute"
+    }
+  ],
   "secondary_contact_email": "inquiries@fireworks.ai",
   "status": "ready",
   "terms_of_service": "https://fireworks.ai/terms-of-service",
