@@ -414,7 +414,7 @@ class FireworksModelSource:
         "llm": "chat",
         "image_generation": "image-generate",
         "embedding": "embed",
-        "prerecorded_transcription": "speech-transcribe",
+        "prerecorded_transcription": "speech-to-text",
     }
 
     def _derive_capabilities(self, service_type: str, model_data: dict,

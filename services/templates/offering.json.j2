@@ -40,7 +40,7 @@
     caller GETS. The populator writes this into every param file; the map here
     is the fallback for a param file that predates it. -#}
 {%- set _cap = {"llm": "chat", "image_generation": "image-generate", "embedding": "embed",
-                "prerecorded_transcription": "speech-transcribe"}.get(service_type, "chat") %}
+                "prerecorded_transcription": "speech-to-text"}.get(service_type, "chat") %}
   "capabilities": {{ capabilities | default([_cap]) | tojson }},
   "status": "{{ status | default('ready') }}",
   "currency": "USD",
