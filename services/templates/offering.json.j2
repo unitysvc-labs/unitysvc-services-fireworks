@@ -44,7 +44,24 @@
   "capabilities": {{ capabilities | default([_cap]) | tojson }},
   "status": "{{ status | default('ready') }}",
   "currency": "USD",
-  "tags": ["ai", "gateway"],
+{#- Closed tag vocabulary (unitysvc docs/tags.yml). A tag is a short label a
+    CUSTOMER sees, and the only one a seller may declare is `feature:func-call`.
+    The old ["ai", "gateway"] pair is gone because it restated fields the
+    platform already owns and validates — `ai` restated service_type, `gateway`
+    restated gateway_type, which is DERIVED precisely so it cannot drift. An
+    upload carrying either is now rejected outright at ingestion.
+
+    func-call is a PER-MODEL fact, so it is keyed off a per-model signal rather
+    than asserted for the catalog: `supportsTools` comes straight from the
+    Fireworks model API (see `_DETAIL_FIELDS` in scripts/update_params.py) and
+    is already carried in every param file's `details`. Over-claiming here is
+    customer-visible breakage — the service ships a tool-calling example that
+    the upstream answers with `400 invalid request: tool use is not supported by
+    the provided model` — so the key is emitted only on a positive signal, and a
+    param file predating the field simply goes untagged until the next populate. #}
+{%- if details and details.supportsTools %}
+  "tags": ["feature:func-call"],
+{%- endif %}
 {#- Build details from the per-model params, always keyed with model_name.
     For chat (service_type 'llm') the OpenAI upstream is exposed in both dialects
     via the llm_translator on each channel, so advertise both formats (R8). #}
