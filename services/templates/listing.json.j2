@@ -155,11 +155,22 @@
       "sleep": 5
     }
 {%- else %}
+    {#- The tool-calling example ships only for models whose upstream actually
+        accepts tool definitions. `supportsTools` is Fireworks' own per-model
+        flag, carried into `details` by scripts/update_params.py, and it is the
+        SAME signal that decides `feature:func-call` on the offering — so the
+        badge a customer sees and the example they can run cannot disagree.
+        Until this gate every chat model shipped the example unconditionally,
+        which is how a non-tool model came to answer it with
+        `400 invalid request: tool use is not supported by the provided model`.
+        Omitted rather than sent as `false`, matching the embedding branch. -#}
     "$llm_example_collection": {
       "capabilities": ["chat"],
       "formats": ["openai", "anthropic"],
       "upstream_dialect": "openai",
+{%- if details and details.get('supportsTools') %}
       "tools": true,
+{%- endif %}
       "sleep": 5
     }
 {%- endif %}
