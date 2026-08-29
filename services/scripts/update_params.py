@@ -164,6 +164,11 @@ class FireworksModelSource:
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
         })
         self.fetcher = ModelDataFetcher()
+        # Models dropped because the pricing scrape came back empty.  Counted,
+        # not just printed, because it decides whether this run may deprecate:
+        # the rates are scraped out of a marketing page, so a timeout, a 404
+        # or a layout change all look exactly like a model that was retired.
+        self.skipped_no_pricing = 0
 
     def close(self) -> None:
         self.fetcher.close()
@@ -176,6 +181,13 @@ class FireworksModelSource:
         Each dict contains all variables needed by offering.json.j2 and listing.json.j2.
         """
         models = self._fetch_all_models()
+        if not models:
+            # Exit non-zero.  An empty enumeration means the upstream call
+            # failed, and yielding nothing writes no params, opens no PR and
+            # is indistinguishable from "no changes today" — while telling the
+            # writer that every committed service has been retired.
+            print("Error: Fireworks returned an empty model list")
+            sys.exit(1)
         total = len(models)
 
         for i, model in enumerate(models, 1):
@@ -203,6 +215,7 @@ class FireworksModelSource:
             pricing = self._extract_pricing(short_name)
             if not pricing:
                 print("  Skipped: No pricing found")
+                self.skipped_no_pricing += 1
                 continue
 
             # Determine service type
@@ -221,14 +234,17 @@ class FireworksModelSource:
 
             # Yield the template variables
             yield {
-                # Param-file path under specs/ == listing.name == "fireworks/<short>"
-                # (flat layout, #1263). Default name_field="name".
-                "name": f"fireworks/{short_name}",
+                # The service's name, which is also its path under specs/ ==
+                # listing.name == "fireworks/<short>" (flat layout, #1263).
+                # Required by write_params_from_iterator since unitysvc-sellers
+                # 0.3.1; there is no `name_field` fallback any more.
+                "service_name": f"fireworks/{short_name}",
                 "provider_name": "fireworks",
 
                 # Bare model name — offering.name + listing.display_name.
                 # Named "model" (not "name") so it survives param extraction:
-                # write_params_from_iterator reserves "name" for the path.
+                # the writer strips name/service_name/provider_name from the
+                # stored parameters and re-derives them from the file's path.
                 "model": short_name,
 
                 # Routing-key model — Fireworks expects the fully-qualified
@@ -529,13 +545,39 @@ def main():
     # Get script directory for relative paths
     script_dir = Path(__file__).parent
 
+    # Drain the iterator before writing.  Deprecation (on by default since
+    # unitysvc-sellers 0.3.1) is decided by what is ABSENT from the run, and
+    # that verdict is only sound once we know nothing dropped out along the
+    # way — so the skip counters have to be final before the writer sees the
+    # models, which they are not while it is pulling a generator.
     try:
-        write_params_from_iterator(
-            iterator=source.iter_models(),
-            output_dir=script_dir.parent / "specs",
-        )
+        contexts = list(source.iter_models())
     finally:
         source.close()
+
+    # A model that lost its `supportsServerless` flag is deliberately NOT an
+    # incomplete run: that flag is a fact the API states, so its absence
+    # really does mean the model left the serverless menu.  A missing price
+    # is the opposite — scraped from a web page, and absent whenever the
+    # scrape failed.
+    incomplete = []
+    if source.skipped_no_pricing:
+        incomplete.append(
+            f"{source.skipped_no_pricing} model(s) skipped for a failed pricing scrape"
+        )
+    if incomplete:
+        print(f"Incomplete run ({'; '.join(incomplete)}) — skipping deprecation")
+
+    stats = write_params_from_iterator(
+        iterator=iter(contexts),
+        output_dir=script_dir.parent / "specs",
+        deprecate_missing=not incomplete,
+    )
+    print(
+        f"Wrote {stats['written']} service(s): {stats['new']} new, "
+        f"{stats['deprecated']} deprecated, {stats['preserved']} value(s) "
+        "preserved from the committed files"
+    )
 
 
 if __name__ == "__main__":

@@ -3,8 +3,13 @@
   "status": "{{ listing_status | default('ready') }}",
   "currency": "USD",
   {#- name = <provider>/<bare> per the platform service-naming convention
-      (unitysvc PR #1196 / issue #1138). #}
-  "name": "{{ provider_name }}/{{ model }}",
+      (unitysvc PR #1196 / issue #1138), rendered from the single
+      `service_name` the populate script must yield (unitysvc-sellers 0.3.1)
+      rather than recomposed here.  The recomposed form was `provider_name` +
+      `model` (the SHORT name) rather than `offering_name`, which here is the
+      fully-qualified `accounts/fireworks/models/<short>` routing id — one
+      more reason for the name to have exactly one source. #}
+  "name": "{{ service_name }}",
 {%- if pricing %}
   {#- Channel-keyed price: byok is free (the customer's own key pays Fireworks AI
       directly); managed resells Fireworks AI usage at the per-model rate carried
