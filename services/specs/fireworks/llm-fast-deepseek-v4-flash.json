@@ -1,0 +1,11 @@
+{
+  "parameters": {
+    "api_base_url": "https://api.fireworks.ai/inference/v1",
+    "api_key_secret": "FIREWORKS_API_KEY",
+    "model": "deepseek-v4-flash",
+    "payout_input": "0.14",
+    "payout_output": "0.28",
+    "service_name": "fireworks/llm-fast-deepseek-v4-flash"
+  },
+  "template": "llm-fast"
+}
