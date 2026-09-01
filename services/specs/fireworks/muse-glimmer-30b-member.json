@@ -1,0 +1,11 @@
+{
+  "parameters": {
+    "api_base_url": "https://api.fireworks.ai/inference/v1",
+    "api_key_secret": "FIREWORKS_API_KEY",
+    "model": "muse-glimmer-30b",
+    "payout_input": "0.35",
+    "payout_output": "1.50",
+    "service_name": "fireworks/muse-glimmer-30b-member"
+  },
+  "template": "muse-glimmer-30b"
+}

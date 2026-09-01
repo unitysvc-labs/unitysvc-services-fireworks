@@ -1,0 +1,11 @@
+{
+  "parameters": {
+    "api_base_url": "https://api.fireworks.ai/inference/v1",
+    "api_key_secret": "FIREWORKS_API_KEY",
+    "model": "gpt-oss-120b",
+    "payout_input": "0.15",
+    "payout_output": "0.60",
+    "service_name": "fireworks/gpt-oss-120b-member"
+  },
+  "template": "gpt-oss-120b"
+}

@@ -1,0 +1,11 @@
+{
+  "parameters": {
+    "api_base_url": "https://api.fireworks.ai/inference/v1",
+    "api_key_secret": "FIREWORKS_API_KEY",
+    "model": "kimi-k3",
+    "payout_input": "3.00",
+    "payout_output": "15.00",
+    "service_name": "fireworks/kimi-k3-member"
+  },
+  "template": "kimi-k3"
+}
