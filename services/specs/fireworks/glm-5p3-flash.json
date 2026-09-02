@@ -37,8 +37,8 @@
     "is_flux": false,
     "listing_status": "ready",
     "managed_pricing": {
-      "cached_input": "0.033",
-      "description": "$0.173/$0.033/$0.575 / 1M in/cached/out tokens",
+      "cached_input": "0.035",
+      "description": "$0.173/$0.035/$0.575 / 1M in/cached/out tokens",
       "input": "0.173",
       "output": "0.575",
       "type": "one_million_tokens"
@@ -47,8 +47,8 @@
     "model_name": "accounts/fireworks/models/glm-5p3-flash",
     "offering_name": "accounts/fireworks/models/glm-5p3-flash",
     "pricing": {
-      "cached_input": "0.029",
-      "description": "Pricing Per 1M Tokens (input/cached input/output): $0.15 / $0.029 / $0.50",
+      "cached_input": "0.03",
+      "description": "Pricing Per 1M Tokens (input/cached input/output): $0.15 / $0.03 / $0.50",
       "input": "0.15",
       "output": "0.50",
       "reference": "https://fireworks.ai/models/fireworks/glm-5p3-flash",
