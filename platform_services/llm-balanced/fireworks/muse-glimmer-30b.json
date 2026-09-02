@@ -5,7 +5,7 @@
     "model": "muse-glimmer-30b",
     "payout_input": "0.35",
     "payout_output": "1.50",
-    "service_name": "fireworks/muse-glimmer-30b-member"
+    "service_name": "llm-balanced/fireworks/muse-glimmer-30b"
   },
-  "template": "muse-glimmer-30b"
+  "template": "llm-balanced"
 }

@@ -2,10 +2,10 @@
   "parameters": {
     "api_base_url": "https://api.fireworks.ai/inference/v1",
     "api_key_secret": "FIREWORKS_API_KEY",
-    "model": "gpt-oss-20b",
-    "payout_input": "0.07",
-    "payout_output": "0.30",
-    "service_name": "fireworks/llm-fast-gpt-oss-20b"
+    "model": "deepseek-v4-flash",
+    "payout_input": "0.14",
+    "payout_output": "0.28",
+    "service_name": "llm-fast/fireworks/deepseek-v4-flash"
   },
   "template": "llm-fast"
 }

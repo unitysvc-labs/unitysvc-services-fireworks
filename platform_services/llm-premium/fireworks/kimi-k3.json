@@ -2,10 +2,10 @@
   "parameters": {
     "api_base_url": "https://api.fireworks.ai/inference/v1",
     "api_key_secret": "FIREWORKS_API_KEY",
-    "model": "deepseek-v4-pro",
-    "payout_input": "1.74",
-    "payout_output": "3.48",
-    "service_name": "fireworks/llm-premium-deepseek-v4-pro"
+    "model": "kimi-k3",
+    "payout_input": "3.00",
+    "payout_output": "15.00",
+    "service_name": "llm-premium/fireworks/kimi-k3"
   },
   "template": "llm-premium"
 }

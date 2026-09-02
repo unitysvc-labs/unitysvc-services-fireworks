@@ -5,7 +5,7 @@
     "model": "minimax-m3",
     "payout_input": "0.30",
     "payout_output": "1.20",
-    "service_name": "fireworks/minimax-m3-member"
+    "service_name": "minimax-m3/fireworks/minimax-m3"
   },
   "template": "minimax-m3"
 }

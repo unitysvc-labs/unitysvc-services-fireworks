@@ -5,7 +5,7 @@
     "model": "gpt-oss-120b",
     "payout_input": "0.15",
     "payout_output": "0.60",
-    "service_name": "fireworks/gpt-oss-120b-member"
+    "service_name": "gpt-oss-120b/fireworks/gpt-oss-120b"
   },
   "template": "gpt-oss-120b"
 }

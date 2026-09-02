@@ -5,7 +5,7 @@
     "model": "kimi-k3",
     "payout_input": "3.00",
     "payout_output": "15.00",
-    "service_name": "fireworks/kimi-k3-member"
+    "service_name": "kimi-k3/fireworks/kimi-k3"
   },
   "template": "kimi-k3"
 }
