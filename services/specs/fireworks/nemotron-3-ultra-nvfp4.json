@@ -37,8 +37,8 @@
     "is_flux": false,
     "listing_status": "ready",
     "managed_pricing": {
-      "cached_input": "0.137",
-      "description": "$0.69/$0.137/$2.76 / 1M in/cached/out tokens",
+      "cached_input": "0.138",
+      "description": "$0.69/$0.138/$2.76 / 1M in/cached/out tokens",
       "input": "0.69",
       "output": "2.76",
       "type": "one_million_tokens"
@@ -47,8 +47,8 @@
     "model_name": "accounts/fireworks/models/nemotron-3-ultra-nvfp4",
     "offering_name": "accounts/fireworks/models/nemotron-3-ultra-nvfp4",
     "pricing": {
-      "cached_input": "0.119",
-      "description": "Pricing Per 1M Tokens (input/cached input/output): $0.60 / $0.119 / $2.40",
+      "cached_input": "0.12",
+      "description": "Pricing Per 1M Tokens (input/cached input/output): $0.60 / $0.12 / $2.40",
       "input": "0.60",
       "output": "2.40",
       "reference": "https://fireworks.ai/models/fireworks/nemotron-3-ultra-nvfp4",
