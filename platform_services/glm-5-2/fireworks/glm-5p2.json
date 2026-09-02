@@ -5,7 +5,7 @@
     "model": "glm-5p2",
     "payout_input": "1.40",
     "payout_output": "4.40",
-    "service_name": "fireworks/llm-balanced-glm-5p2"
+    "service_name": "glm-5-2/fireworks/glm-5p2"
   },
-  "template": "llm-balanced"
+  "template": "glm-5-2"
 }

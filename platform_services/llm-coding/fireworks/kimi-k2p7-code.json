@@ -5,7 +5,7 @@
     "model": "kimi-k2p7-code",
     "payout_input": "0.95",
     "payout_output": "4.00",
-    "service_name": "fireworks/kimi-k2-7-code-member"
+    "service_name": "llm-coding/fireworks/kimi-k2p7-code"
   },
-  "template": "kimi-k2-7-code"
+  "template": "llm-coding"
 }
