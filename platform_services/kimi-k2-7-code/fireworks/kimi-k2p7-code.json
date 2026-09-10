@@ -2,7 +2,7 @@
   "parameters": {
     "api_base_url": "https://api.fireworks.ai/inference/v1",
     "api_key_secret": "FIREWORKS_API_KEY",
-    "model": "kimi-k2p7-code",
+    "model": "accounts/fireworks/models/kimi-k2p7-code",
     "payout_input": "0.95",
     "payout_output": "4.00",
     "service_name": "kimi-k2-7-code/fireworks/kimi-k2p7-code"
