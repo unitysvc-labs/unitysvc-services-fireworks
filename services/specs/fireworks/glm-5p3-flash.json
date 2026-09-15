@@ -20,7 +20,7 @@
       "importedFrom": "",
       "kind": "HF_BASE_MODEL",
       "modelType": "glm5_next_text",
-      "moe": false,
+      "moe": true,
       "parameter_count": 320000000000,
       "rlTunable": false,
       "snapshotType": "FULL_SNAPSHOT",

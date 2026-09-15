@@ -26,7 +26,7 @@
       "snapshotType": "FULL_SNAPSHOT",
       "supportsFireattention": true,
       "supportsImageInput": false,
-      "supportsLora": false,
+      "supportsLora": true,
       "supportsTools": true,
       "teftDetails": null,
       "trainingContextLength": 65536,
