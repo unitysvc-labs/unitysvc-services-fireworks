@@ -1,0 +1,60 @@
+{
+  "parameters": {
+    "capabilities": [
+      "chat"
+    ],
+    "description": "Ember-1 is a specialized model from Fireworks. Built on Kimi K3, it produces shorter reasoning traces, using approximately 40% fewer tokens while maintaining comparable quality across our evaluations",
+    "details": {
+      "calibrated": false,
+      "checkpointFormat": "HUGGINGFACE",
+      "cluster": "",
+      "context_length": 1048576,
+      "defaultDraftModel": "",
+      "defaultDraftTokenCount": 0,
+      "defaultPrecision": "FP8",
+      "defaultSamplingParams": {},
+      "deprecationDate": null,
+      "fineTuningJob": "",
+      "githubUrl": "",
+      "huggingFaceUrl": "",
+      "importedFrom": "",
+      "kind": "HF_BASE_MODEL",
+      "modelType": "kimi_k3",
+      "moe": true,
+      "parameter_count": 2780913302112,
+      "rlTunable": false,
+      "snapshotType": "FULL_SNAPSHOT",
+      "supportsFireattention": true,
+      "supportsImageInput": true,
+      "supportsLora": true,
+      "supportsTools": true,
+      "teftDetails": null,
+      "trainingContextLength": 65536,
+      "useHfApplyChatTemplate": false,
+      "worldSize": 1
+    },
+    "display_name": "Ember-1",
+    "is_flux": false,
+    "listing_status": "ready",
+    "managed_pricing": {
+      "cached_input": "0.345",
+      "description": "$3.45/$0.345/$17.25 / 1M in/cached/out tokens",
+      "input": "3.45",
+      "output": "17.25",
+      "type": "one_million_tokens"
+    },
+    "model": "ember-1",
+    "model_name": "accounts/fireworks/models/ember-1",
+    "offering_name": "accounts/fireworks/models/ember-1",
+    "pricing": {
+      "cached_input": "0.30",
+      "description": "Pricing Per 1M Tokens (input/cached input/output): $3.00 / $0.30 / $15.00",
+      "input": "3.00",
+      "output": "15.00",
+      "reference": "https://fireworks.ai/models/fireworks/ember-1",
+      "type": "one_million_tokens"
+    },
+    "service_type": "llm",
+    "status": "ready"
+  }
+}
