@@ -169,6 +169,12 @@ class FireworksModelSource:
         # the rates are scraped out of a marketing page, so a timeout, a 404
         # or a layout change all look exactly like a model that was retired.
         self.skipped_no_pricing = 0
+        # Models dropped because the detail fetch failed.  Same reasoning: a
+        # timeout or a 5xx carries no information about the model, and
+        # writing it anyway turned qwen3-embedding-8b into a description-less
+        # draft (#125) -- ``state`` was missing, so ``listing_status`` fell to
+        # "draft", and ``description`` fell to "".
+        self.skipped_no_details = 0
 
     def close(self) -> None:
         self.fetcher.close()
@@ -208,8 +214,14 @@ class FireworksModelSource:
                 print("  Skipped: not serverless")
                 continue
 
-            # Get detailed model info
-            model_data = self._get_model_details(model_name) or {}
+            # Get detailed model info.  Skip (and mark the run incomplete) when
+            # it cannot be fetched: the committed file stays as it is, rather
+            # than being rewritten from an empty record.
+            model_data = self._get_model_details(model_name)
+            if model_data is None:
+                print("  Skipped: model details unavailable")
+                self.skipped_no_details += 1
+                continue
 
             # Extract pricing from web page
             pricing = self._extract_pricing(short_name)
@@ -316,8 +328,9 @@ class FireworksModelSource:
             response = self.session.get(endpoint, timeout=10)
             if response.status_code == 200:
                 return response.json()
-        except requests.RequestException:
-            pass
+            print(f"  Warning: model details returned HTTP {response.status_code}")
+        except (requests.RequestException, ValueError) as exc:
+            print(f"  Warning: model details failed: {exc}")
         return None
 
     def _extract_pricing(self, model_slug: str) -> dict | None:
@@ -564,6 +577,10 @@ def main():
     if source.skipped_no_pricing:
         incomplete.append(
             f"{source.skipped_no_pricing} model(s) skipped for a failed pricing scrape"
+        )
+    if source.skipped_no_details:
+        incomplete.append(
+            f"{source.skipped_no_details} model(s) skipped for a failed detail fetch"
         )
     if incomplete:
         print(f"Incomplete run ({'; '.join(incomplete)}) — skipping deprecation")
