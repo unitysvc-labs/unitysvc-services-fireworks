@@ -2,9 +2,11 @@
   "parameters": {
     "api_base_url": "https://api.fireworks.ai/inference/v1",
     "api_key_secret": "FIREWORKS_API_KEY",
+    "context_length": 262144,
     "model": "kimi-k2p6",
     "payout_input": "0.95",
     "payout_output": "4.00",
+    "served_model": "kimi-k2.6",
     "service_name": "llm-balanced/fireworks/kimi-k2p6"
   },
   "template": "llm-balanced"
