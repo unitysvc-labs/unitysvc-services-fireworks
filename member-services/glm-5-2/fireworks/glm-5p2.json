@@ -2,6 +2,7 @@
   "parameters": {
     "api_base_url": "https://api.fireworks.ai/inference/v1",
     "api_key_secret": "FIREWORKS_API_KEY",
+    "context_length": 1048576,
     "model": "glm-5p2",
     "payout_input": "1.40",
     "payout_output": "4.40",

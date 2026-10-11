@@ -2,6 +2,7 @@
   "parameters": {
     "api_base_url": "https://api.fireworks.ai/inference/v1",
     "api_key_secret": "FIREWORKS_API_KEY",
+    "context_length": 512000,
     "model": "minimax-m3",
     "payout_input": "0.30",
     "payout_output": "1.20",
