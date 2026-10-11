@@ -6,6 +6,7 @@
     "model": "muse-glimmer-30b",
     "payout_input": "0.35",
     "payout_output": "1.50",
+    "served_model": "muse-glimmer-30b",
     "service_name": "muse-glimmer-30b/fireworks/muse-glimmer-30b"
   },
   "template": "muse-glimmer-30b"

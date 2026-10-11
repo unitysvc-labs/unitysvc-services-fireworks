@@ -6,6 +6,7 @@
     "model": "accounts/fireworks/models/kimi-k2p7-code",
     "payout_input": "0.95",
     "payout_output": "4.00",
+    "served_model": "kimi-k2.7-code",
     "service_name": "kimi-k2-7-code/fireworks/kimi-k2p7-code"
   },
   "template": "kimi-k2-7-code"

@@ -6,6 +6,7 @@
     "model": "accounts/fireworks/models/deepseek-v4-flash",
     "payout_input": "0.14",
     "payout_output": "0.28",
+    "served_model": "deepseek-v4-flash",
     "service_name": "deepseek-v4-flash/fireworks/deepseek-v4-flash"
   },
   "template": "deepseek-v4-flash"
