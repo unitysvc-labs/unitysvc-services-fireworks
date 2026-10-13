@@ -7,7 +7,8 @@
     "payout_input": "0.35",
     "payout_output": "1.50",
     "served_model": "muse-glimmer-30b",
-    "service_name": "llm-balanced/fireworks/muse-glimmer-30b"
+    "service_name": "llm-balanced/fireworks/muse-glimmer-30b",
+    "status": "deprecated"
   },
   "template": "llm-balanced"
 }
