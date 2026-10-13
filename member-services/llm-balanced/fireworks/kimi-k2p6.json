@@ -7,7 +7,8 @@
     "payout_input": "0.95",
     "payout_output": "4.00",
     "served_model": "kimi-k2.6",
-    "service_name": "llm-balanced/fireworks/kimi-k2p6"
+    "service_name": "llm-balanced/fireworks/kimi-k2p6",
+    "status": "deprecated"
   },
   "template": "llm-balanced"
 }
