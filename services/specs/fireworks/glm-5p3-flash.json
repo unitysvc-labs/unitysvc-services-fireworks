@@ -35,18 +35,18 @@
     },
     "display_name": "GLM 5.3 Flash",
     "is_flux": false,
-    "listing_status": "ready",
-    "managed_pricing": {
+    "list_price": {
       "cached_input": "0.035",
       "description": "$0.173/$0.035/$0.575 / 1M in/cached/out tokens",
       "input": "0.173",
       "output": "0.575",
       "type": "one_million_tokens"
     },
+    "listing_status": "ready",
     "model": "glm-5p3-flash",
     "model_name": "accounts/fireworks/models/glm-5p3-flash",
     "offering_name": "accounts/fireworks/models/glm-5p3-flash",
-    "pricing": {
+    "payout_price": {
       "cached_input": "0.03",
       "description": "Pricing Per 1M Tokens (input/cached input/output): $0.15 / $0.03 / $0.50",
       "input": "0.15",

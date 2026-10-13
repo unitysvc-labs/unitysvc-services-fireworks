@@ -35,18 +35,18 @@
     },
     "display_name": "Minimax M3",
     "is_flux": false,
-    "listing_status": "ready",
-    "managed_pricing": {
+    "list_price": {
       "cached_input": "0.069",
       "description": "$0.345/$0.069/$1.38 / 1M in/cached/out tokens",
       "input": "0.345",
       "output": "1.38",
       "type": "one_million_tokens"
     },
+    "listing_status": "ready",
     "model": "minimax-m3",
     "model_name": "accounts/fireworks/models/minimax-m3",
     "offering_name": "accounts/fireworks/models/minimax-m3",
-    "pricing": {
+    "payout_price": {
       "cached_input": "0.06",
       "description": "Pricing Per 1M Tokens (input/cached input/output): $0.30 / $0.06 / $1.20",
       "input": "0.30",

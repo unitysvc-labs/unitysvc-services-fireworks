@@ -282,11 +282,13 @@ class FireworksModelSource:
                 # UPSTREAM rates, exactly as scraped — this is what Fireworks
                 # charges and therefore what the platform owes the seller on the
                 # managed channel.
-                "pricing": pricing,
+                "payout_price": pricing,
                 # The same rates plus the platform markup: what the CUSTOMER pays
                 # on the managed channel. Kept as a separate key so the scraped
-                # truth is never overwritten and the two can be compared.
-                "managed_pricing": _marked_up(pricing),
+                # truth is never overwritten and the two can be compared. Named
+                # like every other seller repo's list_price / payout_price pair,
+                # which platform-member refresh mirrors into price_* / payout_*.
+                "list_price": _marked_up(pricing),
                 "is_flux": is_flux,
             }
 
