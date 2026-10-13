@@ -6,6 +6,8 @@
     "model": "kimi-k2p6",
     "payout_input": "0.95",
     "payout_output": "4.00",
+    "price_input": "1.093",
+    "price_output": "4.6",
     "served_model": "kimi-k2.6",
     "service_name": "llm-balanced/fireworks/kimi-k2p6",
     "status": "deprecated"

@@ -6,6 +6,8 @@
     "model": "accounts/fireworks/models/deepseek-v4-pro",
     "payout_input": "1.74",
     "payout_output": "3.48",
+    "price_input": "2.001",
+    "price_output": "4.002",
     "served_model": "deepseek-v4-pro",
     "service_name": "llm-premium/fireworks/deepseek-v4-pro"
   },

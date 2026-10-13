@@ -6,6 +6,8 @@
     "model": "gpt-oss-120b",
     "payout_input": "0.15",
     "payout_output": "0.60",
+    "price_input": "0.173",
+    "price_output": "0.69",
     "served_model": "gpt-oss-120b",
     "service_name": "gpt-oss-120b/fireworks/gpt-oss-120b"
   },
