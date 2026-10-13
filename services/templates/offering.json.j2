@@ -73,7 +73,7 @@
     A flat 100% revenue_share paid out everything the customer paid, which was
     harmless while the list price WAS the upstream rate — but the managed
     channel now carries a platform markup, so a share-of-list payout would hand
-    the seller the markup too. `pricing` is the scraped UPSTREAM rate and is
+    the seller the markup too. `payout_price` (param) is the scraped UPSTREAM rate and is
     what the platform actually owes; it cannot drift with the markup, a listing
     override, or a stacked promotion (unitysvc/unitysvc#1892).
 
@@ -81,7 +81,7 @@
     `calculate_cost`, so this resolves to `default` for every request (#1892
     Phase 1). Correct in THIS shape only because `default` is the paid channel
     and byok rows are dropped earlier by the `seller_charge == 0` guard. #}
-{%- set _upstream = dict(pricing, description='Upstream Fireworks AI rate') if pricing else None %}
+{%- set _upstream = dict(payout_price, description='Upstream Fireworks AI rate') if payout_price else None %}
 {%- if _upstream %}{%- set _ = _upstream.pop('reference', None) %}{%- endif %}
   "payout_price": {
     "type": "channel",

@@ -35,18 +35,18 @@
     },
     "display_name": "Inkling",
     "is_flux": false,
-    "listing_status": "ready",
-    "managed_pricing": {
+    "list_price": {
       "cached_input": "0.196",
       "description": "$1.15/$0.196/$4.658 / 1M in/cached/out tokens",
       "input": "1.15",
       "output": "4.658",
       "type": "one_million_tokens"
     },
+    "listing_status": "ready",
     "model": "inkling",
     "model_name": "accounts/fireworks/models/inkling",
     "offering_name": "accounts/fireworks/models/inkling",
-    "pricing": {
+    "payout_price": {
       "cached_input": "0.17",
       "description": "Pricing Per 1M Tokens (input/cached input/output): $1.00 / $0.17 / $4.05",
       "input": "1.00",

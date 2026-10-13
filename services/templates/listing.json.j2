@@ -10,10 +10,10 @@
       fully-qualified `accounts/fireworks/models/<short>` routing id — one
       more reason for the name to have exactly one source. #}
   "name": "{{ service_name }}",
-{%- if pricing %}
+{%- if payout_price %}
   {#- Channel-keyed price: byok is free (the customer's own key pays Fireworks AI
       directly); managed resells Fireworks AI usage at the per-model rate carried
-      in the param `pricing`. Channel keys MUST match the offering channels.
+      in the param `list_price`. Channel keys MUST match the offering channels.
 
       Price-cell copy follows the marketplace description grammar
       (unitysvc/unitysvc#1886, PR #1887):
@@ -45,18 +45,18 @@
       is a saving" register, would misdescribe the number it sits next to.
 
       Composed here rather than written into the param file because
-      scripts/update_params.py rebuilds `pricing` on the scheduled populate run
+      scripts/update_params.py rebuilds the prices on the scheduled populate run
       (.github/workflows/populate-services.yml) and would drop a hand-edited
       description.
 
-      `managed_pricing` is `pricing` plus the platform markup — the customer-
-      facing rate. `pricing` itself stays upstream, and offering.json.j2 pays
-      that out on the managed channel. The cell spans BOTH channels, leading
+      The `list_price` param is `payout_price` plus the platform markup — the
+      customer-facing rate. `payout_price` itself stays upstream, and
+      offering.json.j2 pays that out on the managed channel. The cell spans BOTH channels, leading
       with the range rather than picking one; rates join with "/" and NO
       surrounding spaces so the group stays in the amount slot, since the
       parser's separator needs whitespace on both sides and " / " before the
       unit is then the only split point. #}
-{%- set _p = managed_pricing or pricing %}
+{%- set _p = list_price or payout_price %}
 {%- set _byok_note = ' | Free on the byok channel - your own key pays Fireworks AI directly. The managed channel bills UnitySVC at the listed rate.' %}
 {%- if _p.input and _p.output %}
 {%- set _rates = ('$' ~ _p.input ~ '/$' ~ _p.cached_input ~ '/$' ~ _p.output) if _p.cached_input else ('$' ~ _p.input ~ '/$' ~ _p.output) %}
@@ -79,7 +79,7 @@
         "price": "0",
         "type": "constant"
       },
-      "managed": {{ dict(_p, description=_managed) | tojson if _managed else pricing | tojson }}
+      "managed": {{ dict(_p, description=_managed) | tojson if _managed else payout_price | tojson }}
     }
   },
 {%- endif %}

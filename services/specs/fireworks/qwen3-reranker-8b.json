@@ -35,16 +35,16 @@
     },
     "display_name": "Qwen3 Reranker 8B",
     "is_flux": false,
-    "listing_status": "ready",
-    "managed_pricing": {
+    "list_price": {
       "description": "$0.23 / 1M tokens",
       "price": "0.23",
       "type": "one_million_tokens"
     },
+    "listing_status": "ready",
     "model": "qwen3-reranker-8b",
     "model_name": "accounts/fireworks/models/qwen3-reranker-8b",
     "offering_name": "accounts/fireworks/models/qwen3-reranker-8b",
-    "pricing": {
+    "payout_price": {
       "description": "Pricing Per 1M Tokens: $0.20",
       "price": "0.20",
       "reference": "https://fireworks.ai/models/fireworks/qwen3-reranker-8b",

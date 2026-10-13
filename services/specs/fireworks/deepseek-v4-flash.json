@@ -35,18 +35,18 @@
     },
     "display_name": "DeepSeek-V4-Flash",
     "is_flux": false,
-    "listing_status": "ready",
-    "managed_pricing": {
+    "list_price": {
       "cached_input": "0.032",
       "description": "$0.161/$0.032/$0.322 / 1M in/cached/out tokens",
       "input": "0.161",
       "output": "0.322",
       "type": "one_million_tokens"
     },
+    "listing_status": "ready",
     "model": "deepseek-v4-flash",
     "model_name": "accounts/fireworks/models/deepseek-v4-flash",
     "offering_name": "accounts/fireworks/models/deepseek-v4-flash",
-    "pricing": {
+    "payout_price": {
       "cached_input": "0.028",
       "description": "Pricing Per 1M Tokens (input/cached input/output): $0.14 / $0.028 / $0.28",
       "input": "0.14",
