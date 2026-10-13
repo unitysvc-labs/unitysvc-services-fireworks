@@ -6,6 +6,8 @@
     "model": "glm-5p2",
     "payout_input": "1.40",
     "payout_output": "4.40",
+    "price_input": "1.61",
+    "price_output": "5.06",
     "served_model": "glm-5.2",
     "service_name": "glm-5-2/fireworks/glm-5p2"
   },

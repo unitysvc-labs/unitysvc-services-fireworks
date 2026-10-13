@@ -6,6 +6,8 @@
     "model": "minimax-m3",
     "payout_input": "0.30",
     "payout_output": "1.20",
+    "price_input": "0.345",
+    "price_output": "1.38",
     "served_model": "minimax-m3",
     "service_name": "minimax-m3/fireworks/minimax-m3"
   },

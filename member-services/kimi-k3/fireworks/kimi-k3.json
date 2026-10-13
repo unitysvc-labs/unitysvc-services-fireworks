@@ -6,6 +6,8 @@
     "model": "kimi-k3",
     "payout_input": "3.00",
     "payout_output": "15.00",
+    "price_input": "3.45",
+    "price_output": "17.25",
     "served_model": "kimi-k3",
     "service_name": "kimi-k3/fireworks/kimi-k3"
   },
