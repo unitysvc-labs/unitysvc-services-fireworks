@@ -1,0 +1,60 @@
+{
+  "parameters": {
+    "capabilities": [
+      "chat"
+    ],
+    "description": "Muse Spark Open is an open weights reasoning model from Meta for coding and agentic workflows. It supports tool calling and native image understanding in a single checkpoint. It uses a sparse Mixture-of-Experts architecture with 816B total / 42B active parameters, routing each token to 8 of 256 experts, and hybrid attention that repeats three sliding-window layers (2,048-token window) for every full-attention layer. Inputs: text and images. Output: text.",
+    "details": {
+      "calibrated": false,
+      "checkpointFormat": "HUGGINGFACE",
+      "cluster": "",
+      "context_length": 1048576,
+      "defaultDraftModel": "",
+      "defaultDraftTokenCount": 0,
+      "defaultPrecision": "PRECISION_UNSPECIFIED",
+      "defaultSamplingParams": {},
+      "deprecationDate": null,
+      "fineTuningJob": "",
+      "githubUrl": "",
+      "huggingFaceUrl": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+      "importedFrom": "",
+      "kind": "HF_BASE_MODEL",
+      "modelType": "musespark1x_omni",
+      "moe": true,
+      "parameter_count": 816000000000,
+      "rlTunable": false,
+      "snapshotType": "FULL_SNAPSHOT",
+      "supportsFireattention": false,
+      "supportsImageInput": true,
+      "supportsLora": false,
+      "supportsTools": true,
+      "teftDetails": null,
+      "trainingContextLength": 0,
+      "useHfApplyChatTemplate": false,
+      "worldSize": 1
+    },
+    "display_name": "Muse Spark Open",
+    "is_flux": false,
+    "list_price": {
+      "cached_input": "0.173",
+      "description": "$1.438/$0.173/$4.888 / 1M in/cached/out tokens",
+      "input": "1.438",
+      "output": "4.888",
+      "type": "one_million_tokens"
+    },
+    "listing_status": "ready",
+    "model": "muse-spark-open",
+    "model_name": "accounts/fireworks/models/muse-spark-open",
+    "offering_name": "accounts/fireworks/models/muse-spark-open",
+    "payout_price": {
+      "cached_input": "0.15",
+      "description": "Pricing Per 1M Tokens (input/cached input/output): $1.25 / $0.15 / $4.25",
+      "input": "1.25",
+      "output": "4.25",
+      "reference": "https://fireworks.ai/models/fireworks/muse-spark-open",
+      "type": "one_million_tokens"
+    },
+    "service_type": "llm",
+    "status": "ready"
+  }
+}
