@@ -13,7 +13,11 @@
       "defaultDraftTokenCount": 0,
       "defaultPrecision": "PRECISION_UNSPECIFIED",
       "defaultSamplingParams": {},
-      "deprecationDate": null,
+      "deprecationDate": {
+        "day": 7,
+        "month": 11,
+        "year": 2026
+      },
       "fineTuningJob": "",
       "githubUrl": "",
       "huggingFaceUrl": "https://huggingface.co/thinkingmachines/Inkling",
