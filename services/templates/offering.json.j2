@@ -101,26 +101,6 @@
       "access_method": "http",
       "api_key": "${ secrets.FIREWORKS_API_KEY }",
       "base_url": "https://api.fireworks.ai/inference",
-      "rate_limits": [
-        {
-          "description": "Requests per minute",
-          "limit": 60,
-          "unit": "requests",
-          "window": "minute"
-        },
-        {
-          "description": "Input tokens per minute",
-          "limit": 60000,
-          "unit": "input_tokens",
-          "window": "minute"
-        },
-        {
-          "description": "Output tokens per minute",
-          "limit": 6000,
-          "unit": "output_tokens",
-          "window": "minute"
-        }
-      ],
       "routing_key": {"model": "{{ offering_name }}"},
 {%- if service_type == 'llm' %}
       "request_transformer": {"llm_translator": "anthropic_to_openai"},
@@ -131,26 +111,6 @@
       "access_method": "http",
       "api_key": "${ customer_secrets.FIREWORKS_API_KEY }",
       "base_url": "https://api.fireworks.ai/inference",
-      "rate_limits": [
-        {
-          "description": "Requests per minute",
-          "limit": 60,
-          "unit": "requests",
-          "window": "minute"
-        },
-        {
-          "description": "Input tokens per minute",
-          "limit": 60000,
-          "unit": "input_tokens",
-          "window": "minute"
-        },
-        {
-          "description": "Output tokens per minute",
-          "limit": 6000,
-          "unit": "output_tokens",
-          "window": "minute"
-        }
-      ],
       "routing_key": {"model": "{{ offering_name }}"},
 {%- if service_type == 'llm' %}
       "request_transformer": {"llm_translator": "anthropic_to_openai"},
